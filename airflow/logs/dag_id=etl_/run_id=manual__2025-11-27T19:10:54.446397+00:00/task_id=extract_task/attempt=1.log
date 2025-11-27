@@ -1,0 +1,31 @@
+[2025-11-27T19:10:55.767+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-27T19:10:55.788+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_.extract_task manual__2025-11-27T19:10:54.446397+00:00 [queued]>
+[2025-11-27T19:10:55.794+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_.extract_task manual__2025-11-27T19:10:54.446397+00:00 [queued]>
+[2025-11-27T19:10:55.795+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-11-27T19:10:55.805+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): extract_task> on 2025-11-27 19:10:54.446397+00:00
+[2025-11-27T19:10:55.812+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_', 'extract_task', 'manual__2025-11-27T19:10:54.446397+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmpo4of0bw8']
+[2025-11-27T19:10:55.815+0000] {standard_task_runner.py:91} INFO - Job 12: Subtask extract_task
+[2025-11-27T19:10:55.818+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=404) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-27T19:10:55.819+0000] {standard_task_runner.py:63} INFO - Started process 408 to run task
+[2025-11-27T19:10:55.857+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_.extract_task manual__2025-11-27T19:10:54.446397+00:00 [running]> on host 6919090787b8
+[2025-11-27T19:10:55.917+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_' AIRFLOW_CTX_TASK_ID='extract_task' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T19:10:54.446397+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-27T19:10:54.446397+00:00'
+[2025-11-27T19:10:55.919+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-27T19:10:55.928+0000] {python.py:237} INFO - Done. Returned value was:      Pregnancies  Glucose  ...  Age  Outcome
+0              6      148  ...   50        1
+1              1       85  ...   31        0
+2              8      183  ...   32        1
+3              1       89  ...   21        0
+4              0      137  ...   33        1
+..           ...      ...  ...  ...      ...
+763           10      101  ...   63        0
+764            2      122  ...   27        0
+765            5      121  ...   30        0
+766            1      126  ...   47        1
+767            1       93  ...   23        0
+
+[768 rows x 9 columns]
+[2025-11-27T19:10:55.940+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-27T19:10:56.144+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_, task_id=extract_task, run_id=manual__2025-11-27T19:10:54.446397+00:00, execution_date=20251127T191054, start_date=20251127T191055, end_date=20251127T191056
+[2025-11-27T19:10:56.193+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-27T19:10:56.212+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-27T19:10:56.215+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

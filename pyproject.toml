@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.10,<3.11"
 
 dependencies = [
+    "airflow-provider-mlflow==1.1.0",
     "dvc>=3.64.0",
     "evidently>=0.7.17",
     "fastparquet==0.8.1",
@@ -15,10 +16,12 @@ dependencies = [
     "ipykernel>=7.1.0",
     "joblib>=1.5.2",
     "jupyter>=1.1.1",
-    "mlflow>=3.6.0",
+    "matplotlib==3.10.7",
+    "mlflow==3.6.0",
     "notebook>=7.5.0",
-    "numpy==1.23.5",
-    "pandas==1.5.3",
+    "numpy==1.26.4",
+    "pandas==2.0.3",
     "pyarrow==11.0.0",
-    "scikit-learn>=1.7.2",
+    "scikit-learn==1.7.2",
+    "sqlalchemy>=2.0.44",
 ]

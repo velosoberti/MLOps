@@ -1,0 +1,48 @@
+[2025-11-27T19:29:07.576+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-27T19:29:07.594+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl.create_timestamps_task manual__2025-11-27T19:29:04.681174+00:00 [queued]>
+[2025-11-27T19:29:07.599+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl.create_timestamps_task manual__2025-11-27T19:29:04.681174+00:00 [queued]>
+[2025-11-27T19:29:07.599+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-11-27T19:29:07.608+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): create_timestamps_task> on 2025-11-27 19:29:04.681174+00:00
+[2025-11-27T19:29:07.613+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=676) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-27T19:29:07.614+0000] {standard_task_runner.py:63} INFO - Started process 678 to run task
+[2025-11-27T19:29:07.613+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl', 'create_timestamps_task', 'manual__2025-11-27T19:29:04.681174+00:00', '--job-id', '49', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmppxopjf8n']
+[2025-11-27T19:29:07.614+0000] {standard_task_runner.py:91} INFO - Job 49: Subtask create_timestamps_task
+[2025-11-27T19:29:07.653+0000] {task_command.py:426} INFO - Running <TaskInstance: etl.create_timestamps_task manual__2025-11-27T19:29:04.681174+00:00 [running]> on host 2a6b3d4c2450
+[2025-11-27T19:29:07.753+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl' AIRFLOW_CTX_TASK_ID='create_timestamps_task' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T19:29:04.681174+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-27T19:29:04.681174+00:00'
+[2025-11-27T19:29:07.753+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-27T19:29:07.754+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-27T19:29:07.754+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/decorators/base.py", line 265, in execute
+    return_value = super().execute(context)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/etl.py", line 31, in create_timestamps_task
+    p, t = create_timestamps(predictor, target)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/luisveloso/MLOps_projects/etl/etl.py", line 20, in create_timestamps
+    timestamps = pd.date_range(end= pd.Timestamp.now(), periods=len(predictor), freq='D').to_frame(
+                                                                ^^^^^^^^^^^^^^
+TypeError: 'DataFrame' object is not callable
+[2025-11-27T19:29:07.760+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=etl, task_id=create_timestamps_task, run_id=manual__2025-11-27T19:29:04.681174+00:00, execution_date=20251127T192904, start_date=20251127T192907, end_date=20251127T192907
+[2025-11-27T19:29:07.767+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 49 for task create_timestamps_task ('DataFrame' object is not callable; 678)
+[2025-11-27T19:29:07.787+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-11-27T19:29:07.801+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-27T19:29:07.805+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
