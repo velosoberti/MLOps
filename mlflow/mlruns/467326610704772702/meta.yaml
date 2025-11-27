@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/467326610704772702
+creation_time: 1764279269508
+experiment_id: '467326610704772702'
+last_update_time: 1764279269508
+lifecycle_stage: active
+name: predict_diabetes_MLOps

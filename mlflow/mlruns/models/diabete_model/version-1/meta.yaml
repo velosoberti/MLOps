@@ -1,0 +1,15 @@
+creation_timestamp: 1764279788832
+current_stage: None
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1764279788832
+model_id: m-7c95bd8e9c73437cb44798dd170fdf72
+name: diabete_model
+run_id: a7ac3e11cb354c679bd4f49ad6a84686
+run_link: ''
+source: models:/m-7c95bd8e9c73437cb44798dd170fdf72
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/467326610704772702/models/m-7c95bd8e9c73437cb44798dd170fdf72/artifacts
+user_id: null
+version: 1

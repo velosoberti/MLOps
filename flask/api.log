@@ -1,0 +1,43 @@
+2025-11-27 18:43:41,713 - __main__ - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-27 18:43:42,544 - __main__ - INFO - ✅ Modelo carregado com sucesso: diabete_model v1
+2025-11-27 18:43:42,545 - __main__ - INFO - 📋 Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-27 18:43:42,545 - __main__ - INFO - ✅ API inicializada com sucesso
+2025-11-27 18:43:42,546 - __main__ - INFO - ================================================================================
+2025-11-27 18:43:42,546 - __main__ - INFO - 🚀 Iniciando API de Predição de Diabetes
+2025-11-27 18:43:42,546 - __main__ - INFO - ================================================================================
+2025-11-27 18:43:42,546 - __main__ - INFO - 📍 Servidor: http://0.0.0.0:5002
+2025-11-27 18:43:42,546 - __main__ - INFO - 🔗 MLflow: http://127.0.0.1:5000/
+2025-11-27 18:43:42,546 - __main__ - INFO - 📊 Modelo: diabete_model v1
+2025-11-27 18:43:42,546 - __main__ - INFO - 📋 Features: 4
+2025-11-27 18:43:42,546 - __main__ - INFO - ================================================================================
+2025-11-27 18:43:42,546 - __main__ - INFO - Endpoints disponíveis:
+2025-11-27 18:43:42,546 - __main__ - INFO -   GET  /health
+2025-11-27 18:43:42,546 - __main__ - INFO -   GET  /model/info
+2025-11-27 18:43:42,546 - __main__ - INFO -   POST /predict
+2025-11-27 18:43:42,546 - __main__ - INFO -   POST /predict/batch
+2025-11-27 18:43:42,546 - __main__ - INFO -   POST /model/reload
+2025-11-27 18:43:42,546 - __main__ - INFO - ================================================================================
+2025-11-27 18:44:04,742 - __main__ - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-27 18:44:05,702 - __main__ - INFO - ✅ Modelo carregado com sucesso: diabete_model v1
+2025-11-27 18:44:05,702 - __main__ - INFO - 📋 Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-27 18:44:05,702 - __main__ - INFO - ✅ API inicializada com sucesso
+2025-11-27 18:44:05,704 - __main__ - INFO - ================================================================================
+2025-11-27 18:44:05,704 - __main__ - INFO - 🚀 Iniciando API de Predição de Diabetes
+2025-11-27 18:44:05,704 - __main__ - INFO - ================================================================================
+2025-11-27 18:44:05,704 - __main__ - INFO - 📍 Servidor: http://0.0.0.0:5002
+2025-11-27 18:44:05,704 - __main__ - INFO - 🔗 MLflow: http://127.0.0.1:5000/
+2025-11-27 18:44:05,704 - __main__ - INFO - 📊 Modelo: diabete_model v1
+2025-11-27 18:44:05,704 - __main__ - INFO - 📋 Features: 4
+2025-11-27 18:44:05,704 - __main__ - INFO - ================================================================================
+2025-11-27 18:44:05,704 - __main__ - INFO - Endpoints disponíveis:
+2025-11-27 18:44:05,704 - __main__ - INFO -   GET  /health
+2025-11-27 18:44:05,704 - __main__ - INFO -   GET  /model/info
+2025-11-27 18:44:05,705 - __main__ - INFO -   POST /predict
+2025-11-27 18:44:05,705 - __main__ - INFO -   POST /predict/batch
+2025-11-27 18:44:05,705 - __main__ - INFO -   POST /model/reload
+2025-11-27 18:44:05,705 - __main__ - INFO - ================================================================================
+2025-11-27 18:44:05,709 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2025-11-27 18:44:05,709 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

@@ -1,0 +1,24 @@
+[2025-11-27T21:37:49.823+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-27T21:37:49.869+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-27T21:37:38.169153+00:00 [queued]>
+[2025-11-27T21:37:49.878+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-27T21:37:38.169153+00:00 [queued]>
+[2025-11-27T21:37:49.878+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-27T21:37:49.894+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_data_from_feast> on 2025-11-27 21:37:38.169153+00:00
+[2025-11-27T21:37:49.907+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=2494) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-27T21:37:49.909+0000] {standard_task_runner.py:63} INFO - Started process 2525 to run task
+[2025-11-27T21:37:49.908+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_training_pipeline', 'load_data_from_feast', 'manual__2025-11-27T21:37:38.169153+00:00', '--job-id', '79', '--raw', '--subdir', 'DAGS_FOLDER/treinamento.py', '--cfg-path', '/tmp/tmpvup2dsqt']
+[2025-11-27T21:37:49.912+0000] {standard_task_runner.py:91} INFO - Job 79: Subtask load_data_from_feast
+[2025-11-27T21:37:49.991+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-27T21:37:38.169153+00:00 [running]> on host 526a5b4f3a6c
+[2025-11-27T21:37:50.131+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_training_pipeline' AIRFLOW_CTX_TASK_ID='load_data_from_feast' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T21:37:38.169153+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-27T21:37:38.169153+00:00'
+[2025-11-27T21:37:50.133+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-27T21:37:50.148+0000] {logging_mixin.py:188} INFO - 📦 Carregando dados do Feast...
+[2025-11-27T21:37:50.972+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-27T21:37:50.980+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/feast/feature_store.py:1207 RuntimeWarning: Retrieving datasets is an experimental feature. This API is unstable and it could and most probably will be changed in the future. We do not guarantee that future changes will maintain backward compatibility.
+[2025-11-27T21:37:50.981+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-27T21:37:51.175+0000] {logging_mixin.py:188} INFO - ✅ Dados carregados: (768, 7)
+[2025-11-27T21:37:51.175+0000] {logging_mixin.py:188} INFO -    Colunas: ['BMI', 'Insulin', 'Outcome', 'event_timestamp', 'patient_id', 'SkinThickness', 'DiabetesPedigreeFunction']
+[2025-11-27T21:37:51.254+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-27T21:37:51.255+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-27T21:37:51.274+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_training_pipeline, task_id=load_data_from_feast, run_id=manual__2025-11-27T21:37:38.169153+00:00, execution_date=20251127T213738, start_date=20251127T213749, end_date=20251127T213751
+[2025-11-27T21:37:51.331+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-27T21:37:51.380+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-27T21:37:51.383+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
