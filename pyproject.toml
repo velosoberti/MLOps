@@ -1,0 +1,24 @@
+[project]
+name = "feature-store"
+version = "0.1.0"
+description = "Feature Store Study Repo"
+readme = "README.md"
+requires-python = ">=3.10,<3.11"
+
+dependencies = [
+    "dvc>=3.64.0",
+    "evidently>=0.7.17",
+    "fastparquet==0.8.1",
+    "feast==0.40.0",
+    "fernet>=1.0.1",
+    "flask>=3.1.2",
+    "ipykernel>=7.1.0",
+    "joblib>=1.5.2",
+    "jupyter>=1.1.1",
+    "mlflow>=3.6.0",
+    "notebook>=7.5.0",
+    "numpy==1.23.5",
+    "pandas==1.5.3",
+    "pyarrow==11.0.0",
+    "scikit-learn>=1.7.2",
+]
