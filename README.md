@@ -525,21 +525,42 @@ Response:
 
 ## 🚀 Quick Start
 
-### 1️⃣ Installation
+
+### Linux enviroment
 
 ```bash
+# 1. Instalar o WSL e o Ubuntu
+# (Isso exigirá reiniciar o computador após a conclusão)
+wsl --install -d Ubuntu
+
+# 2. Instalar o Visual Studio Code (via Winget)
+winget install Microsoft.VisualStudioCode
+
+```
+
+### 1️⃣ Installation (Ubuntu)
+
+```bash
+
+# UV instalation
+curl -LsSf https://astral.sh/uv/install.sh | sh
+source $HOME/.cargo/env
+
 # Clone the repository
 git clone https://github.com/velosoberti/MLOps_projects.git
 cd MLOps_projects
 
 # Create a virtual environment
-python -m venv venv
+uv init
+uv venv
 source venv/bin/activate  # Linux/Mac
-# or
-venv\Scripts\activate  # Windows
 
 # Install dependencies
-pip install -r requirements.txt
+uv add -r requirements.txt
+uv sync
+
+# Open VSCode 
+code .
 ```
 
 ### 2️⃣ DVC Configuration
@@ -673,15 +694,15 @@ curl -X POST http://localhost:5005/predict \
 python framework/create_artifacts.py
 ```
 
-**Manual Predictions (outside Airflow):**
+**Manual Predictions (Using API with your data):**
 ```bash
 # Make predictions using stored model
 python framework/manual_pred.py
 ```
 
 **Note:** `manual_pred.py` is different from `flask/request.py`:
-- `manual_pred.py`: Direct model inference using MLflow and Feast (bypasses API)
-- `flask/request.py`: API client that sends HTTP requests to Flask server
+- `manual_pred.py`: Direct model inference real time
+- `flask/request.py`: API client that sends HTTP requests to Flask server just for testing
 
 ---
 
@@ -700,44 +721,6 @@ python framework/manual_pred.py
 | Model Version | Version of model used | Predictions History |
 | Batch ID | Identifier for each execution | Predictions History |
 | Probabilities | P(class 0) and P(class 1) | Predictions History |
-
-### Prediction History Analysis
-
-```python
-import pandas as pd
-
-# Load history
-history = pd.read_parquet('data/artifacts/predictions/predictions_history.parquet')
-
-# General statistics
-print(f"Total predictions: {len(history)}")
-print(f"Total batches: {history['batch_id'].nunique()}")
-print(f"Diabetes proportion: {history['prediction'].mean():.2%}")
-print(f"First prediction: {history['prediction_timestamp'].min()}")
-print(f"Last prediction: {history['prediction_timestamp'].max()}")
-
-# Analysis by batch
-batch_stats = history.groupby('batch_id').agg({
-    'prediction': ['count', 'mean'],
-    'probability_class_1': ['mean', 'std', 'min', 'max']
-})
-print(batch_stats)
-
-# Probability distribution
-import matplotlib.pyplot as plt
-history['probability_class_1'].hist(bins=50)
-plt.xlabel('Diabetes Probability')
-plt.ylabel('Frequency')
-plt.title('Probability Distribution')
-plt.show()
-
-# Temporal analysis
-history['date'] = pd.to_datetime(history['prediction_timestamp']).dt.date
-daily_stats = history.groupby('date').agg({
-    'prediction': ['count', 'mean']
-})
-print(daily_stats)
-```
 
 ---
 
@@ -889,68 +872,6 @@ python framework/manual_pred.py
 
 ---
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-#### Problem: Airflow DAG not appearing
-
-**Cause:** Syntax error or import error in DAG file
-
-**Solution:**
-```bash
-# 1. Check logs
-docker compose logs airflow-scheduler
-
-# 2. Verify DAG syntax
-docker compose exec airflow-webserver python /opt/airflow/dags/etl.py
-
-# 3. Force refresh
-docker compose exec airflow-webserver airflow dags list-import-errors
-```
-
-#### Problem: Predictions with NaN
-
-**Cause:** Features not materialized in Online Store
-
-**Solution:**
-```bash
-cd feature_store/feature_repo
-feast materialize-incremental $(date -u +"%Y-%m-%dT%H:%M:%S")
-```
-
-#### Problem: MLflow model not loading
-
-**Cause:** Model not registered or wrong version
-
-**Solution:**
-```bash
-# Check available models
-mlflow models list
-
-# Check model versions
-mlflow models describe -m "models:/diabete_model/latest"
-
-# Re-register model if needed
-mlflow models register -m "runs:/<run_id>/model" -n "diabete_model"
-```
-
-#### Problem: Docker containers using too much memory
-
-**Cause:** Multiple Airflow workers running
-
-**Solution:**
-```bash
-# Adjust docker-compose.yaml
-# Change AIRFLOW__CELERY__WORKER_CONCURRENCY from 4 to 2
-
-# Restart
-docker compose down
-docker compose up -d
-```
-
----
-
 ## 🤝 Contributing
 
 1. Fork the project
@@ -983,17 +904,10 @@ This project is licensed under the MIT License. See the LICENSE file for details
 **Your Name**
 
 - GitHub: [@velosoberti](https://github.com/velosoberti)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
+- LinkedIn: [My LinkedIn](https://www.linkedin.com/in/velosoberti/)
 
 ---
 
-## 🙏 Acknowledgments
-
-- Diabetes dataset from [Kaggle](https://www.kaggle.com/)
-- MLOps community for best practices
-- All open-source tools used in this project
-
----
 
 ## 📈 Project Status
 
