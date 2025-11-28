@@ -32,7 +32,7 @@ file_source1 = FileSource(
 
 df1_feature_view = FeatureView(
     name = "predictors_df_feature_view",
-    ttl = timedelta(seconds=86400*2), #importante para online store
+    ttl = timedelta(seconds=86400*2), #importante para online store (significa que o online store vai guardar só o que está a dois dias)
     entities= [patient],
     schema= [
         Field(name = 'Pregnancies',              dtype=Int64),
@@ -58,7 +58,7 @@ file_source2 = FileSource(
 
 df1_target_view = FeatureView(
     name = "ptarget_df_feature_view",
-    ttl = timedelta(seconds=86400*2), #importante para online store
+    ttl = timedelta(seconds=86400*2), #importante para online store (significa que o online store vai guardar só o que está a dois dias)
     entities= [patient],
     schema= [
         Field(name = 'Outcome',              dtype=Int64)

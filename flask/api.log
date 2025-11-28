@@ -41,3 +41,37 @@
  * Running on http://127.0.0.1:5005
  * Running on http://172.30.74.91:5005
 2025-11-27 18:44:05,709 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 08:55:55,800 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-28 08:55:57,139 - framework.api_consctructor - INFO - ✅ Modelo carregado com sucesso: diabete_model v1
+2025-11-28 08:55:57,139 - framework.api_consctructor - INFO - 📋 Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 08:55:57,140 - framework.api_consctructor - INFO - ✅ API inicializada com sucesso
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - 🚀 Iniciando API de Predição de Diabetes
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - 📍 Servidor: http://0.0.0.0:5002
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - 🔗 MLflow: http://127.0.0.1:5000/
+2025-11-28 08:55:57,141 - framework.api_consctructor - INFO - 📊 Modelo: diabete_model v1
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO - 📋 Features: 4
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO -   GET  /health
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO -   GET  /model/info
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO -   POST /predict
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO -   POST /predict/batch
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO -   POST /model/reload
+2025-11-28 08:55:57,142 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 08:55:57,147 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2025-11-28 08:55:57,147 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 08:56:02,071 - framework.api_consctructor - WARNING - ⚠️  Rota não encontrada: /
+2025-11-28 08:56:02,072 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:02] "[33mGET / HTTP/1.1[0m" 404 -
+2025-11-28 08:56:02,187 - framework.api_consctructor - WARNING - ⚠️  Rota não encontrada: /favicon.ico
+2025-11-28 08:56:02,187 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:02] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-11-28 08:56:17,976 - framework.api_consctructor - INFO - 📥 GET /health - IP: 127.0.0.1
+2025-11-28 08:56:17,982 - framework.api_consctructor - INFO - ✅ Health check: HEALTHY
+2025-11-28 08:56:17,982 - framework.api_consctructor - INFO - ✅ GET /health - Status: 200 - Tempo: 0.006s
+2025-11-28 08:56:17,982 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:17] "GET /health HTTP/1.1" 200 -
+2025-11-28 08:56:35,392 - framework.api_consctructor - WARNING - ⚠️  Método não permitido: GET /predict
+2025-11-28 08:56:35,392 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:35] "[31m[1mGET /predict HTTP/1.1[0m" 405 -

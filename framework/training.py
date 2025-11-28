@@ -1,153 +1,151 @@
-"""
-Funções modulares para treinamento de modelo com Feast e MLflow
-"""
+# ===================== FUNÇÕES DAS TASKS =====================
+
+
+from datetime import timedelta
 import socket
+import pandas as pd
 from feast import FeatureStore
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
 import mlflow
 import matplotlib.pyplot as plt
-import pandas as pd
+
+try:
+    hostname = 'host.docker.internal'
+    host_ip = socket.gethostbyname(hostname)
+    MLFLOW_TRACKING_URI = f"http://{host_ip}:5000/"
+    print(f"✅ IP resolvido para MLflow: {MLFLOW_TRACKING_URI}")
+except socket.gaierror:
+    # Fallback caso algo dê errado com o DNS do Docker
+    print("⚠️ Falha ao resolver host.docker.internal, tentando localhost...")
+    MLFLOW_TRACKING_URI = "http://127.0.0.1:5000/"
 
 
-def setup_mlflow_tracking():
-    """
-    Configura o URI de tracking do MLflow com fallback para Docker
+MLFLOW_EXPERIMENT_ID = '467326610704772702'
+FEAST_REPO_PATH = "/home/luisveloso/MLOps_projects/feature_store/feature_repo"
+DATASET_NAME = "my_training_dataset"
+
+try:
+    hostname = 'host.docker.internal'
+    host_ip = socket.gethostbyname(hostname)
+    MLFLOW_TRACKING_URI = f"http://{host_ip}:5000/"
+    print(f"✅ IP resolvido para MLflow: {MLFLOW_TRACKING_URI}")
+except socket.gaierror:
+    # Fallback caso algo dê errado com o DNS do Docker
+    print("⚠️ Falha ao resolver host.docker.internal, tentando localhost...")
+    MLFLOW_TRACKING_URI = "http://127.0.0.1:5000/"
+
+
+def setup_mlflow(**context):
+    """Task 1: Configura MLflow tracking"""
+    print("🔧 Configurando MLflow...")
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+    mlflow.set_experiment(experiment_id=MLFLOW_EXPERIMENT_ID)
     
-    Returns:
-        str: URI do MLflow tracking configurado
-    """
-    try:
-        hostname = 'host.docker.internal'
-        host_ip = socket.gethostbyname(hostname)
-        mlflow_uri = f"http://{host_ip}:5000/"
-        print(f"✅ IP resolvido para MLflow: {mlflow_uri}")
-    except socket.gaierror:
-        print("⚠️ Falha ao resolver host.docker.internal, tentando localhost...")
-        mlflow_uri = "http://127.0.0.1:5000/"
+    # Pushando configuração para XCom
+    context['ti'].xcom_push(key='mlflow_uri', value=MLFLOW_TRACKING_URI)
+    context['ti'].xcom_push(key='experiment_id', value=MLFLOW_EXPERIMENT_ID)
     
-    mlflow.set_tracking_uri(mlflow_uri)
-    return mlflow_uri
+    print(f"✅ MLflow configurado: {MLFLOW_TRACKING_URI}")
 
 
-def load_data_from_feast(repo_path: str, dataset_name: str) -> pd.DataFrame:
-    """
-    Carrega dados do Feature Store do Feast
+def load_data_from_feast(**context):
+    """Task 2: Carrega dados do Feast"""
+    print(f"📦 Carregando dados do Feast...")
     
-    Args:
-        repo_path: Caminho do repositório Feast
-        dataset_name: Nome do dataset salvo
-        
-    Returns:
-        DataFrame com os dados de treinamento
-    """
-    print(f"📦 Carregando dados do Feast: {dataset_name}")
-    store = FeatureStore(repo_path=repo_path)
-    training_data = store.get_saved_dataset(name=dataset_name).to_df()
+    store = FeatureStore(repo_path=FEAST_REPO_PATH)
+    training_data = store.get_saved_dataset(name=DATASET_NAME).to_df()
+    
     print(f"✅ Dados carregados: {training_data.shape}")
-    return training_data
+    print(f"   Colunas: {training_data.columns.tolist()}")
+    
+    # Salvar dados no XCom (para datasets pequenos) ou em arquivo temporário
+    context['ti'].xcom_push(key='data_shape', value=training_data.shape)
+    context['ti'].xcom_push(key='data_path', value='/tmp/training_data.parquet')
+    
+    # Salvar em arquivo para não sobrecarregar XCom
+    training_data.to_parquet('/tmp/training_data.parquet', index=False)
 
 
-def prepare_features(df: pd.DataFrame, target_col: str = "Outcome", 
-                     exclude_cols: list = None) -> tuple:
-    """
-    Prepara features e target para treinamento
+def prepare_and_split_data(**context):
+    """Task 3: Prepara features e divide dados"""
+    print("🔧 Preparando features e dividindo dados...")
     
-    Args:
-        df: DataFrame com os dados
-        target_col: Nome da coluna alvo
-        exclude_cols: Lista de colunas para excluir
-        
-    Returns:
-        Tuple com (X, y)
-    """
-    if exclude_cols is None:
-        exclude_cols = ["event_timestamp", "patient_id"]
+    # Carregar dados
+    training_data = pd.read_parquet('/tmp/training_data.parquet')
     
-    y = df[target_col]
-    cols_to_drop = [target_col] + exclude_cols
-    X = df.drop(columns=[col for col in cols_to_drop if col in df.columns])
+    # Preparar features
+    y = training_data["Outcome"]
+    X = training_data.drop(columns=["Outcome", "event_timestamp", "patient_id"])
     
-    print(f"🔧 Features preparadas: {X.shape[1]} features, {X.shape[0]} amostras")
-    print(f"   Features: {sorted(X.columns.tolist())}")
-    return X, y
-
-
-def split_data(X: pd.DataFrame, y: pd.Series, test_size: float = 0.25, 
-               stratify: bool = True, random_state: int = None) -> tuple:
-    """
-    Divide dados em treino e teste
-    
-    Args:
-        X: Features
-        y: Target
-        test_size: Proporção do conjunto de teste
-        stratify: Se deve estratificar a divisão
-        random_state: Seed para reprodutibilidade
-        
-    Returns:
-        Tuple com (X_train, X_test, y_train, y_test)
-    """
-    stratify_param = y if stratify else None
+    # Dividir dados
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, 
-        stratify=stratify_param, 
-        test_size=test_size,
-        random_state=random_state
+        stratify=y, 
+        test_size=0.25,
+        random_state=42
     )
     
     print(f"📊 Dados divididos:")
     print(f"   Treino: {X_train.shape[0]} amostras")
     print(f"   Teste: {X_test.shape[0]} amostras")
-    print(f"   Proporção positiva (treino): {y_train.sum() / len(y_train):.3f}")
-    print(f"   Proporção positiva (teste): {y_test.sum() / len(y_test):.3f}")
     
-    return X_train, X_test, y_train, y_test
+    # Salvar splits
+    X_train.to_parquet('/tmp/X_train.parquet', index=False)
+    X_test.to_parquet('/tmp/X_test.parquet', index=False)
+    y_train.to_frame().to_parquet('/tmp/y_train.parquet', index=False)
+    y_test.to_frame().to_parquet('/tmp/y_test.parquet', index=False)
+    
+    # Pushando metadados
+    context['ti'].xcom_push(key='n_features', value=X_train.shape[1])
+    context['ti'].xcom_push(key='n_train_samples', value=X_train.shape[0])
+    context['ti'].xcom_push(key='n_test_samples', value=X_test.shape[0])
+    context['ti'].xcom_push(key='train_positive_ratio', value=float(y_train.sum() / len(y_train)))
+    context['ti'].xcom_push(key='feature_names', value=sorted(X_train.columns.tolist()))
 
 
-def train_logistic_regression(X_train: pd.DataFrame, y_train: pd.Series, 
-                              **model_params) -> LogisticRegression:
-    """
-    Treina modelo de Regressão Logística
+def train_model(**context):
+    """Task 4: Treina o modelo"""
+    print("🤖 Treinando modelo...")
     
-    Args:
-        X_train: Features de treino
-        y_train: Target de treino
-        **model_params: Parâmetros adicionais para o modelo
-        
-    Returns:
-        Modelo treinado
-    """
-    print(f"🤖 Treinando Regressão Logística...")
+    # Carregar dados
+    X_train = pd.read_parquet('/tmp/X_train.parquet')
+    y_train = pd.read_parquet('/tmp/y_train.parquet')['Outcome']
     
-    # Ordena colunas para consistência
+    # Ordenar colunas
     X_train_sorted = X_train[sorted(X_train.columns)]
     
-    model = LogisticRegression(**model_params)
+    # Treinar modelo
+    model = LogisticRegression()
     model.fit(X_train_sorted, y_train)
     
     print(f"✅ Modelo treinado!")
-    return model
-
-
-def evaluate_model(model: LogisticRegression, X_train: pd.DataFrame, 
-                   y_train: pd.Series, X_test: pd.DataFrame, 
-                   y_test: pd.Series) -> dict:
-    """
-    Avalia o modelo e retorna métricas
     
-    Args:
-        model: Modelo treinado
-        X_train: Features de treino
-        y_train: Target de treino
-        X_test: Features de teste
-        y_test: Target de teste
-        
-    Returns:
-        Dicionário com as métricas
-    """
-    # Ordena colunas
+    # Salvar modelo temporariamente
+    import joblib
+    joblib.dump(model, '/tmp/model.pkl')
+    
+    # Pushando parâmetros do modelo
+    context['ti'].xcom_push(key='model_penalty', value=model.penalty)
+    context['ti'].xcom_push(key='model_solver', value=model.solver)
+    context['ti'].xcom_push(key='model_max_iter', value=model.max_iter)
+
+
+def evaluate_model(**context):
+    """Task 5: Avalia o modelo"""
+    print("📈 Avaliando modelo...")
+    
+    import joblib
+    
+    # Carregar modelo e dados
+    model = joblib.load('/tmp/model.pkl')
+    X_train = pd.read_parquet('/tmp/X_train.parquet')
+    y_train = pd.read_parquet('/tmp/y_train.parquet')['Outcome']
+    X_test = pd.read_parquet('/tmp/X_test.parquet')
+    y_test = pd.read_parquet('/tmp/y_test.parquet')['Outcome']
+    
+    # Ordenar colunas
     X_train_sorted = X_train[sorted(X_train.columns)]
     X_test_sorted = X_test[sorted(X_test.columns)]
     
@@ -156,85 +154,71 @@ def evaluate_model(model: LogisticRegression, X_train: pd.DataFrame,
     y_test_pred = model.predict(X_test_sorted)
     
     # Métricas
-    metrics = {
-        "acc_train": accuracy_score(y_train, y_train_pred),
-        "acc_test": accuracy_score(y_test, y_test_pred)
-    }
+    acc_train = accuracy_score(y_train, y_train_pred)
+    acc_test = accuracy_score(y_test, y_test_pred)
     
-    print(f"📈 Métricas:")
-    print(f"   Acurácia (treino): {metrics['acc_train']:.4f}")
-    print(f"   Acurácia (teste): {metrics['acc_test']:.4f}")
+    print(f"   Acurácia (treino): {acc_train:.4f}")
+    print(f"   Acurácia (teste): {acc_test:.4f}")
     
-    return metrics, y_test_pred
+    # Salvar predições
+    pd.DataFrame({'y_pred': y_test_pred}).to_parquet('/tmp/y_test_pred.parquet', index=False)
+    
+    # Pushando métricas
+    context['ti'].xcom_push(key='acc_train', value=float(acc_train))
+    context['ti'].xcom_push(key='acc_test', value=float(acc_test))
 
 
-def save_confusion_matrix(y_true, y_pred, filename: str = "confusion_matrix.png"):
-    """
-    Salva matriz de confusão como imagem
+def create_artifacts(**context):
+    """Task 6: Cria artefatos (matriz de confusão, lista de features)"""
+    print("🎨 Criando artefatos...")
     
-    Args:
-        y_true: Valores verdadeiros
-        y_pred: Valores preditos
-        filename: Nome do arquivo para salvar
-    """
-    cm = confusion_matrix(y_true, y_pred)
+    # Carregar dados
+    y_test = pd.read_parquet('/tmp/y_test.parquet')['Outcome']
+    y_test_pred = pd.read_parquet('/tmp/y_test_pred.parquet')['y_pred']
+    feature_names = context['ti'].xcom_pull(key='feature_names', task_ids='prepare_and_split_data')
+    
+    # Matriz de confusão
+    cm = confusion_matrix(y_test, y_test_pred)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm)
     disp.plot()
-    plt.savefig(filename)
+    plt.savefig('/tmp/confusion_matrix.png')
     plt.close()
-    print(f"💾 Matriz de confusão salva: {filename}")
+    print("✅ Matriz de confusão salva")
+    
+    # Lista de features
+    with open('/tmp/features.txt', 'w') as f:
+        f.write('\n'.join(feature_names))
+    print("✅ Lista de features salva")
 
 
-def save_feature_list(features: list, filename: str = "features.txt"):
-    """
-    Salva lista de features em arquivo
+def log_to_mlflow(**context):
+    """Task 7: Registra tudo no MLflow"""
+    print("📝 Registrando experimento no MLflow...")
     
-    Args:
-        features: Lista de nomes de features
-        filename: Nome do arquivo para salvar
-    """
-    with open(filename, "w") as f:
-        f.write("\n".join(sorted(features)))
-    print(f"💾 Lista de features salva: {filename}")
-
-
-def log_to_mlflow(model, X_train, y_train, X_test, y_test, metrics_dict, 
-                  experiment_id: str, run_name: str = "logistic_regression_baseline",
-                  tags: dict = None):
-    """
-    Registra experimento completo no MLflow
+    import joblib
     
-    Args:
-        model: Modelo treinado
-        X_train: Features de treino
-        y_train: Target de treino
-        X_test: Features de teste
-        y_test: Target de teste
-        metrics_dict: Dicionário com métricas calculadas
-        experiment_id: ID do experimento MLflow
-        run_name: Nome da run
-        tags: Tags adicionais para a run
-    """
-    mlflow.set_experiment(experiment_id=experiment_id)
+    # Configurar MLflow
+    mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+    mlflow.set_experiment(experiment_id=MLFLOW_EXPERIMENT_ID)
     
-    default_tags = {
-        "model_type": "classification",
-        "algorithm": "logistic_regression",
-        "dataset": "diabetes_dataset",
-        "developer": "data_scientist",
-        "environment": "development"
-    }
+    # Carregar modelo
+    model = joblib.load('/tmp/model.pkl')
     
-    if tags:
-        default_tags.update(tags)
+    # Puxar informações do XCom
+    ti = context['ti']
     
-    with mlflow.start_run(run_name=run_name):
-        print(f"📝 Registrando no MLflow...")
-        
+    with mlflow.start_run(run_name="logistic_regression_airflow"):
         # Tags
-        mlflow.set_tags(default_tags)
+        mlflow.set_tags({
+            "model_type": "classification",
+            "algorithm": "logistic_regression",
+            "dataset": "diabetes_dataset",
+            "developer": "airflow_pipeline",
+            "environment": "production",
+            "orchestrator": "airflow"
+        })
         
-        # Autolog do sklearn
+        # Autolog
         mlflow.sklearn.autolog(
             log_models=True,
             log_input_examples=True,
@@ -242,104 +226,59 @@ def log_to_mlflow(model, X_train, y_train, X_test, y_test, metrics_dict,
             log_datasets=False
         )
         
-        # Parâmetros do modelo
+        # Parâmetros
         params = {
-            "penalty": model.penalty,
-            "solver": model.solver,
-            "max_iter": model.max_iter,
-            "n_features": X_train.shape[1],
-            "n_train_samples": X_train.shape[0],
-            "n_test_samples": X_test.shape[0],
-            "train_positive_ratio": y_train.sum() / len(y_train)
+            "penalty": ti.xcom_pull(key='model_penalty', task_ids='train_model'),
+            "solver": ti.xcom_pull(key='model_solver', task_ids='train_model'),
+            "max_iter": ti.xcom_pull(key='model_max_iter', task_ids='train_model'),
+            "n_features": ti.xcom_pull(key='n_features', task_ids='prepare_and_split_data'),
+            "n_train_samples": ti.xcom_pull(key='n_train_samples', task_ids='prepare_and_split_data'),
+            "n_test_samples": ti.xcom_pull(key='n_test_samples', task_ids='prepare_and_split_data'),
+            "train_positive_ratio": ti.xcom_pull(key='train_positive_ratio', task_ids='prepare_and_split_data')
         }
         mlflow.log_params(params)
         
         # Métricas
-        mlflow.log_metrics(metrics_dict)
+        metrics = {
+            "acc_train": ti.xcom_pull(key='acc_train', task_ids='evaluate_model'),
+            "acc_test": ti.xcom_pull(key='acc_test', task_ids='evaluate_model')
+        }
+        mlflow.log_metrics(metrics)
         
         # Artefatos
-        X_test_sorted = X_test[sorted(X_test.columns)]
-        y_test_pred = model.predict(X_test_sorted)
+        mlflow.log_artifact('/tmp/confusion_matrix.png')
+        mlflow.log_artifact('/tmp/features.txt')
         
-        save_confusion_matrix(y_test, y_test_pred)
-        mlflow.log_artifact("confusion_matrix.png")
+        # Registrar modelo
+        mlflow.sklearn.log_model(model, "model")
         
-        save_feature_list(X_train.columns.tolist())
-        mlflow.log_artifact("features.txt")
-        
-        print(f"✅ Experimento registrado no MLflow!")
+        print("✅ Experimento registrado no MLflow!")
 
 
-def train_pipeline(repo_path: str, dataset_name: str, experiment_id: str,
-                   run_name: str = "logistic_regression_baseline",
-                   test_size: float = 0.25, random_state: int = None,
-                   model_params: dict = None, tags: dict = None):
-    """
-    Pipeline completo de treinamento
+def cleanup_temp_files(**context):
+    """Task 8: Limpa arquivos temporários"""
+    print("🧹 Limpando arquivos temporários...")
     
-    Args:
-        repo_path: Caminho do repositório Feast
-        dataset_name: Nome do dataset no Feast
-        experiment_id: ID do experimento MLflow
-        run_name: Nome da run no MLflow
-        test_size: Proporção do conjunto de teste
-        random_state: Seed para reprodutibilidade
-        model_params: Parâmetros para o modelo
-        tags: Tags para o MLflow
-    """
-    print("=" * 70)
-    print("🚀 INICIANDO PIPELINE DE TREINAMENTO")
-    print("=" * 70)
+    import os
     
-    # 1. Setup MLflow
-    mlflow_uri = setup_mlflow_tracking()
+    temp_files = [
+        '/tmp/training_data.parquet',
+        '/tmp/X_train.parquet',
+        '/tmp/X_test.parquet',
+        '/tmp/y_train.parquet',
+        '/tmp/y_test.parquet',
+        '/tmp/y_test_pred.parquet',
+        '/tmp/model.pkl',
+        '/tmp/confusion_matrix.png',
+        '/tmp/features.txt'
+    ]
     
-    # 2. Carregar dados
-    df = load_data_from_feast(repo_path, dataset_name)
+    for file_path in temp_files:
+        try:
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                print(f"   Removido: {file_path}")
+        except Exception as e:
+            print(f"   ⚠️ Erro ao remover {file_path}: {e}")
     
-    # 3. Preparar features
-    X, y = prepare_features(df)
-    
-    # 4. Dividir dados
-    X_train, X_test, y_train, y_test = split_data(
-        X, y, test_size=test_size, random_state=random_state
-    )
-    
-    # 5. Treinar modelo
-    if model_params is None:
-        model_params = {}
-    model = train_logistic_regression(X_train, y_train, **model_params)
-    
-    # 6. Avaliar modelo
-    metrics_dict, _ = evaluate_model(model, X_train, y_train, X_test, y_test)
-    
-    # 7. Registrar no MLflow
-    log_to_mlflow(
-        model, X_train, y_train, X_test, y_test, 
-        metrics_dict, experiment_id, run_name, tags
-    )
-    
-    print("=" * 70)
-    print("✅ PIPELINE CONCLUÍDO COM SUCESSO!")
-    print("=" * 70)
-    
-    return model, metrics_dict
-
-
-# Exemplo de uso
-if __name__ == "__main__":
-    # Configuração
-    REPO_PATH = "/home/luisveloso/MLOps_projects/feature_store/feature_repo"
-    DATASET_NAME = "my_training_dataset"
-    EXPERIMENT_ID = "467326610704772702"
-    
-    # Executar pipeline
-    model, metrics = train_pipeline(
-        repo_path=REPO_PATH,
-        dataset_name=DATASET_NAME,
-        experiment_id=EXPERIMENT_ID,
-        run_name="logistic_regression_baseline",
-        test_size=0.25,
-        random_state=42,
-        tags={"developer": "luis_veloso"}
-    )
+    print("✅ Limpeza concluída!")

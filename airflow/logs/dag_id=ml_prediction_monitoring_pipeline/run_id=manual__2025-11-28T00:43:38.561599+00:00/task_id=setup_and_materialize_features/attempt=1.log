@@ -1,0 +1,34 @@
+[2025-11-28T00:43:41.471+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T00:43:41.491+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.setup_and_materialize_features manual__2025-11-28T00:43:38.561599+00:00 [queued]>
+[2025-11-28T00:43:41.497+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.setup_and_materialize_features manual__2025-11-28T00:43:38.561599+00:00 [queued]>
+[2025-11-28T00:43:41.497+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T00:43:41.507+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): setup_and_materialize_features> on 2025-11-28 00:43:38.561599+00:00
+[2025-11-28T00:43:41.514+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=228) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T00:43:41.515+0000] {standard_task_runner.py:63} INFO - Started process 233 to run task
+[2025-11-28T00:43:41.515+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline', 'setup_and_materialize_features', 'manual__2025-11-28T00:43:38.561599+00:00', '--job-id', '96', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpoolphkmq']
+[2025-11-28T00:43:41.517+0000] {standard_task_runner.py:91} INFO - Job 96: Subtask setup_and_materialize_features
+[2025-11-28T00:43:41.558+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline.setup_and_materialize_features manual__2025-11-28T00:43:38.561599+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T00:43:41.632+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline' AIRFLOW_CTX_TASK_ID='setup_and_materialize_features' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T00:43:38.561599+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T00:43:38.561599+00:00'
+[2025-11-28T00:43:41.633+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T00:43:41.642+0000] {logging_mixin.py:188} INFO - 🔧 Configurando MLflow...
+[2025-11-28T00:43:41.642+0000] {logging_mixin.py:188} INFO - 🔄 Materializando features no Feast...
+[2025-11-28T00:43:42.126+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-28T00:43:42.129+0000] {utils.py:750} WARNING - _list_feature_views will make breaking changes. Please use _list_batch_feature_views instead. _list_feature_views will behave like _list_all_feature_views in the future.
+[2025-11-28T00:43:42.129+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-28T00:43:42.132+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-28T00:43:42.132+0000] {logging_mixin.py:188} INFO - Materializing 2 feature views to 2025-11-28 00:43:42+00:00 into the sqlite online store.
+[2025-11-28T00:43:42.133+0000] {logging_mixin.py:188} INFO - predictors_df_feature_view from 2026-11-27 21:26:52+00:00 to 2025-11-28 00:43:42+00:00:
+[2025-11-28T00:43:42.137+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-28T00:43:42.375+0000] {logging_mixin.py:188} WARNING - 0it [00:00, ?it/s]
+[2025-11-28T00:43:42.375+0000] {logging_mixin.py:188} WARNING - 0it [00:00, ?it/s]
+[2025-11-28T00:43:42.378+0000] {logging_mixin.py:188} INFO - ptarget_df_feature_view from 2026-11-27 21:26:52+00:00 to 2025-11-28 00:43:42+00:00:
+[2025-11-28T00:43:42.378+0000] {registry.py:872} INFO - Registry cache expired, so refreshing
+[2025-11-28T00:43:42.416+0000] {logging_mixin.py:188} WARNING - 0it [00:00, ?it/s]
+[2025-11-28T00:43:42.417+0000] {logging_mixin.py:188} WARNING - 0it [00:00, ?it/s]
+[2025-11-28T00:43:42.437+0000] {logging_mixin.py:188} INFO - ✅ MLflow configurado e features materializadas!
+[2025-11-28T00:43:42.438+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-28T00:43:42.438+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T00:43:42.445+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_monitoring_pipeline, task_id=setup_and_materialize_features, run_id=manual__2025-11-28T00:43:38.561599+00:00, execution_date=20251128T004338, start_date=20251128T004341, end_date=20251128T004342
+[2025-11-28T00:43:42.493+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T00:43:42.511+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T00:43:42.513+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

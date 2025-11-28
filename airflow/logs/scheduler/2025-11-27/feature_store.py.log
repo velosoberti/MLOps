@@ -1015,3 +1015,155 @@ IndentationError: expected an indented block after function definition on line 2
 [2025-11-27T21:44:55.830+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:44:55.830+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2025-11-27T21:44:55.845+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:44:55.845+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
 [2025-11-27T21:44:55.864+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.539 seconds
+[2025-11-27T21:45:26.367+0000] {processor.py:161} INFO - Started process (PID=3256) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:45:26.395+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:45:26.395+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:45:26.395+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:45:27.802+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:45:27.806+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:45:27.821+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:45:27.821+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:45:27.832+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:45:27.832+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:45:27.877+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.515 seconds
+[2025-11-27T21:45:58.470+0000] {processor.py:161} INFO - Started process (PID=3294) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:45:58.473+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:45:58.475+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:45:58.474+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:46:00.068+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:46:00.072+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:46:00.089+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:46:00.089+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:46:00.105+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:46:00.105+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:46:00.123+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.659 seconds
+[2025-11-27T21:46:30.271+0000] {processor.py:161} INFO - Started process (PID=3332) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:46:30.297+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:46:30.298+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:46:30.298+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:46:31.710+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:46:31.713+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:46:31.726+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:46:31.726+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:46:31.738+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:46:31.738+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:46:31.779+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.500 seconds
+[2025-11-27T21:47:01.951+0000] {processor.py:161} INFO - Started process (PID=3370) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:01.952+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:47:01.953+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:01.952+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:03.360+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:47:03.363+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:03.378+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:03.377+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:47:03.391+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:03.391+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:47:03.406+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.459 seconds
+[2025-11-27T21:47:33.936+0000] {processor.py:161} INFO - Started process (PID=3408) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:33.962+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:47:33.963+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:33.963+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:35.478+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:47:35.482+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:47:35.499+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:35.498+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:47:35.510+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:47:35.510+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:47:35.552+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.621 seconds
+[2025-11-27T21:48:05.862+0000] {processor.py:161} INFO - Started process (PID=3446) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:05.863+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:48:05.864+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:05.863+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:07.305+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:48:07.308+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:07.325+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:07.325+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:48:07.338+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:07.338+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:48:07.379+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.521 seconds
+[2025-11-27T21:48:37.929+0000] {processor.py:161} INFO - Started process (PID=3484) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:37.931+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:48:37.931+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:37.931+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:39.258+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:48:39.262+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:48:39.277+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:39.277+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:48:39.288+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:48:39.288+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:48:39.329+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.405 seconds
+[2025-11-27T21:49:09.758+0000] {processor.py:161} INFO - Started process (PID=3522) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:09.759+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:49:09.759+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:09.759+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:11.125+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:49:11.129+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:11.141+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:11.141+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:49:11.155+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:11.154+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:49:11.192+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.438 seconds
+[2025-11-27T21:49:41.349+0000] {processor.py:161} INFO - Started process (PID=3560) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:41.376+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:49:41.377+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:41.377+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:43.267+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:49:43.271+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:49:43.292+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:43.291+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:49:43.310+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:49:43.310+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:49:43.355+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.012 seconds
+[2025-11-27T21:50:13.981+0000] {processor.py:161} INFO - Started process (PID=3598) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:13.982+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:50:13.983+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:13.982+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:15.846+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:50:15.850+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:15.868+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:15.868+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:50:15.883+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:15.883+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:50:15.927+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.950 seconds
+[2025-11-27T21:50:46.441+0000] {processor.py:161} INFO - Started process (PID=3636) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:46.442+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:50:46.443+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:46.443+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:48.436+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:50:48.444+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:50:48.463+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:48.462+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:50:48.479+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:50:48.478+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:50:48.499+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.063 seconds
+[2025-11-27T21:51:18.624+0000] {processor.py:161} INFO - Started process (PID=3674) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:18.625+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:51:18.626+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:18.625+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:20.068+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:51:20.072+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:20.085+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:20.085+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:51:20.097+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:20.097+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:51:20.138+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.518 seconds
+[2025-11-27T21:51:50.373+0000] {processor.py:161} INFO - Started process (PID=3712) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:50.400+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:51:50.401+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:50.400+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:52.060+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:51:52.064+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:51:52.084+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:52.084+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:51:52.101+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:51:52.101+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:51:52.151+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.783 seconds
+[2025-11-27T21:52:22.363+0000] {processor.py:161} INFO - Started process (PID=3748) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:22.367+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:52:22.368+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:22.367+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:23.884+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:52:23.888+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:23.904+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:23.904+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:52:23.917+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:23.916+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:52:23.959+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.602 seconds
+[2025-11-27T21:52:54.597+0000] {processor.py:161} INFO - Started process (PID=3789) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:54.597+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:52:54.598+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:54.598+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:56.369+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:52:56.373+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:52:56.387+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:56.387+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:52:56.400+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:52:56.400+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:52:56.414+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.825 seconds
+[2025-11-27T21:53:26.614+0000] {processor.py:161} INFO - Started process (PID=3816) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:53:26.641+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:53:26.642+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:53:26.642+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:53:28.362+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:53:28.366+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:53:28.391+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:53:28.391+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:53:28.410+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:53:28.410+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:53:28.428+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.817 seconds
+[2025-11-27T21:53:58.603+0000] {processor.py:161} INFO - Started process (PID=3853) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:53:58.603+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:53:58.604+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:53:58.604+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:54:00.322+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:54:00.327+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:54:00.347+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:54:00.346+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:54:00.363+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:54:00.363+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:54:00.417+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.819 seconds
+[2025-11-27T21:54:30.798+0000] {processor.py:161} INFO - Started process (PID=3888) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:54:30.825+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:54:30.826+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:54:30.826+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:54:32.331+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:54:32.335+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:54:32.352+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:54:32.352+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:54:32.367+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:54:32.367+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:54:32.408+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.614 seconds
+[2025-11-27T21:55:02.757+0000] {processor.py:161} INFO - Started process (PID=3926) to work on /opt/airflow/dags/feature_store.py
+[2025-11-27T21:55:02.758+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2025-11-27T21:55:02.758+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:55:02.758+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:55:04.260+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/feature_store.py:64 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-27T21:55:04.264+0000] {processor.py:840} INFO - DAG(s) 'feature_store_cre' retrieved from /opt/airflow/dags/feature_store.py
+[2025-11-27T21:55:04.282+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:55:04.281+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-27T21:55:04.297+0000] {logging_mixin.py:188} INFO - [2025-11-27T21:55:04.297+0000] {dag.py:3954} INFO - Setting next_dagrun for feature_store_cre to 2025-11-27 00:00:00+00:00, run_after=2025-11-28 00:00:00+00:00
+[2025-11-27T21:55:04.339+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 1.587 seconds
