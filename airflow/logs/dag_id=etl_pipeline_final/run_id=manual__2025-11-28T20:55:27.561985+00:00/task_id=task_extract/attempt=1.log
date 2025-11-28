@@ -1,0 +1,31 @@
+[2025-11-28T20:55:28.816+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T20:55:28.854+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_pipeline_final.task_extract manual__2025-11-28T20:55:27.561985+00:00 [queued]>
+[2025-11-28T20:55:28.864+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_pipeline_final.task_extract manual__2025-11-28T20:55:27.561985+00:00 [queued]>
+[2025-11-28T20:55:28.864+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-11-28T20:55:28.879+0000] {taskinstance.py:2330} INFO - Executing <Task(_PythonDecoratedOperator): task_extract> on 2025-11-28 20:55:27.561985+00:00
+[2025-11-28T20:55:28.890+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=288) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T20:55:28.887+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'etl_pipeline_final', 'task_extract', 'manual__2025-11-28T20:55:27.561985+00:00', '--job-id', '66', '--raw', '--subdir', 'DAGS_FOLDER/etl.py', '--cfg-path', '/tmp/tmp4i26r7ge']
+[2025-11-28T20:55:28.891+0000] {standard_task_runner.py:63} INFO - Started process 293 to run task
+[2025-11-28T20:55:28.891+0000] {standard_task_runner.py:91} INFO - Job 66: Subtask task_extract
+[2025-11-28T20:55:28.956+0000] {task_command.py:426} INFO - Running <TaskInstance: etl_pipeline_final.task_extract manual__2025-11-28T20:55:27.561985+00:00 [running]> on host 33d3f194c23b
+[2025-11-28T20:55:29.209+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='etl_pipeline_final' AIRFLOW_CTX_TASK_ID='task_extract' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T20:55:27.561985+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T20:55:27.561985+00:00'
+[2025-11-28T20:55:29.210+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T20:55:29.220+0000] {python.py:237} INFO - Done. Returned value was:      Pregnancies  Glucose  ...  Age  Outcome
+0              6      148  ...   50        1
+1              1       85  ...   31        0
+2              8      183  ...   32        1
+3              1       89  ...   21        0
+4              0      137  ...   33        1
+..           ...      ...  ...  ...      ...
+764            2      122  ...   27        0
+765            5      121  ...   30        0
+766            1      126  ...   47        1
+767            1       93  ...   23        0
+768            1       93  ...   23        0
+
+[769 rows x 9 columns]
+[2025-11-28T20:55:29.242+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T20:55:29.305+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_pipeline_final, task_id=task_extract, run_id=manual__2025-11-28T20:55:27.561985+00:00, execution_date=20251128T205527, start_date=20251128T205528, end_date=20251128T205529
+[2025-11-28T20:55:29.349+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T20:55:29.368+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T20:55:29.371+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
