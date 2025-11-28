@@ -1,0 +1,46 @@
+[2025-11-28T19:56:58.343+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T19:56:58.369+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-28T19:56:49.344756+00:00 [queued]>
+[2025-11-28T19:56:58.378+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-28T19:56:49.344756+00:00 [queued]>
+[2025-11-28T19:56:58.378+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T19:56:58.390+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_data_from_feast> on 2025-11-28 19:56:49.344756+00:00
+[2025-11-28T19:56:58.400+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_training_pipeline', 'load_data_from_feast', 'manual__2025-11-28T19:56:49.344756+00:00', '--job-id', '23', '--raw', '--subdir', 'DAGS_FOLDER/train.py', '--cfg-path', '/tmp/tmp9eaxoj4y']
+[2025-11-28T19:56:58.402+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=300) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T19:56:58.403+0000] {standard_task_runner.py:91} INFO - Job 23: Subtask load_data_from_feast
+[2025-11-28T19:56:58.403+0000] {standard_task_runner.py:63} INFO - Started process 316 to run task
+[2025-11-28T19:56:58.452+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_training_pipeline.load_data_from_feast manual__2025-11-28T19:56:49.344756+00:00 [running]> on host 0d9451e3edad
+[2025-11-28T19:56:58.532+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_training_pipeline' AIRFLOW_CTX_TASK_ID='load_data_from_feast' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T19:56:49.344756+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T19:56:49.344756+00:00'
+[2025-11-28T19:56:58.533+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T19:56:58.545+0000] {logging_mixin.py:188} INFO - Carregando dados do Feast...
+[2025-11-28T19:56:58.546+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T19:56:58.546+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/framework/training.py", line 47, in load_data_from_feast
+    store = FeatureStore(repo_path=FEAST_REPO_PATH)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/feast/feature_store.py", line 144, in __init__
+    self.config = load_repo_config(
+                  ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/feast/repo_config.py", line 507, in load_repo_config
+    with open(config_path) as f:
+         ^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/luisveloso/MLOps_projects/feature_store/feature_repo/feature_store.yaml'
+[2025-11-28T19:56:58.555+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=ml_training_pipeline, task_id=load_data_from_feast, run_id=manual__2025-11-28T19:56:49.344756+00:00, execution_date=20251128T195649, start_date=20251128T195658, end_date=20251128T195658
+[2025-11-28T19:56:58.566+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 23 for task load_data_from_feast ([Errno 2] No such file or directory: '/home/luisveloso/MLOps_projects/feature_store/feature_repo/feature_store.yaml'; 316)
+[2025-11-28T19:56:58.577+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-11-28T19:56:58.597+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T19:56:58.599+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

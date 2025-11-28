@@ -75,3 +75,55 @@
 2025-11-28 08:56:17,982 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:17] "GET /health HTTP/1.1" 200 -
 2025-11-28 08:56:35,392 - framework.api_consctructor - WARNING - ⚠️  Método não permitido: GET /predict
 2025-11-28 08:56:35,392 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 08:56:35] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
+2025-11-28 14:11:34,660 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-28 14:11:37,805 - framework.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v1
+2025-11-28 14:11:37,805 - framework.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 14:11:37,805 - framework.api_consctructor - INFO -  API inicializada com sucesso
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2025-11-28 14:11:37,808 - framework.api_consctructor - INFO -  Modelo: diabete_model v1
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -  Features: 4
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -   GET  /health
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -   GET  /model/info
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -   POST /predict
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -   POST /predict/batch
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO -   POST /model/reload
+2025-11-28 14:11:37,809 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:12:51,395 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-28 14:12:52,157 - framework.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v1
+2025-11-28 14:12:52,157 - framework.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 14:12:52,157 - framework.api_consctructor - INFO -  API inicializada com sucesso
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -  Modelo: diabete_model v1
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -  Features: 4
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -   GET  /health
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -   GET  /model/info
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -   POST /predict
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -   POST /predict/batch
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO -   POST /model/reload
+2025-11-28 14:12:52,159 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 14:12:52,163 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2025-11-28 14:12:52,164 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 14:13:50,199 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 14:13:50,205 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 14:13:50,206 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.007s
+2025-11-28 14:13:50,206 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 14:13:50] "GET /health HTTP/1.1" 200 -
+2025-11-28 14:13:52,499 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 14:13:52,499 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 14:13:52,502 - framework.api_consctructor - INFO -  Predição: diabetes (score: 0.5043)
+2025-11-28 14:13:52,502 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.003s
+2025-11-28 14:13:52,502 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 14:13:52] "POST /predict HTTP/1.1" 200 -

@@ -1,11 +1,10 @@
 import pandas as pd
 import os
 
-# Ajuste os caminhos conforme necessário
+
 INPUT_FILE = "/home/luisveloso/MLOps_projects/data/diabetes.csv"
 OUTPUT_FILE = "/home/luisveloso/MLOps_projects/data/artifacts/"
 
-# --- REMOVIDA A LINHA: len = pd.read_csv(...) ---
 
 def extract():
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
@@ -18,7 +17,6 @@ def transform(df):
     return predictor, target
 
 def create_timestamps(predictor, target):
-    # Agora len() funciona porque não foi sobrescrito
     timestamps = pd.date_range(
         end=pd.Timestamp.now(), 
         periods=len(predictor), 
@@ -30,7 +28,7 @@ def create_timestamps(predictor, target):
     return predictor, target
 
 def create_patient_ids(predictor, target):
-    dataLen = len(predictor) # Agora funciona
+    dataLen = len(predictor) 
     idsList = list(range(dataLen))
     patient_ids = pd.DataFrame(idsList, columns=['patient_id'])
 
@@ -39,7 +37,6 @@ def create_patient_ids(predictor, target):
     return predictor, target
 
 def save_parquet(predictor, target):
-    # Garante que o diretório existe antes de salvar
     os.makedirs(OUTPUT_FILE, exist_ok=True)
     
     predictor.to_parquet(path=f"{OUTPUT_FILE}/predictor.parquet", engine="pyarrow")

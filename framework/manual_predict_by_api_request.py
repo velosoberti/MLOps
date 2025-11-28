@@ -7,7 +7,7 @@ import json
 from typing import Dict, Any, Optional
 import sys
 
-API_BASE_URL = "http://localhost:5002"
+API_BASE_URL = "http://localhost:5005"
 
 
 class PredictionClient:
@@ -22,11 +22,11 @@ class PredictionClient:
         try:
             response = requests.get(f"{self.base_url}/health", timeout=2)
             if response.status_code == 200:
-                print(f"✅ API está rodando em {self.base_url}\n")
+                print(f"API está rodando em {self.base_url}\n")
             else:
-                print(f"⚠️  API respondeu com status {response.status_code}")
+                print(f"API respondeu com status {response.status_code}")
         except requests.exceptions.ConnectionError:
-            print(f"❌ Não foi possível conectar à API em {self.base_url}")
+            print(f"Não foi possível conectar à API em {self.base_url}")
             print("   Por favor, inicie a API antes de usar este script:")
             print("   python flask_api.py\n")
             sys.exit(1)
@@ -58,7 +58,7 @@ class PredictionClient:
             
         except Exception as e:
             if verbose:
-                print(f"❌ Erro na requisição: {e}")
+                print(f"Erro na requisição: {e}")
             return None
     
     def predict_batch(self, instances: list, verbose: bool = True) -> Optional[Dict]:
@@ -88,7 +88,7 @@ class PredictionClient:
             
         except Exception as e:
             if verbose:
-                print(f"❌ Erro na requisição: {e}")
+                print(f"Erro na requisição: {e}")
             return None
     
     def get_model_info(self) -> Optional[Dict]:
@@ -97,7 +97,7 @@ class PredictionClient:
             response = requests.get(f"{self.base_url}/model/info")
             return response.json() if response.status_code == 200 else None
         except Exception as e:
-            print(f"❌ Erro ao obter info do modelo: {e}")
+            print(f"Erro ao obter info do modelo: {e}")
             return None
     
     def _print_single_result(self, status_code: int, input_data: Dict, result: Dict):
@@ -111,33 +111,33 @@ class PredictionClient:
             print(f"   {key}: {value}")
         
         if status_code == 200:
-            print(f"\n✅ Status: {status_code} OK")
-            print(f"\n🎯 Predição: {result['prediction'].upper()}")
-            print(f"📈 Score (probabilidade): {result['score']:.4f}")
-            print(f"💯 Confiança: {result['confidence']:.2%}")
-            print(f"🤖 Versão do Modelo: {result['model_version']}")
+            print(f"\nStatus: {status_code} OK")
+            print(f"\nPredição: {result['prediction'].upper()}")
+            print(f"core (probabilidade): {result['score']:.4f}")
+            print(f"Confiança: {result['confidence']:.2%}")
+            print(f"Versão do Modelo: {result['model_version']}")
             
             # Interpretação
             print("\n📋 Interpretação:")
             if result['prediction'] == 'diabetes':
-                print(f"   ⚠️  Alta probabilidade de diabetes ({result['score']:.1%})")
+                print(f"    Alta probabilidade de diabetes ({result['score']:.1%})")
                 if result['confidence'] > 0.8:
-                    print(f"   🔴 Confiança ALTA - Recomendado consultar médico")
+                    print(f"   Confiança ALTA - Recomendado consultar médico")
                 elif result['confidence'] > 0.6:
-                    print(f"   🟡 Confiança MÉDIA - Monitoramento recomendado")
+                    print(f"   Confiança MÉDIA - Monitoramento recomendado")
                 else:
-                    print(f"   🟢 Confiança BAIXA - Resultado incerto")
+                    print(f"   Confiança BAIXA - Resultado incerto")
             else:
-                print(f"   ✅ Baixa probabilidade de diabetes ({result['score']:.1%})")
+                print(f"   Baixa probabilidade de diabetes ({result['score']:.1%})")
                 if result['confidence'] > 0.8:
-                    print(f"   🟢 Confiança ALTA - Indicadores normais")
+                    print(f"   Confiança ALTA - Indicadores normais")
                 elif result['confidence'] > 0.6:
-                    print(f"   🟡 Confiança MÉDIA - Manter hábitos saudáveis")
+                    print(f"   Confiança MÉDIA - Manter hábitos saudáveis")
                 else:
-                    print(f"   🟠 Confiança BAIXA - Monitoramento preventivo")
+                    print(f"   Confiança BAIXA - Monitoramento preventivo")
         else:
-            print(f"\n❌ Status: {status_code} ERRO")
-            print(f"\n⚠️  {result.get('error', 'Erro desconhecido')}")
+            print(f"\nStatus: {status_code} ERRO")
+            print(f"\n{result.get('error', 'Erro desconhecido')}")
             if 'message' in result:
                 print(f"   Mensagem: {result['message']}")
             if 'details' in result:
@@ -151,14 +151,14 @@ class PredictionClient:
         print("🔮 RESULTADO DA PREDIÇÃO EM BATCH")
         print("="*80)
         
-        print(f"\n📊 Total de instâncias enviadas: {len(instances)}")
+        print(f"\nTotal de instâncias enviadas: {len(instances)}")
         
         if status_code == 200:
-            print(f"✅ Status: {status_code} OK")
-            print(f"\n📈 Predições bem-sucedidas: {result['total']}")
+            print(f"Status: {status_code} OK")
+            print(f"\nPredições bem-sucedidas: {result['total']}")
             
             if result.get('errors'):
-                print(f"❌ Erros: {len(result['errors'])}")
+                print(f"Erros: {len(result['errors'])}")
             
             print("\n" + "─"*80)
             
@@ -176,30 +176,30 @@ class PredictionClient:
             # Mostrar erros se houver
             if result.get('errors'):
                 print("\n" + "─"*80)
-                print("\n⚠️  ERROS ENCONTRADOS:")
+                print("\nERROS ENCONTRADOS:")
                 for error in result['errors']:
                     idx = error['instance_index']
-                    print(f"\n❌ Instância #{idx + 1} (índice {idx}):")
+                    print(f"\nInstância #{idx + 1} (índice {idx}):")
                     print(f"   Erro: {error['error']}")
                     if 'details' in error:
                         print(f"   Detalhes: {error['details']}")
             
             # Estatísticas
             print("\n" + "─"*80)
-            print("\n📊 ESTATÍSTICAS:")
+            print("\nESTATÍSTICAS:")
             diabetes_count = sum(1 for p in result['predictions'] if p['prediction'] == 'diabetes')
             no_diabetes_count = result['total'] - diabetes_count
-            print(f"   🔴 Com diabetes: {diabetes_count} ({diabetes_count/result['total']:.1%})")
-            print(f"   🟢 Sem diabetes: {no_diabetes_count} ({no_diabetes_count/result['total']:.1%})")
+            print(f"   Com diabetes: {diabetes_count} ({diabetes_count/result['total']:.1%})")
+            print(f"   Sem diabetes: {no_diabetes_count} ({no_diabetes_count/result['total']:.1%})")
             
             avg_score = sum(p['score'] for p in result['predictions']) / result['total']
             avg_confidence = sum(p['confidence'] for p in result['predictions']) / result['total']
-            print(f"   📈 Score médio: {avg_score:.4f}")
-            print(f"   💯 Confiança média: {avg_confidence:.2%}")
+            print(f"   Score médio: {avg_score:.4f}")
+            print(f"   Confiança média: {avg_confidence:.2%}")
             
         else:
-            print(f"\n❌ Status: {status_code} ERRO")
-            print(f"\n⚠️  {result.get('error', 'Erro desconhecido')}")
+            print(f"\nStatus: {status_code} ERRO")
+            print(f"\n{result.get('error', 'Erro desconhecido')}")
             if 'message' in result:
                 print(f"   Mensagem: {result['message']}")
         
@@ -211,26 +211,26 @@ class PredictionClient:
 def example_single_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     """Exemplo de predição única."""
     print("\n" + "="*80)
-    print("📝 EXEMPLO 1: PREDIÇÃO ÚNICA")
+    print("EXEMPLO 1: PREDIÇÃO ÚNICA")
     print("="*80 + "\n")
     
     client = PredictionClient()
     
     # Predição de um paciente de alto risco
-    print("🔍 Testando paciente de ALTO RISCO:\n")
+    print("Testando paciente de ALTO RISCO:\n")
     client.predict_single(EXAMPLE_PATIENTS["alto_risco"])
     
-    input("\n⏸️  Pressione ENTER para continuar...")
+    input("\n⏸Pressione ENTER para continuar...")
     
     # Predição de um paciente de baixo risco
-    print("\n🔍 Testando paciente de BAIXO RISCO:\n")
+    print("\nTestando paciente de BAIXO RISCO:\n")
     client.predict_single(EXAMPLE_PATIENTS["baixo_risco"])
 
 
 def example_batch_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     """Exemplo de predição em batch."""
     print("\n" + "="*80)
-    print("📝 EXEMPLO 2: PREDIÇÃO EM BATCH")
+    print("EXEMPLO 2: PREDIÇÃO EM BATCH")
     print("="*80 + "\n")
     
     client = PredictionClient()
@@ -242,14 +242,14 @@ def example_batch_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
         EXAMPLE_PATIENTS["valores_normais"]
     ]
     
-    print(f"🔍 Testando {len(instances)} pacientes:\n")
+    print(f"Testando {len(instances)} pacientes:\n")
     client.predict_batch(instances)
 
 
 def example_custom_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     """Exemplo de predição customizada."""
     print("\n" + "="*80)
-    print("📝 EXEMPLO 3: PREDIÇÃO CUSTOMIZADA")
+    print("EXEMPLO 3: PREDIÇÃO CUSTOMIZADA")
     print("="*80 + "\n")
     
     client = PredictionClient()
@@ -257,7 +257,7 @@ def example_custom_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     # Obter info do modelo
     model_info = client.get_model_info()
     if model_info:
-        print("📋 Features necessárias:")
+        print("Features necessárias:")
         for i, feature in enumerate(model_info['features'], 1):
             print(f"   {i}. {feature}")
         print()
@@ -276,17 +276,17 @@ def example_custom_prediction(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
             try:
                 custom_data[feature] = float(value)
             except ValueError:
-                print(f"   ⚠️  Valor inválido, usando padrão: {default_data[feature]}")
+                print(f"   Valor inválido, usando padrão: {default_data[feature]}")
                 custom_data[feature] = default_data[feature]
     
-    print("\n🔍 Fazendo predição com dados customizados:\n")
+    print("\nFazendo predição com dados customizados:\n")
     client.predict_single(custom_data)
 
 
 def example_json_file(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     """Exemplo de carregar JSON de arquivo."""
     print("\n" + "="*80)
-    print("📝 EXEMPLO 4: CARREGAR DE ARQUIVO JSON")
+    print("EXEMPLO 4: CARREGAR DE ARQUIVO JSON")
     print("="*80 + "\n")
     
     # Criar arquivo de exemplo
@@ -295,7 +295,7 @@ def example_json_file(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     with open(example_file, 'w') as f:
         json.dump(EXAMPLE_PATIENTS["alto_risco"], f, indent=2)
     
-    print(f"✅ Arquivo de exemplo criado: {example_file}")
+    print(f"Arquivo de exemplo criado: {example_file}")
     print(f"\nConteúdo:")
     print(json.dumps(EXAMPLE_PATIENTS["alto_risco"], indent=2))
     
@@ -305,10 +305,10 @@ def example_json_file(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
         data = json.load(f)
     
     client = PredictionClient()
-    print(f"\n🔍 Fazendo predição com dados do arquivo:\n")
+    print(f"\nFazendo predição com dados do arquivo:\n")
     client.predict_single(data)
     
-    print(f"\n💡 Dica: Você pode editar o arquivo {example_file} e rodar novamente!")
+    print(f"\n Dica: Você pode editar o arquivo {example_file} e rodar novamente!")
 
 
 def interactive_menu(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
@@ -317,7 +317,7 @@ def interactive_menu(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
     
     while True:
         print("\n" + "="*80)
-        print("🏥 CLIENTE DE PREDIÇÃO DE DIABETES - MENU INTERATIVO")
+        print("CLIENTE DE PREDIÇÃO DE DIABETES - MENU INTERATIVO")
         print("="*80)
         print("\nEscolha uma opção:")
         print("   1. Predição única (alto risco)")
@@ -332,11 +332,11 @@ def interactive_menu(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
         choice = input("Opção: ").strip()
         
         if choice == "1":
-            print("\n🔍 Paciente de ALTO RISCO:\n")
+            print("\nPaciente de ALTO RISCO:\n")
             client.predict_single(EXAMPLE_PATIENTS["alto_risco"])
             
         elif choice == "2":
-            print("\n🔍 Paciente de BAIXO RISCO:\n")
+            print("\nPaciente de BAIXO RISCO:\n")
             client.predict_single(EXAMPLE_PATIENTS["baixo_risco"])
             
         elif choice == "3":
@@ -356,21 +356,21 @@ def interactive_menu(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
                 try:
                     with open(filename, 'r') as f:
                         data = json.load(f)
-                    print(f"\n🔍 Fazendo predição com dados de {filename}:\n")
+                    print(f"\nFazendo predição com dados de {filename}:\n")
                     if isinstance(data, list):
                         client.predict_batch(data)
                     else:
                         client.predict_single(data)
                 except FileNotFoundError:
-                    print(f"❌ Arquivo '{filename}' não encontrado!")
+                    print(f"Arquivo '{filename}' não encontrado!")
                 except json.JSONDecodeError:
-                    print(f"❌ Erro ao ler JSON do arquivo '{filename}'!")
+                    print(f"Erro ao ler JSON do arquivo '{filename}'!")
             
         elif choice == "6":
             info = client.get_model_info()
             if info:
                 print("\n" + "="*80)
-                print("🤖 INFORMAÇÕES DO MODELO")
+                print("INFORMAÇÕES DO MODELO")
                 print("="*80)
                 print(f"\nModelo: {info['model_name']}")
                 print(f"Versão: {info['model_version']}")
@@ -380,11 +380,11 @@ def interactive_menu(EXAMPLE_PATIENTS: Dict[str, Dict[str, Any]]):
                 print("="*80)
             
         elif choice == "7":
-            print("\n👋 Até logo!")
+            print("\nAté logo!")
             break
             
         else:
-            print("\n❌ Opção inválida!")
+            print("\nOpção inválida!")
         
         if choice != "7":
-            input("\n⏸️  Pressione ENTER para continuar...")
+            input("\n⏸Pressione ENTER para continuar...")

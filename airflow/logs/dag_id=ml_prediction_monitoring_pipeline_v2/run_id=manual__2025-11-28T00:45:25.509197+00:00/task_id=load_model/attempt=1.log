@@ -1,28 +1,0 @@
-[2025-11-28T00:45:40.073+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
-[2025-11-28T00:45:40.094+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline_v2.load_model manual__2025-11-28T00:45:25.509197+00:00 [queued]>
-[2025-11-28T00:45:40.102+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline_v2.load_model manual__2025-11-28T00:45:25.509197+00:00 [queued]>
-[2025-11-28T00:45:40.102+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
-[2025-11-28T00:45:40.112+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_model> on 2025-11-28 00:45:25.509197+00:00
-[2025-11-28T00:45:40.118+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=615) is multi-threaded, use of fork() may lead to deadlocks in the child.
-[2025-11-28T00:45:40.119+0000] {standard_task_runner.py:63} INFO - Started process 621 to run task
-[2025-11-28T00:45:40.119+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline_v2', 'load_model', 'manual__2025-11-28T00:45:25.509197+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpgstpr37t']
-[2025-11-28T00:45:40.120+0000] {standard_task_runner.py:91} INFO - Job 111: Subtask load_model
-[2025-11-28T00:45:40.168+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline_v2.load_model manual__2025-11-28T00:45:25.509197+00:00 [running]> on host 0c5da11f058c
-[2025-11-28T00:45:40.241+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline_v2' AIRFLOW_CTX_TASK_ID='load_model' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T00:45:25.509197+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T00:45:25.509197+00:00'
-[2025-11-28T00:45:40.242+0000] {taskinstance.py:430} INFO - ::endgroup::
-[2025-11-28T00:45:40.251+0000] {logging_mixin.py:188} INFO - 🤖 Carregando modelo 'diabete_model'...
-[2025-11-28T00:45:40.253+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/pipe_prediction_monitoring.py:145 FutureWarning: ``mlflow.tracking.client.MlflowClient.get_latest_versions`` is deprecated since 2.9.0. Model registry stages will be removed in a future major release. To learn more about the deprecation of model registry stages, see our migration guide here: https://mlflow.org/docs/latest/model-registry.html#migrating-from-stages
-[2025-11-28T00:45:40.309+0000] {logging_mixin.py:188} INFO - 📦 Versão encontrada: 1
-[2025-11-28T00:45:40.359+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/5 [00:00<?, ?it/s]
-[2025-11-28T00:45:40.403+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 1/5 [00:00<00:00, 23.25it/s]
-[2025-11-28T00:45:40.417+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 2/5 [00:00<00:00, 35.21it/s]
-[2025-11-28T00:45:40.423+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 3/5 [00:00<00:00, 47.55it/s]
-[2025-11-28T00:45:40.433+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 4/5 [00:00<00:00, 54.98it/s]
-[2025-11-28T00:45:40.433+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 68.21it/s]
-[2025-11-28T00:45:40.433+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 67.97it/s]
-[2025-11-28T00:45:41.140+0000] {logging_mixin.py:188} INFO - ✅ Modelo carregado!
-[2025-11-28T00:45:41.160+0000] {python.py:237} INFO - Done. Returned value was: None
-[2025-11-28T00:45:41.161+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
-[2025-11-28T00:45:41.168+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_monitoring_pipeline_v2, task_id=load_model, run_id=manual__2025-11-28T00:45:25.509197+00:00, execution_date=20251128T004525, start_date=20251128T004540, end_date=20251128T004541
-[2025-11-28T00:45:41.226+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
-[2025-11-28T00:45:41.236+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

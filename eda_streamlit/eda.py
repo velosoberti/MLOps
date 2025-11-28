@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 
-# Configuração do estilo
+
 sns.set_style("whitegrid")
 plt.rcParams['figure.figsize'] = (10, 6)
 
 def show_basic_info(df):
-    """Exibe informações básicas do dataset"""
     st.subheader("📊 Informações Básicas")
     
     col1, col2, col3 = st.columns(3)
@@ -29,7 +28,7 @@ def show_basic_info(df):
     }), use_container_width=True)
 
 def show_missing_values(df):
-    """Analisa e visualiza valores ausentes"""
+    """NaN Analysis"""
     st.subheader("🔍 Análise de Valores Ausentes")
     
     missing = df.isnull().sum()
@@ -55,7 +54,7 @@ def show_missing_values(df):
         plt.close()
 
 def show_numerical_stats(df, exclude_cols=None):
-    """Exibe estatísticas descritivas das variáveis numéricas"""
+    """EDA"""
     st.subheader("📈 Estatísticas Descritivas - Variáveis Numéricas")
     
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -72,7 +71,7 @@ def show_numerical_stats(df, exclude_cols=None):
         st.warning("Não há variáveis numéricas para exibir.")
 
 def plot_distributions(df, exclude_cols=None, bins=30):
-    """Plota distribuições das variáveis numéricas"""
+    """Histplots"""
     st.subheader("📊 Distribuições das Variáveis Numéricas")
     
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -100,7 +99,7 @@ def plot_distributions(df, exclude_cols=None, bins=30):
         ax.axvline(df[col].median(), color='green', linestyle='--', label=f'Mediana: {df[col].median():.2f}')
         ax.legend()
     
-    # Remove eixos vazios
+
     for idx in range(len(numeric_cols), len(axes)):
         fig.delaxes(axes[idx])
     
@@ -109,7 +108,7 @@ def plot_distributions(df, exclude_cols=None, bins=30):
     plt.close()
 
 def plot_boxplots(df, exclude_cols=None):
-    """Plota boxplots para detecção de outliers"""
+    """Boxplots"""
     st.subheader("📦 Boxplots - Detecção de Outliers")
     
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -133,7 +132,7 @@ def plot_boxplots(df, exclude_cols=None):
         ax.set_title(f'Boxplot: {col}')
         ax.set_ylabel(col)
     
-    # Remove eixos vazios
+
     for idx in range(len(numeric_cols), len(axes)):
         fig.delaxes(axes[idx])
     
@@ -142,7 +141,7 @@ def plot_boxplots(df, exclude_cols=None):
     plt.close()
 
 def plot_correlation_matrix(df, exclude_cols=None):
-    """Plota matriz de correlação"""
+    """Correlation"""
     st.subheader("🔗 Matriz de Correlação")
     
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
@@ -166,7 +165,7 @@ def plot_correlation_matrix(df, exclude_cols=None):
     st.pyplot(fig)
     plt.close()
     
-    # Exibe correlações mais fortes
+
     st.write("**Correlações mais fortes (em módulo):**")
     corr_flat = corr.abs().unstack()
     corr_flat = corr_flat[corr_flat < 1].sort_values(ascending=False)
@@ -176,7 +175,7 @@ def plot_correlation_matrix(df, exclude_cols=None):
         st.write(f"- {idx[0]} ↔ {idx[1]}: {corr.loc[idx[0], idx[1]]:.3f}")
 
 def analyze_target_variable(df, target_col):
-    """Analisa a variável alvo"""
+    """Target Analysis"""
     st.subheader(f"🎯 Análise da Variável Alvo: {target_col}")
     
     if target_col not in df.columns:
@@ -209,7 +208,7 @@ def analyze_target_variable(df, target_col):
         plt.close()
 
 def compare_features_by_target(df, target_col, exclude_cols=None):
-    """Compara features numéricas agrupadas pela variável alvo"""
+    """Outcome vs Grouped Features"""
     st.subheader(f"⚖️ Comparação de Features por {target_col}")
     
     if target_col not in df.columns:
@@ -242,7 +241,7 @@ def compare_features_by_target(df, target_col, exclude_cols=None):
         ax.set_ylabel(col)
         plt.suptitle('')
     
-    # Remove eixos vazios
+
     for idx in range(len(numeric_cols), len(axes)):
         fig.delaxes(axes[idx])
     
@@ -251,41 +250,34 @@ def compare_features_by_target(df, target_col, exclude_cols=None):
     plt.close()
 
 def run_complete_eda(df, target_col=None, exclude_cols=None):
-    """Executa análise exploratória completa"""
+    """Execution"""
     st.title("🔬 Análise Exploratória de Dados (EDA)")
     
-    # Informações básicas
+
     show_basic_info(df)
     st.divider()
-    
-    # Valores ausentes
+
     show_missing_values(df)
     st.divider()
-    
-    # Estatísticas descritivas
+
     show_numerical_stats(df, exclude_cols)
     st.divider()
-    
-    # Distribuições
+
     plot_distributions(df, exclude_cols)
     st.divider()
-    
-    # Boxplots
+
     plot_boxplots(df, exclude_cols)
     st.divider()
-    
-    # Correlação
+
     plot_correlation_matrix(df, exclude_cols)
     st.divider()
     
-    # Análise da variável alvo
     if target_col:
         analyze_target_variable(df, target_col)
         st.divider()
         compare_features_by_target(df, target_col, exclude_cols)
 
-# Exemplo de uso no Streamlit:
-# run_complete_eda(training_data, target_col='Outcome', exclude_cols=['patient_id', 'event_timestamp'])
+
 
 import streamlit as st
 import pandas as pd
@@ -299,5 +291,3 @@ run_complete_eda(
     target_col='Outcome',
     exclude_cols=['patient_id', 'event_timestamp']
 )
-#python eda.py
-#streamlit run eda.py
