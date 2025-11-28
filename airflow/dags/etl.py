@@ -1,6 +1,6 @@
 from airflow.decorators import dag, task
 import pandas as pd
-from etl.etl import extract, transform, create_timestamps, create_patient_ids, save_parquet
+from etl_functions.etl import extract, transform, create_timestamps, create_patient_ids, save_parquet
 
 @dag(dag_id="etl_pipeline_final", schedule_interval="@daily", start_date=pd.Timestamp(2023, 8, 1), catchup=False)
 def etl_flow():
