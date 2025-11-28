@@ -1,4 +1,4 @@
-# 🚀 MLOps - Complete Machine Learning Pipeline
+# 🚀 MLOps - Complete Machine Learning Pipeline for Diabetes Prediction
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![MLflow](https://img.shields.io/badge/MLflow-Tracking-0194E2?logo=mlflow)](https://mlflow.org/)
@@ -31,41 +31,58 @@ This project demonstrates a **complete and professional end-to-end MLOps pipelin
 
 ```mermaid
 graph TB
-    subgraph "Data Layer"
-        A[diabetes.csv] -->|DVC| B[Git Versioning]
-        A -->|ETL Pipeline| C[Parquet Files]
+    subgraph "1. Data Layer"
+        A[diabetes.csv] -->|DVC Version Control| B[Git Repository]
+        A -->|ETL DAG Execution| C[Parquet Files]
     end
     
-    subgraph "Feature Store Layer"
-        C -->|Feast Apply| D[Offline Store]
-        D -->|Materialize| E[Online Store SQLite]
-        D -->|Historical Features| F[Training Dataset]
+    subgraph "2. Feature Store - Feast"
+        C -->|feast apply| D[Offline Store<br/>Parquet]
+        D -->|feast materialize| E[Online Store<br/>SQLite]
+        D -->|get_historical_features| F[Training Dataset<br/>my_training_dataset.parquet]
     end
     
-    subgraph "Orchestration Layer - Airflow"
-        G[ETL DAG] -->|Daily| C
-        H[Feature Store DAG] -->|Daily| F
-        I[Training DAG] -->|Weekly| J[Model Training]
-        K[Prediction DAG] -->|Daily| L[Batch Predictions]
+    subgraph "3. Orchestration - Airflow DAGs"
+        G[etl_pipeline_final<br/>Daily] -.->|Generates| C
+        H[feature_store_cre<br/>Daily] -.->|Creates| F
+        I[ml_training_pipeline<br/>Weekly] -.->|Triggers| J[Model Training]
+        K[ml_prediction_pipeline<br/>Daily] -.->|Triggers| L[Batch Predictions]
     end
     
-    subgraph "ML Layer"
-        F -->|Load Data| J
-        J -->|Log Metrics| M[MLflow Tracking]
-        J -->|Register Model| N[MLflow Model Registry]
+    subgraph "4. ML Layer - Training & Registry"
+        F -->|Load for Training| J
+        J -->|mlflow.log_metrics| M[MLflow Tracking<br/>Experiments]
+        J -->|mlflow.register_model| N[MLflow Model Registry<br/>diabete_model]
+    end
+    
+    subgraph "5. Prediction Layer"
         N -->|Load Model| L
+        E -->|get_online_features| L
+        L -->|Save Batch| O[predictions_YYYYMMDD.parquet]
+        O -->|Accumulate| P[predictions_history.parquet]
     end
     
-    subgraph "Serving Layer"
-        N -->|Load Latest| O[Flask API]
-        E -->|Get Features| O
-        O -->|REST API| P[Predictions]
+    subgraph "6. Serving Layer - API"
+        N -->|Load Latest Version| Q[Flask API :5005]
+        E -->|Fetch Features| Q
+        Q -->|POST /predict| R[Real-time Predictions]
+        Q -->|POST /predict/batch| R
     end
     
-    subgraph "Monitoring Layer"
-        L -->|Save| Q[Predictions History]
-        Q -->|Accumulate| R[Monitoring Dashboard]
+    subgraph "7. Monitoring & Analytics"
+        P -->|Read History| S[Monitoring Dashboard<br/>EDA & Metrics]
+        M -->|Track Metrics| S
     end
+    
+    style A fill:#e1f5ff
+    style C fill:#e1f5ff
+    style E fill:#fff4e1
+    style F fill:#fff4e1
+    style M fill:#ffccbc
+    style N fill:#ffccbc
+    style Q fill:#c8e6c9
+    style P fill:#e1bee7
+    style S fill:#b2dfdb
 ```
 
 ### Directory Structure
@@ -149,6 +166,9 @@ graph LR
     B --> C[Add Timestamps]
     C --> D[Add Patient IDs]
     D --> E[Save Parquet]
+    
+    style A fill:#e3f2fd
+    style E fill:#c8e6c9
 ```
 
 **Steps:**
@@ -176,6 +196,9 @@ graph LR
     A[Load Target] --> B[Get Historical Features]
     B --> C[Create Saved Dataset]
     C --> D[Save Training Dataset]
+    
+    style A fill:#e3f2fd
+    style D fill:#c8e6c9
 ```
 
 **Steps:**
@@ -213,6 +236,11 @@ graph TB
     E --> F[Create Artifacts]
     F --> G[Log to MLflow]
     G --> H[Cleanup]
+    
+    style A fill:#fff9c4
+    style D fill:#ffccbc
+    style G fill:#c5cae9
+    style H fill:#b2dfdb
 ```
 
 **Detailed Steps:**
@@ -278,6 +306,11 @@ graph TB
     D --> E[Make Predictions]
     E --> F[Save Predictions]
     F --> G[Cleanup]
+    
+    style A fill:#e1bee7
+    style E fill:#ffccbc
+    style F fill:#c8e6c9
+    style G fill:#b2dfdb
 ```
 
 **Detailed Steps:**
@@ -641,7 +674,7 @@ Access: http://localhost:5005
 # Health check
 curl http://localhost:5005/health
 
-# Prediction via script
+# Prediction via Flask test client
 python request.py
 
 # Prediction via curl
@@ -649,6 +682,24 @@ curl -X POST http://localhost:5005/predict \
   -H "Content-Type: application/json" \
   -d '{"Insulin": 0, "SkinThickness": 35, "DiabetesPedigreeFunction": 0.627, "BMI": 33.6}'
 ```
+
+### 8️⃣ Manual Predictions & Utilities
+
+**Initialize Artifacts Folders:**
+```bash
+# Creates data/artifacts/predictions/ and data/artifacts/monitoring/
+python framework/create_artifacts.py
+```
+
+**Manual Predictions (outside Airflow):**
+```bash
+# Make predictions using stored model
+python framework/manual_pred.py
+```
+
+**Note:** `manual_pred.py` is different from `flask/request.py`:
+- `manual_pred.py`: Direct model inference using MLflow and Feast (bypasses API)
+- `flask/request.py`: API client that sends HTTP requests to Flask server
 
 ---
 
@@ -709,6 +760,16 @@ print(daily_stats)
 ---
 
 ## 🔧 Useful Commands
+
+### Project Setup
+
+```bash
+# Create artifacts folders (predictions/ and monitoring/)
+python framework/create_artifacts.py
+
+# Verify folder structure
+ls -R data/artifacts/
+```
 
 ### DVC
 
@@ -824,11 +885,24 @@ python flask/api.py
 # Test health
 curl http://localhost:5005/health
 
-# Test prediction
+# Test prediction with Flask client
 python flask/request.py
 
 # View logs
 tail -f flask/api.log
+```
+
+### Manual Predictions
+
+```bash
+# Run manual prediction (bypasses API, uses MLflow + Feast directly)
+python framework/manual_pred.py
+
+# This script:
+# 1. Loads model from MLflow Registry
+# 2. Fetches features from Feast Online Store
+# 3. Makes predictions
+# 4. Saves to data/artifacts/predictions/
 ```
 
 ---
