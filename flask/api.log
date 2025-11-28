@@ -127,3 +127,203 @@
 2025-11-28 14:13:52,502 - framework.api_consctructor - INFO -  Predição: diabetes (score: 0.5043)
 2025-11-28 14:13:52,502 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.003s
 2025-11-28 14:13:52,502 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 14:13:52] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:35:14,717 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2025-11-28 17:35:15,780 - framework.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v1
+2025-11-28 17:35:15,781 - framework.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 17:35:15,781 - framework.api_consctructor - INFO -  API inicializada com sucesso
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -  Modelo: diabete_model v1
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -  Features: 4
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -   GET  /health
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -   GET  /model/info
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -   POST /predict
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -   POST /predict/batch
+2025-11-28 17:35:15,782 - framework.api_consctructor - INFO -   POST /model/reload
+2025-11-28 17:35:15,783 - framework.api_consctructor - INFO - ================================================================================
+2025-11-28 17:35:15,787 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2025-11-28 17:35:15,787 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-11-28 17:36:15,189 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:36:15,194 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:36:15,194 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.005s
+2025-11-28 17:36:15,196 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:36:15,198 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:36:15,204 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:36:15,204 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.006s
+2025-11-28 17:36:15,205 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:36:15,208 - framework.api_consctructor - INFO - GET /model/info - IP: 127.0.0.1
+2025-11-28 17:36:15,208 - framework.api_consctructor - INFO - GET /model/info - Status: 200 - Tempo: 0.000s
+2025-11-28 17:36:15,209 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "GET /model/info HTTP/1.1" 200 -
+2025-11-28 17:36:15,212 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,213 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,241 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:36:15,241 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.029s
+2025-11-28 17:36:15,241 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:36:15,244 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,245 - framework.api_consctructor - WARNING -   Validação falhou: Features faltantes: ['DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 17:36:15,246 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:36:15,246 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:36:15,249 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,250 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,252 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:36:15,253 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.003s
+2025-11-28 17:36:15,253 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:36:15,256 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,256 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,259 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:36:15,259 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.004s
+2025-11-28 17:36:15,260 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:36:15,262 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,263 - framework.api_consctructor - WARNING -   Validação falhou: Request body está vazio
+2025-11-28 17:36:15,263 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:36:15,263 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:36:15,267 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,267 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.000s
+2025-11-28 17:36:15,267 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:36:15,271 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:36:15,271 - framework.api_consctructor - INFO -  Processando batch com 3 instâncias
+2025-11-28 17:36:15,271 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,273 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,275 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,279 - framework.api_consctructor - INFO -  Batch concluído: 3/3 sucessos
+2025-11-28 17:36:15,279 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.009s
+2025-11-28 17:36:15,280 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict/batch HTTP/1.1" 200 -
+2025-11-28 17:36:15,283 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:36:15,283 - framework.api_consctructor - INFO - POST /predict/batch - Status: 400 - Tempo: 0.000s
+2025-11-28 17:36:15,283 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mPOST /predict/batch HTTP/1.1[0m" 400 -
+2025-11-28 17:36:15,286 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:36:15,286 - framework.api_consctructor - INFO - POST /predict/batch - Status: 400 - Tempo: 0.001s
+2025-11-28 17:36:15,287 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mPOST /predict/batch HTTP/1.1[0m" 400 -
+2025-11-28 17:36:15,290 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:36:15,290 - framework.api_consctructor - INFO -  Processando batch com 3 instâncias
+2025-11-28 17:36:15,291 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,294 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,296 - framework.api_consctructor - INFO -  Batch concluído: 2/3 sucessos
+2025-11-28 17:36:15,297 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.007s
+2025-11-28 17:36:15,297 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict/batch HTTP/1.1" 200 -
+2025-11-28 17:36:15,300 - framework.api_consctructor - WARNING -   Rota não encontrada: /invalid
+2025-11-28 17:36:15,301 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[33mGET /invalid HTTP/1.1[0m" 404 -
+2025-11-28 17:36:15,304 - framework.api_consctructor - WARNING -   Método não permitido: GET /predict
+2025-11-28 17:36:15,305 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
+2025-11-28 17:36:15,308 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:36:15,314 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:36:15,314 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.006s
+2025-11-28 17:36:15,314 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:36:15,318 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:36:15,318 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:36:15,320 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:36:15,321 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.003s
+2025-11-28 17:36:15,321 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:36:15] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:38:39,821 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:38:39,839 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:38:39,840 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.019s
+2025-11-28 17:38:39,840 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:38:39,844 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:38:39,849 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:38:39,849 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.006s
+2025-11-28 17:38:39,850 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:38:39,852 - framework.api_consctructor - INFO - GET /model/info - IP: 127.0.0.1
+2025-11-28 17:38:39,853 - framework.api_consctructor - INFO - GET /model/info - Status: 200 - Tempo: 0.001s
+2025-11-28 17:38:39,853 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "GET /model/info HTTP/1.1" 200 -
+2025-11-28 17:38:39,857 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,858 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,863 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:38:39,863 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.006s
+2025-11-28 17:38:39,863 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:38:39,866 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,867 - framework.api_consctructor - WARNING -   Validação falhou: Features faltantes: ['DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2025-11-28 17:38:39,867 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:38:39,867 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,870 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,870 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,870 - framework.api_consctructor - WARNING -   Validação falhou: Feature 'DiabetesPedigreeFunction' deve ser numérica (recebido: str)
+2025-11-28 17:38:39,870 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:38:39,871 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,874 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,874 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,875 - framework.api_consctructor - WARNING -   Validação falhou: Feature 'DiabetesPedigreeFunction' não pode ser null
+2025-11-28 17:38:39,875 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:38:39,875 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,879 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,879 - framework.api_consctructor - WARNING -   Validação falhou: Request body está vazio
+2025-11-28 17:38:39,880 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.001s
+2025-11-28 17:38:39,880 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,884 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,884 - framework.api_consctructor - INFO - POST /predict - Status: 400 - Tempo: 0.000s
+2025-11-28 17:38:39,885 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,887 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:38:39,888 - framework.api_consctructor - INFO -  Processando batch com 3 instâncias
+2025-11-28 17:38:39,888 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,890 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,892 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,894 - framework.api_consctructor - INFO -  Batch concluído: 3/3 sucessos
+2025-11-28 17:38:39,895 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.007s
+2025-11-28 17:38:39,895 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "POST /predict/batch HTTP/1.1" 200 -
+2025-11-28 17:38:39,898 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:38:39,898 - framework.api_consctructor - INFO - POST /predict/batch - Status: 400 - Tempo: 0.000s
+2025-11-28 17:38:39,898 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict/batch HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,900 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:38:39,901 - framework.api_consctructor - INFO - POST /predict/batch - Status: 400 - Tempo: 0.000s
+2025-11-28 17:38:39,901 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mPOST /predict/batch HTTP/1.1[0m" 400 -
+2025-11-28 17:38:39,904 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:38:39,904 - framework.api_consctructor - INFO -  Processando batch com 3 instâncias
+2025-11-28 17:38:39,904 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,908 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,911 - framework.api_consctructor - INFO -  Batch concluído: 2/3 sucessos
+2025-11-28 17:38:39,911 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.007s
+2025-11-28 17:38:39,912 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "POST /predict/batch HTTP/1.1" 200 -
+2025-11-28 17:38:39,915 - framework.api_consctructor - WARNING -   Rota não encontrada: /invalid
+2025-11-28 17:38:39,916 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[33mGET /invalid HTTP/1.1[0m" 404 -
+2025-11-28 17:38:39,919 - framework.api_consctructor - WARNING -   Método não permitido: GET /predict
+2025-11-28 17:38:39,920 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "[31m[1mGET /predict HTTP/1.1[0m" 405 -
+2025-11-28 17:38:39,922 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:38:39,929 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:38:39,929 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.007s
+2025-11-28 17:38:39,929 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:38:39,933 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:38:39,933 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:38:39,938 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2750)
+2025-11-28 17:38:39,938 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.005s
+2025-11-28 17:38:39,938 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:39] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:38:59,925 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:38:59,929 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:38:59,930 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.005s
+2025-11-28 17:38:59,930 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:38:59] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:39:01,662 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:39:01,663 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:01,664 - framework.api_consctructor - INFO -  Predição: diabetes (score: 0.5043)
+2025-11-28 17:39:01,664 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.002s
+2025-11-28 17:39:01,665 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:01] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:39:05,045 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:39:05,046 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:05,048 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.1534)
+2025-11-28 17:39:05,048 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.003s
+2025-11-28 17:39:05,048 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:05] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:39:10,602 - framework.api_consctructor - INFO - GET /health - IP: 127.0.0.1
+2025-11-28 17:39:10,647 - framework.api_consctructor - INFO -  Health check: HEALTHY
+2025-11-28 17:39:10,648 - framework.api_consctructor - INFO - GET /health - Status: 200 - Tempo: 0.046s
+2025-11-28 17:39:10,648 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:10] "GET /health HTTP/1.1" 200 -
+2025-11-28 17:39:10,650 - framework.api_consctructor - INFO - GET /model/info - IP: 127.0.0.1
+2025-11-28 17:39:10,650 - framework.api_consctructor - INFO - GET /model/info - Status: 200 - Tempo: 0.000s
+2025-11-28 17:39:10,651 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:10] "GET /model/info HTTP/1.1" 200 -
+2025-11-28 17:39:26,488 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2025-11-28 17:39:26,489 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:26,490 - framework.api_consctructor - INFO -  Predição: no_diabetes (score: 0.2645)
+2025-11-28 17:39:26,491 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.002s
+2025-11-28 17:39:26,491 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:26] "POST /predict HTTP/1.1" 200 -
+2025-11-28 17:39:35,079 - framework.api_consctructor - INFO - POST /predict/batch - IP: 127.0.0.1
+2025-11-28 17:39:35,079 - framework.api_consctructor - INFO -  Processando batch com 3 instâncias
+2025-11-28 17:39:35,080 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:35,082 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:35,084 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2025-11-28 17:39:35,085 - framework.api_consctructor - INFO -  Batch concluído: 3/3 sucessos
+2025-11-28 17:39:35,085 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.006s
+2025-11-28 17:39:35,086 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:35] "POST /predict/batch HTTP/1.1" 200 -

@@ -772,3 +772,32 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/feature_store.py                           1           0  2.04s           2025-11-28T20:03:22
 /opt/airflow/dags/etl.py                                     1           0  0.44s           2025-11-28T20:03:14
 ================================================================================
+[2025-11-28T20:04:15.255+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/train.py                                   1           0  3.39s           2025-11-28T20:04:11
+/opt/airflow/dags/feature_store.py                           1           0  3.24s           2025-11-28T20:03:55
+/opt/airflow/dags/predict.py                                 1           0  2.69s           2025-11-28T20:03:59
+/opt/airflow/dags/etl.py                                     1           0  1.96s           2025-11-28T20:03:46
+================================================================================
+[2025-11-28T20:04:37.429+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-11-28T20:40:55.542+0000] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-11-28T20:40:55.568+0000] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-11-28T20:40:55.569+0000] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-11-28T20:40:55.570+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-11-28T20:40:55.590+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2025-11-28T20:40:55.695+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/feature_store.py    178  0.03s             0           0
+/opt/airflow/dags/predict.py          175  0.06s             0           0
+/opt/airflow/dags/train.py                                   0           0
+/opt/airflow/dags/etl.py                                     0           0
+================================================================================
+[2025-11-28T20:41:13.208+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15

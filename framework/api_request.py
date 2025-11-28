@@ -2,7 +2,7 @@ import requests
 import json
 from typing import Dict, Any
 
-API_BASE_URL = "http://localhost:5002"
+API_BASE_URL = "http://localhost:5005"
 
 
 class TestRunner:
@@ -163,7 +163,7 @@ def test_invalid_feature_type(runner: TestRunner):
     
     def run():
         data = valid_prediction_data()
-        data["Glucose"] = "invalid"  # String ao invés de número
+        data["DiabetesPedigreeFunction"] = "invalid"  # String ao invés de número
         response = make_request("POST", "/predict", json=data)
         
         print(f"Status: {response.status_code}")
@@ -181,7 +181,7 @@ def test_null_feature(runner: TestRunner):
     
     def run():
         data = valid_prediction_data()
-        data["Glucose"] = None
+        data["DiabetesPedigreeFunction"] = None
         response = make_request("POST", "/predict", json=data)
         
         print(f"Status: {response.status_code}")
