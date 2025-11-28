@@ -66,19 +66,19 @@ Os arquivos `.jsonl` são append-only e contêm todo o histórico de monitoramen
 def create_directory_structure():
     """Cria estrutura completa de diretórios"""
     print("=" * 70)
-    print("🏗️  CRIANDO ESTRUTURA DE DIRETÓRIOS")
+    print("  CRIANDO ESTRUTURA DE DIRETÓRIOS")
     print("=" * 70)
     
     # Criar diretório base
     artifacts_path = Path(ARTIFACTS_DIR)
     artifacts_path.mkdir(parents=True, exist_ok=True)
-    print(f"✅ Diretório base criado: {ARTIFACTS_DIR}")
+    print(f" Diretório base criado: {ARTIFACTS_DIR}")
     
     # Criar subdiretórios
     for directory in DIRECTORIES:
         dir_path = artifacts_path / directory
         dir_path.mkdir(exist_ok=True)
-        print(f"✅ Criado: {directory}/")
+        print(f" Criado: {directory}/")
         
         # Adicionar .gitkeep
         if directory in GITKEEP_DIRS:
@@ -91,16 +91,16 @@ def create_directory_structure():
             readme_path = dir_path / "README.md"
             with open(readme_path, 'w') as f:
                 f.write(README_CONTENTS[directory])
-            print(f"   📄 Adicionado README.md")
+            print(f"    Adicionado README.md")
     
     print("\n" + "=" * 70)
-    print("✅ ESTRUTURA CRIADA COM SUCESSO!")
+    print(" ESTRUTURA CRIADA COM SUCESSO!")
     print("=" * 70)
 
 
 def create_gitignore():
     """Cria arquivo .gitignore na pasta artifacts"""
-    print("\n📝 Criando .gitignore...")
+    print("\n Criando .gitignore...")
     
     gitignore_content = """# =============================================================================
 # .gitignore para data/artifacts
@@ -147,14 +147,14 @@ Thumbs.db
     with open(gitignore_path, 'w') as f:
         f.write(gitignore_content)
     
-    print(f"✅ .gitignore criado: {gitignore_path}")
+    print(f" .gitignore criado: {gitignore_path}")
 
 
 def create_main_readme():
     """Cria README principal da pasta artifacts"""
-    print("\n📄 Criando README principal...")
+    print("\n Criando README principal...")
     
-    readme_content = """# 📦 Artifacts - Histórico de Predições e Monitoramento
+    readme_content = """#  Artifacts - Histórico de Predições e Monitoramento
 
 Este diretório contém todos os artefatos gerados pelo pipeline de predição e monitoramento.
 
@@ -242,12 +242,12 @@ Gerado automaticamente pelo pipeline de MLOps.
     with open(readme_path, 'w') as f:
         f.write(readme_content)
     
-    print(f"✅ README principal criado: {readme_path}")
+    print(f" README principal criado: {readme_path}")
 
 
 def verify_structure():
     """Verifica se a estrutura foi criada corretamente"""
-    print("\n🔍 Verificando estrutura...")
+    print("\n Verificando estrutura...")
     
     artifacts_path = Path(ARTIFACTS_DIR)
     all_good = True
@@ -256,23 +256,23 @@ def verify_structure():
     for directory in DIRECTORIES:
         dir_path = artifacts_path / directory
         if dir_path.exists():
-            print(f"✅ {directory}/ existe")
+            print(f" {directory}/ existe")
         else:
-            print(f"❌ {directory}/ NÃO existe")
+            print(f" {directory}/ NÃO existe")
             all_good = False
     
     # Verificar .gitignore
     gitignore_path = artifacts_path / ".gitignore"
     if gitignore_path.exists():
-        print(f"✅ .gitignore existe")
+        print(f" .gitignore existe")
     else:
-        print(f"❌ .gitignore NÃO existe")
+        print(f" .gitignore NÃO existe")
         all_good = False
     
     if all_good:
-        print("\n✅ Estrutura verificada e completa!")
+        print("\n Estrutura verificada e completa!")
     else:
-        print("\n⚠️ Alguns arquivos/diretórios estão faltando")
+        print("\n Alguns arquivos/diretórios estão faltando")
     
     return all_good
 
@@ -280,7 +280,7 @@ def verify_structure():
 def show_next_steps():
     """Mostra próximos passos"""
     print("\n" + "=" * 70)
-    print("📋 PRÓXIMOS PASSOS")
+    print(" PRÓXIMOS PASSOS")
     print("=" * 70)
     print("""
 1. Execute o pipeline de predição:

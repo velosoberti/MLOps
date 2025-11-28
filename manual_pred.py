@@ -111,7 +111,7 @@ CUSTOMIZAR DADOS DE EXEMPLO:
     }
             """)
         else:
-            print(f"❌ Opção inválida: {sys.argv[1]}")
+            print(f" Opção inválida: {sys.argv[1]}")
             print("Use --help para ver opções disponíveis")
     else:
         # Modo interativo

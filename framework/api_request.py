@@ -17,27 +17,27 @@ class TestRunner:
     def test(self, name: str, func):
         """Executa um teste."""
         print(f"\n{'='*80}")
-        print(f"🧪 {name}")
+        print(f"{name}")
         print('='*80)
         
         try:
             func()
             self.passed += 1
-            print(f"✅ PASSOU")
+            print(f"PASSOU")
             self.tests.append((name, True, None))
         except AssertionError as e:
             self.failed += 1
-            print(f"❌ FALHOU: {e}")
+            print(f"FALHOU: {e}")
             self.tests.append((name, False, str(e)))
         except Exception as e:
             self.failed += 1
-            print(f"💥 ERRO: {e}")
+            print(f"ERRO: {e}")
             self.tests.append((name, False, str(e)))
     
     def summary(self):
         """Imprime resumo dos testes."""
         print(f"\n{'='*80}")
-        print("📊 RESUMO DOS TESTES")
+        print("RESUMO DOS TESTES")
         print('='*80)
         
         for name, passed, error in self.tests:
@@ -51,7 +51,7 @@ class TestRunner:
         print(f"Total: {total} | Passaram: {self.passed} | Falharam: {self.failed}")
         
         if self.failed == 0:
-            print("🎉 TODOS OS TESTES PASSARAM!")
+            print("TODOS OS TESTES PASSARAM!")
         else:
             print(f"⚠️  {self.failed} teste(s) falharam")
         print('='*80)

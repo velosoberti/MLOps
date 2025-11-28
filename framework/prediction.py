@@ -27,17 +27,17 @@ HISTORICAL_PREDICTIONS_FILE = f"{BASE_PATH}/data/artifacts/predictions/predictio
 
 def setup_and_materialize_features(**context):
     """Task 1: Setup MLflow e materializa features do Feast"""
-    print("🔧 Configurando MLflow...")
+    print("Configurando MLflow...")
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     
-    print("🔄 Materializando features no Feast...")
+    print("Materializando features no Feast...")
     store = FeatureStore(repo_path=FEAST_REPO_PATH)
     store.materialize_incremental(end_date=datetime.now())
     
     context['ti'].xcom_push(key='mlflow_uri', value=MLFLOW_TRACKING_URI)
     context['ti'].xcom_push(key='materialization_timestamp', value=datetime.now().isoformat())
     
-    print("✅ MLflow configurado e features materializadas!")
+    print("MLflow configurado e features materializadas!")
 
 
 def find_valid_patient_ids(**context):
@@ -77,12 +77,12 @@ def find_valid_patient_ids(**context):
             continue
     
     if not valid_patient_ids:
-        raise ValueError("❌ Nenhum paciente válido encontrado!")
+        raise ValueError("Nenhum paciente válido encontrado!")
     
     # Ordenar em ordem decrescente (mais recentes primeiro)
     valid_patient_ids = sorted(valid_patient_ids, reverse=True)
     
-    print(f"✅ Encontrados {len(valid_patient_ids)} pacientes válidos")
+    print(f"Encontrados {len(valid_patient_ids)} pacientes válidos")
     print(f"   IDs: {valid_patient_ids[:10]}... (primeiros 10)")
     
     # Salvar IDs
@@ -92,7 +92,7 @@ def find_valid_patient_ids(**context):
 
 def fetch_features(**context):
     """Task 3: Busca features dos pacientes válidos"""
-    print("📥 Buscando features dos pacientes...")
+    print("Buscando features dos pacientes...")
     
     # Recuperar IDs válidos
     patient_ids = context['ti'].xcom_pull(key='valid_patient_ids', task_ids='find_valid_patient_ids')
@@ -115,8 +115,8 @@ def fetch_features(**context):
     ).to_dict()
     
     features_df = pd.DataFrame.from_dict(features)
-    
-    print(f"✅ Features carregadas: {features_df.shape}")
+
+    print(f"Features carregadas: {features_df.shape}")
     print(f"   Colunas: {features_df.columns.tolist()}")
     
     # Salvar features
@@ -127,7 +127,7 @@ def fetch_features(**context):
 
 def load_model(**context):
     """Task 4: Carrega última versão do modelo"""
-    print(f"🤖 Carregando modelo '{MODEL_NAME}'...")
+    print(f"Carregando modelo '{MODEL_NAME}'...")
     
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     client = mlflow.client.MlflowClient()
@@ -135,11 +135,11 @@ def load_model(**context):
     latest_versions = client.get_latest_versions(MODEL_NAME)
     
     if not latest_versions:
-        raise ValueError(f"❌ Nenhuma versão encontrada para o modelo '{MODEL_NAME}'")
+        raise ValueError(f"Nenhuma versão encontrada para o modelo '{MODEL_NAME}'")
     
     latest_version = max([int(v.version) for v in latest_versions])
     
-    print(f"📦 Versão encontrada: {latest_version}")
+    print(f"Versão encontrada: {latest_version}")
     
     model_uri = f"models:/{MODEL_NAME}/{latest_version}"
     model = mlflow.sklearn.load_model(model_uri)
@@ -147,16 +147,16 @@ def load_model(**context):
     # Extrair feature names do modelo
     if hasattr(model, 'feature_names_in_'):
         model_features = model.feature_names_in_.tolist()
-        print(f"📋 Features do modelo: {model_features}")
+        print(f"Features do modelo: {model_features}")
         context['ti'].xcom_push(key='model_features', value=model_features)
     else:
-        print("⚠️ Modelo não possui feature_names_in_, usando features padrão")
+        print("Modelo não possui feature_names_in_, usando features padrão")
     
     # Salvar modelo temporariamente
     import joblib
     joblib.dump(model, '/tmp/loaded_model.pkl')
     
-    print("✅ Modelo carregado!")
+    print("Modelo carregado!")
     
     context['ti'].xcom_push(key='model_version', value=latest_version)
     context['ti'].xcom_push(key='model_uri', value=model_uri)
@@ -164,7 +164,7 @@ def load_model(**context):
 
 def make_predictions(**context):
     """Task 5: Faz predições"""
-    print("🔮 Fazendo predições...")
+    print("Fazendo predições...")
     
     import joblib
     
@@ -188,11 +188,11 @@ def make_predictions(**context):
         
         # Selecionar apenas as features do modelo na ordem correta
         X = X[model_features]
-        print(f"✅ Usando features do modelo: {model_features}")
+        print(f"Usando features do modelo: {model_features}")
     else:
         # Fallback: ordenar alfabeticamente
         X = X[sorted(X.columns)]
-        print(f"⚠️ Usando features ordenadas: {sorted(X.columns)}")
+        print(f"Usando features ordenadas: {sorted(X.columns)}")
     
     # Predições
     predictions = model.predict(X)
@@ -205,7 +205,7 @@ def make_predictions(**context):
     results_df['probability_class_1'] = probabilities[:, 1]
     results_df['prediction_timestamp'] = datetime.now()
     
-    print(f"✅ Predições concluídas!")
+    print(f"   Predições concluídas!")
     print(f"   Total: {len(predictions)}")
     print(f"   Classe 0 (Não diabético): {sum(predictions == 0)}")
     print(f"   Classe 1 (Diabético): {sum(predictions == 1)}")
@@ -220,7 +220,7 @@ def make_predictions(**context):
 
 def save_predictions(**context):
     """Task 6: Salva predições em arquivo permanente e histórico acumulado"""
-    print("💾 Salvando predições...")
+    print("Salvando predições...")
     
     # Criar diretório
     Path(OUTPUT_DIR).mkdir(parents=True, exist_ok=True)
@@ -251,7 +251,7 @@ def save_predictions(**context):
     csv_filepath = filepath.replace('.parquet', '.csv')
     predictions_df.to_csv(csv_filepath, index=False)
     
-    print(f"✅ Predições individuais salvas:")
+    print(f"   Predições individuais salvas:")
     print(f"   Parquet: {filepath}")
     print(f"   CSV: {csv_filepath}")
     
@@ -259,25 +259,25 @@ def save_predictions(**context):
     if os.path.exists(HISTORICAL_PREDICTIONS_FILE):
         # Carregar histórico existente
         historical_df = pd.read_parquet(HISTORICAL_PREDICTIONS_FILE)
-        print(f"📚 Histórico encontrado: {len(historical_df)} predições anteriores")
+        print(f"Histórico encontrado: {len(historical_df)} predições anteriores")
         
         # Concatenar com novas predições
         updated_history = pd.concat([historical_df, predictions_df], ignore_index=True)
     else:
         # Criar novo histórico
-        print(f"📚 Criando novo arquivo de histórico")
+        print(f"Criando novo arquivo de histórico")
         updated_history = predictions_df
     
     # Salvar histórico atualizado
     updated_history.to_parquet(HISTORICAL_PREDICTIONS_FILE, index=False)
-    print(f"✅ Histórico atualizado: {len(updated_history)} predições totais")
+    print(f"Histórico atualizado: {len(updated_history)} predições totais")
     
     # Também salvar CSV do histórico
     historical_csv = HISTORICAL_PREDICTIONS_FILE.replace('.parquet', '.csv')
     updated_history.to_csv(historical_csv, index=False)
     
     # === ESTATÍSTICAS DO HISTÓRICO ===
-    print(f"\n📊 Estatísticas do Histórico:")
+    print(f"\n Estatísticas do Histórico:")
     print(f"   Total de predições: {len(updated_history)}")
     print(f"   Total de batches: {updated_history['batch_id'].nunique()}")
     print(f"   Primeira predição: {updated_history['prediction_timestamp'].min()}")
@@ -292,7 +292,7 @@ def save_predictions(**context):
 
 def cleanup_temp_files(**context):
     """Task 7: Limpa arquivos temporários"""
-    print("🧹 Limpando arquivos temporários...")
+    print("Limpando arquivos temporários...")
     
     temp_files = [
         '/tmp/features_for_prediction.parquet',
@@ -306,6 +306,6 @@ def cleanup_temp_files(**context):
                 os.remove(file_path)
                 print(f"   Removido: {file_path}")
         except Exception as e:
-            print(f"   ⚠️ Erro ao remover {file_path}: {e}")
+            print(f"   Erro ao remover {file_path}: {e}")
     
-    print("✅ Limpeza concluída!")
+    print("Limpeza concluída!")

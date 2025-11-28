@@ -57,9 +57,9 @@ def run_all_tests():
     # Verifica se API está rodando
     try:
         response = requests.get(f"{API_BASE_URL}/health", timeout=2)
-        print(f"✅ API está rodando em {API_BASE_URL}")
+        print(f" API está rodando em {API_BASE_URL}")
     except requests.exceptions.ConnectionError:
-        print(f"❌ API não está rodando em {API_BASE_URL}")
+        print(f" API não está rodando em {API_BASE_URL}")
         print("   Por favor, inicie a API antes de executar os testes:")
         print("   python flask_api.py")
         return

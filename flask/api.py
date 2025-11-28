@@ -23,9 +23,9 @@ app.config['JSON_SORT_KEYS'] = False
 # Inicializa gerenciador de modelo
 try:
     model_manager = ModelManager()
-    logger.info("✅ API inicializada com sucesso")
+    logger.info(" API inicializada com sucesso")
 except Exception as e:
-    logger.critical(f"💥 Falha crítica ao inicializar API: {e}")
+    logger.critical(f" Falha crítica ao inicializar API: {e}")
     sys.exit(1)
 
 
@@ -59,7 +59,7 @@ def health_check():
             mlflow_healthy = True
         except Exception as e:
             mlflow_error = str(e)
-            logger.error(f"❌ MLflow não acessível: {e}")
+            logger.error(f" MLflow não acessível: {e}")
         
         # Determina status geral
         all_healthy = model_health["model_loaded"] and mlflow_healthy
@@ -80,14 +80,14 @@ def health_check():
         }
         
         if all_healthy:
-            logger.info("✅ Health check: HEALTHY")
+            logger.info(" Health check: HEALTHY")
         else:
-            logger.warning("⚠️  Health check: UNHEALTHY")
+            logger.warning("  Health check: UNHEALTHY")
         
         return jsonify(response), status_code
         
     except Exception as e:
-        logger.error(f"❌ Erro no health check: {e}")
+        logger.error(f" Erro no health check: {e}")
         return jsonify({
             "status": "error",
             "message": str(e),
@@ -138,7 +138,7 @@ def predict():
     )
     
     if not is_valid:
-        logger.warning(f"⚠️  Validação falhou: {error_message}")
+        logger.warning(f"  Validação falhou: {error_message}")
         return jsonify({
             "error": "Invalid Input",
             "message": error_message,
@@ -162,7 +162,7 @@ def predict():
         "timestamp": datetime.now().isoformat()
     }
     
-    logger.info(f"✅ Predição: {prediction_label} (score: {score:.4f})")
+    logger.info(f" Predição: {prediction_label} (score: {score:.4f})")
     
     return jsonify(response), 200
 
@@ -239,7 +239,7 @@ def predict_batch():
             "message": f"Máximo de 1000 instâncias por batch (recebido: {len(instances)})"
         }), 400
     
-    logger.info(f"📦 Processando batch com {len(instances)} instâncias")
+    logger.info(f" Processando batch com {len(instances)} instâncias")
     
     predictions = []
     errors = []
@@ -272,7 +272,7 @@ def predict_batch():
             })
             
         except Exception as e:
-            logger.error(f"❌ Erro na instância {idx}: {e}")
+            logger.error(f" Erro na instância {idx}: {e}")
             errors.append({
                 "instance_index": idx,
                 "error": str(e)
@@ -286,7 +286,7 @@ def predict_batch():
         "timestamp": datetime.now().isoformat()
     }
     
-    logger.info(f"✅ Batch concluído: {len(predictions)}/{len(instances)} sucessos")
+    logger.info(f" Batch concluído: {len(predictions)}/{len(instances)} sucessos")
     
     return jsonify(response), 200
 
@@ -346,7 +346,7 @@ def reload_model():
 @app.errorhandler(404)
 def not_found(e):
     """Handler para rotas não encontradas."""
-    logger.warning(f"⚠️  Rota não encontrada: {request.path}")
+    logger.warning(f"  Rota não encontrada: {request.path}")
     return jsonify({
         "error": "Not Found",
         "message": f"Endpoint '{request.path}' não existe",
@@ -363,7 +363,7 @@ def not_found(e):
 @app.errorhandler(405)
 def method_not_allowed(e):
     """Handler para métodos não permitidos."""
-    logger.warning(f"⚠️  Método não permitido: {request.method} {request.path}")
+    logger.warning(f"  Método não permitido: {request.method} {request.path}")
     return jsonify({
         "error": "Method Not Allowed",
         "message": f"Método {request.method} não é permitido para {request.path}",
@@ -374,7 +374,7 @@ def method_not_allowed(e):
 @app.errorhandler(500)
 def internal_error(e):
     """Handler para erros internos."""
-    logger.error(f"💥 Erro interno: {e}")
+    logger.error(f" Erro interno: {e}")
     return jsonify({
         "error": "Internal Server Error",
         "message": "Ocorreu um erro interno. Verifique os logs do servidor.",
@@ -408,12 +408,12 @@ def after_request(response):
 
 if __name__ == '__main__':
     logger.info("=" * 80)
-    logger.info("🚀 Iniciando API de Predição de Diabetes")
+    logger.info(" Iniciando API de Predição de Diabetes")
     logger.info("=" * 80)
-    logger.info(f"📍 Servidor: http://0.0.0.0:5002")
-    logger.info(f"🔗 MLflow: {MLFLOW_TRACKING_URI}")
-    logger.info(f"📊 Modelo: {MODEL_NAME} v{model_manager.model_version}")
-    logger.info(f"📋 Features: {len(model_manager.feature_names)}")
+    logger.info(f" Servidor: http://0.0.0.0:5002")
+    logger.info(f" MLflow: {MLFLOW_TRACKING_URI}")
+    logger.info(f" Modelo: {MODEL_NAME} v{model_manager.model_version}")
+    logger.info(f" Features: {len(model_manager.feature_names)}")
     logger.info("=" * 80)
     logger.info("Endpoints disponíveis:")
     logger.info("  GET  /health")

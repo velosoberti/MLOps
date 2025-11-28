@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ================== CONFIGURAÇÕES ==================
+
 MLFLOW_TRACKING_URI = "http://127.0.0.1:5000/"
 EXPERIMENT_ID = "467326610704772702"
 MODEL_NAME = "diabete_model"
@@ -57,11 +57,11 @@ class ModelManager:
             self.feature_names = list(self.model.feature_names_in_)
             self.model_loaded_at = datetime.now()
             
-            logger.info(f"✅ Modelo carregado com sucesso: {MODEL_NAME} v{self.model_version}")
-            logger.info(f"📋 Features esperadas: {self.feature_names}")
+            logger.info(f"Modelo carregado com sucesso: {MODEL_NAME} v{self.model_version}")
+            logger.info(f"Features esperadas: {self.feature_names}")
             
         except Exception as e:
-            logger.error(f"❌ Erro ao carregar modelo: {e}")
+            logger.error(f"Erro ao carregar modelo: {e}")
             logger.error(traceback.format_exc())
             raise
     
@@ -123,7 +123,7 @@ class InputValidator:
         # Verifica features extras
         extra_features = set(data.keys()) - set(required_features)
         if extra_features:
-            logger.warning(f"⚠️  Features extras ignoradas: {sorted(extra_features)}")
+            logger.warning(f"Features extras ignoradas: {sorted(extra_features)}")
         
         # Valida tipos de dados
         for feature in required_features:
@@ -145,21 +145,21 @@ def handle_errors(f):
         try:
             return f(*args, **kwargs)
         except ValueError as e:
-            logger.error(f"❌ Erro de validação: {e}")
+            logger.error(f"Erro de validação: {e}")
             return jsonify({
                 "error": "Validation Error",
                 "message": str(e),
                 "timestamp": datetime.now().isoformat()
             }), 400
         except RuntimeError as e:
-            logger.error(f"❌ Erro de runtime: {e}")
+            logger.error(f"Erro de runtime: {e}")
             return jsonify({
                 "error": "Runtime Error",
                 "message": str(e),
                 "timestamp": datetime.now().isoformat()
             }), 500
         except Exception as e:
-            logger.error(f"❌ Erro inesperado: {e}")
+            logger.error(f"Erro inesperado: {e}")
             logger.error(traceback.format_exc())
             return jsonify({
                 "error": "Internal Server Error",
@@ -174,19 +174,19 @@ def log_request(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         start_time = datetime.now()
-        logger.info(f"📥 {request.method} {request.path} - IP: {request.remote_addr}")
+        logger.info(f"{request.method} {request.path} - IP: {request.remote_addr}")
         
         try:
             response = f(*args, **kwargs)
             elapsed = (datetime.now() - start_time).total_seconds()
             
             status = response[1] if isinstance(response, tuple) else 200
-            logger.info(f"✅ {request.method} {request.path} - Status: {status} - Tempo: {elapsed:.3f}s")
+            logger.info(f"{request.method} {request.path} - Status: {status} - Tempo: {elapsed:.3f}s")
             
             return response
         except Exception as e:
             elapsed = (datetime.now() - start_time).total_seconds()
-            logger.error(f"❌ {request.method} {request.path} - Erro após {elapsed:.3f}s: {e}")
+            logger.error(f"{request.method} {request.path} - Erro após {elapsed:.3f}s: {e}")
             raise
     
     return decorated_function

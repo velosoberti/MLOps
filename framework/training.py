@@ -11,16 +11,6 @@ from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDis
 import mlflow
 import matplotlib.pyplot as plt
 
-try:
-    hostname = 'host.docker.internal'
-    host_ip = socket.gethostbyname(hostname)
-    MLFLOW_TRACKING_URI = f"http://{host_ip}:5000/"
-    print(f"✅ IP resolvido para MLflow: {MLFLOW_TRACKING_URI}")
-except socket.gaierror:
-    # Fallback caso algo dê errado com o DNS do Docker
-    print("⚠️ Falha ao resolver host.docker.internal, tentando localhost...")
-    MLFLOW_TRACKING_URI = "http://127.0.0.1:5000/"
-
 
 MLFLOW_EXPERIMENT_ID = '467326610704772702'
 FEAST_REPO_PATH = "/home/luisveloso/MLOps_projects/feature_store/feature_repo"
@@ -30,16 +20,16 @@ try:
     hostname = 'host.docker.internal'
     host_ip = socket.gethostbyname(hostname)
     MLFLOW_TRACKING_URI = f"http://{host_ip}:5000/"
-    print(f"✅ IP resolvido para MLflow: {MLFLOW_TRACKING_URI}")
+    print(f"IP resolvido para MLflow: {MLFLOW_TRACKING_URI}")
 except socket.gaierror:
     # Fallback caso algo dê errado com o DNS do Docker
-    print("⚠️ Falha ao resolver host.docker.internal, tentando localhost...")
+    print("Falha ao resolver host.docker.internal, tentando localhost...")
     MLFLOW_TRACKING_URI = "http://127.0.0.1:5000/"
 
 
 def setup_mlflow(**context):
     """Task 1: Configura MLflow tracking"""
-    print("🔧 Configurando MLflow...")
+    print("Configurando MLflow...")
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(experiment_id=MLFLOW_EXPERIMENT_ID)
     
@@ -47,17 +37,17 @@ def setup_mlflow(**context):
     context['ti'].xcom_push(key='mlflow_uri', value=MLFLOW_TRACKING_URI)
     context['ti'].xcom_push(key='experiment_id', value=MLFLOW_EXPERIMENT_ID)
     
-    print(f"✅ MLflow configurado: {MLFLOW_TRACKING_URI}")
+    print(f"MLflow configurado: {MLFLOW_TRACKING_URI}")
 
 
 def load_data_from_feast(**context):
     """Task 2: Carrega dados do Feast"""
-    print(f"📦 Carregando dados do Feast...")
+    print(f"Carregando dados do Feast...")
     
     store = FeatureStore(repo_path=FEAST_REPO_PATH)
     training_data = store.get_saved_dataset(name=DATASET_NAME).to_df()
     
-    print(f"✅ Dados carregados: {training_data.shape}")
+    print(f"Dados carregados: {training_data.shape}")
     print(f"   Colunas: {training_data.columns.tolist()}")
     
     # Salvar dados no XCom (para datasets pequenos) ou em arquivo temporário
@@ -120,7 +110,7 @@ def train_model(**context):
     model = LogisticRegression()
     model.fit(X_train_sorted, y_train)
     
-    print(f"✅ Modelo treinado!")
+    print(f"Modelo treinado!")
     
     # Salvar modelo temporariamente
     import joblib
@@ -134,7 +124,7 @@ def train_model(**context):
 
 def evaluate_model(**context):
     """Task 5: Avalia o modelo"""
-    print("📈 Avaliando modelo...")
+    print("Avaliando modelo...")
     
     import joblib
     
@@ -183,17 +173,17 @@ def create_artifacts(**context):
     disp.plot()
     plt.savefig('/tmp/confusion_matrix.png')
     plt.close()
-    print("✅ Matriz de confusão salva")
+    print("Matriz de confusão salva")
     
     # Lista de features
     with open('/tmp/features.txt', 'w') as f:
         f.write('\n'.join(feature_names))
-    print("✅ Lista de features salva")
+    print("Lista de features salva")
 
 
 def log_to_mlflow(**context):
     """Task 7: Registra tudo no MLflow"""
-    print("📝 Registrando experimento no MLflow...")
+    print("Registrando experimento no MLflow...")
     
     import joblib
     
@@ -252,12 +242,12 @@ def log_to_mlflow(**context):
         # Registrar modelo
         mlflow.sklearn.log_model(model, "model")
         
-        print("✅ Experimento registrado no MLflow!")
+        print("Experimento registrado no MLflow!")
 
 
 def cleanup_temp_files(**context):
     """Task 8: Limpa arquivos temporários"""
-    print("🧹 Limpando arquivos temporários...")
+    print("Limpando arquivos temporários...")
     
     import os
     
@@ -279,6 +269,6 @@ def cleanup_temp_files(**context):
                 os.remove(file_path)
                 print(f"   Removido: {file_path}")
         except Exception as e:
-            print(f"   ⚠️ Erro ao remover {file_path}: {e}")
+            print(f"   Erro ao remover {file_path}: {e}")
     
-    print("✅ Limpeza concluída!")
+    print(" Limpeza concluída!")

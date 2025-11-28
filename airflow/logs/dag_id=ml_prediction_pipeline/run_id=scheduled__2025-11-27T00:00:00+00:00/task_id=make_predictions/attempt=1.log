@@ -1,24 +1,24 @@
-[2025-11-28T11:38:20.308+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
-[2025-11-28T11:38:20.348+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
-[2025-11-28T11:38:20.357+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
-[2025-11-28T11:38:20.358+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
-[2025-11-28T11:38:20.371+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): make_predictions> on 2025-11-27 00:00:00+00:00
-[2025-11-28T11:38:20.381+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=785) is multi-threaded, use of fork() may lead to deadlocks in the child.
-[2025-11-28T11:38:20.382+0000] {standard_task_runner.py:63} INFO - Started process 797 to run task
-[2025-11-28T11:38:20.384+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_pipeline', 'make_predictions', 'scheduled__2025-11-27T00:00:00+00:00', '--job-id', '255', '--raw', '--subdir', 'DAGS_FOLDER/predicao.py', '--cfg-path', '/tmp/tmpum1ixlcd']
-[2025-11-28T11:38:20.387+0000] {standard_task_runner.py:91} INFO - Job 255: Subtask make_predictions
-[2025-11-28T11:38:20.457+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [running]> on host 351eaf83ff35
-[2025-11-28T11:38:20.560+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_pipeline' AIRFLOW_CTX_TASK_ID='make_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T00:00:00+00:00'
-[2025-11-28T11:38:20.561+0000] {taskinstance.py:430} INFO - ::endgroup::
-[2025-11-28T11:38:20.574+0000] {logging_mixin.py:188} INFO - 🔮 Fazendo predições...
-[2025-11-28T11:38:22.504+0000] {logging_mixin.py:188} INFO - ✅ Usando features do modelo: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
-[2025-11-28T11:38:22.510+0000] {logging_mixin.py:188} INFO - ✅ Predições concluídas!
-[2025-11-28T11:38:22.510+0000] {logging_mixin.py:188} INFO -    Total: 2
-[2025-11-28T11:38:22.511+0000] {logging_mixin.py:188} INFO -    Classe 0 (Não diabético): 2
-[2025-11-28T11:38:22.511+0000] {logging_mixin.py:188} INFO -    Classe 1 (Diabético): 0
-[2025-11-28T11:38:22.590+0000] {python.py:237} INFO - Done. Returned value was: None
-[2025-11-28T11:38:22.591+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
-[2025-11-28T11:38:22.614+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_pipeline, task_id=make_predictions, run_id=scheduled__2025-11-27T00:00:00+00:00, execution_date=20251127T000000, start_date=20251128T113820, end_date=20251128T113822
-[2025-11-28T11:38:22.715+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
-[2025-11-28T11:38:22.786+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
-[2025-11-28T11:38:22.790+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-11-28T20:02:44.451+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T20:02:44.501+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T20:02:44.513+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T20:02:44.514+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T20:02:44.528+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): make_predictions> on 2025-11-27 00:00:00+00:00
+[2025-11-28T20:02:44.544+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1123) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T20:02:44.546+0000] {standard_task_runner.py:63} INFO - Started process 1155 to run task
+[2025-11-28T20:02:44.545+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_pipeline', 'make_predictions', 'scheduled__2025-11-27T00:00:00+00:00', '--job-id', '55', '--raw', '--subdir', 'DAGS_FOLDER/predict.py', '--cfg-path', '/tmp/tmp90qeim8a']
+[2025-11-28T20:02:44.550+0000] {standard_task_runner.py:91} INFO - Job 55: Subtask make_predictions
+[2025-11-28T20:02:44.617+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_pipeline.make_predictions scheduled__2025-11-27T00:00:00+00:00 [running]> on host 33d3f194c23b
+[2025-11-28T20:02:44.737+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_pipeline' AIRFLOW_CTX_TASK_ID='make_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T00:00:00+00:00'
+[2025-11-28T20:02:44.739+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T20:02:44.755+0000] {logging_mixin.py:188} INFO - Fazendo predições...
+[2025-11-28T20:02:45.881+0000] {logging_mixin.py:188} INFO - Usando features do modelo: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+[2025-11-28T20:02:45.889+0000] {logging_mixin.py:188} INFO -    Predições concluídas!
+[2025-11-28T20:02:45.890+0000] {logging_mixin.py:188} INFO -    Total: 2
+[2025-11-28T20:02:45.890+0000] {logging_mixin.py:188} INFO -    Classe 0 (Não diabético): 2
+[2025-11-28T20:02:45.891+0000] {logging_mixin.py:188} INFO -    Classe 1 (Diabético): 0
+[2025-11-28T20:02:45.955+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-28T20:02:45.955+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T20:02:45.967+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_pipeline, task_id=make_predictions, run_id=scheduled__2025-11-27T00:00:00+00:00, execution_date=20251127T000000, start_date=20251128T200244, end_date=20251128T200245
+[2025-11-28T20:02:46.009+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T20:02:46.044+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T20:02:46.047+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
