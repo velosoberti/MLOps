@@ -4452,3 +4452,5 @@ File Path                             PID  Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/feature_store.py   3299  2.01s             1           0  1.68s           2025-11-28T12:07:34
 /opt/airflow/dags/etl.py                                     1           0  0.46s           2025-11-28T12:08:01
 ================================================================================
+[2025-11-28T12:08:38.277+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
+[2025-11-28T12:08:38.277+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15
