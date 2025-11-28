@@ -8,7 +8,7 @@ import os
 # Caminhos (ajustados para o ambiente Docker/Airflow se necessário)
 REPO_PATH = "/home/luisveloso/MLOps_projects/feature_store/feature_repo/"
 ENTITY_PATH = "/home/luisveloso/MLOps_projects/data/artifacts/target.parquet"
-DATASET_OUTPUT_PATH = "/home/luisveloso/MLOps_projects/feature_store/data/my_training_dataset.parquet"
+DATASET_OUTPUT_PATH = "/home/luisveloso/MLOps_projects/feature_store/data/my_training_dataset2.parquet"
 
 @dag(
     dag_id="feature_store_cre",
@@ -34,7 +34,8 @@ def feature_store_dag():
                     "predictors_df_feature_view:DiabetesPedigreeFunction",
                     "predictors_df_feature_view:BMI",
                     "predictors_df_feature_view:SkinThickness",
-                    "predictors_df_feature_view:Insulin"
+                    "predictors_df_feature_view:Insulin",
+                    "predictors_df_feature_view:Glucose"
                 ],
             )
 
@@ -46,10 +47,9 @@ def feature_store_dag():
         os.makedirs(os.path.dirname(DATASET_OUTPUT_PATH), exist_ok=True)
 
         print("Persistindo Dataset via Feast...")
-            # 3. CORREÇÃO AQUI: Passe o retrieval_job, não o DataFrame
         store.create_saved_dataset(
                 from_=retrieval_job,  # <--- O Segredo está aqui
-                name="my_training_dataset",
+                name="my_training_dataset-2",
                 storage=SavedDatasetFileStorage(
                     path=DATASET_OUTPUT_PATH
                 )

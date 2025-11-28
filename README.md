@@ -10,7 +10,7 @@
 
 ## 📋 About the Project
 
-This project demonstrates a **complete and professional end-to-end MLOps pipeline implementation** for diabetes prediction, integrating industry-leading tools and practices. The pipeline covers everything from data versioning to model deployment in production, with continuous prediction monitoring.
+This project demonstrates a **complete and professional end-to-end MLOps pipeline implementation** for diabetes prediction, integrating industry-leading tools and practices. The pipeline covers everything from data versioning to model deployment, with continuous prediction monitoring.
 
 ### 🎯 Objectives
 
@@ -271,7 +271,7 @@ graph TB
     "algorithm": "logistic_regression",
     "dataset": "diabetes_dataset",
     "developer": "airflow_pipeline",
-    "environment": "production",
+    "environment": "develop",
     "orchestrator": "airflow"
 }
 ```
