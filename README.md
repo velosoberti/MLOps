@@ -73,16 +73,8 @@ graph TB
         P -->|Read History| S[Monitoring Dashboard<br/>EDA & Metrics]
         M -->|Track Metrics| S
     end
-    
-    style A fill:#e1f5ff
-    style C fill:#e1f5ff
-    style E fill:#fff4e1
-    style F fill:#fff4e1
-    style M fill:#ffccbc
-    style N fill:#ffccbc
-    style Q fill:#c8e6c9
-    style P fill:#e1bee7
-    style S fill:#b2dfdb
+
+
 ```
 
 ### Directory Structure
@@ -167,8 +159,7 @@ graph LR
     C --> D[Add Patient IDs]
     D --> E[Save Parquet]
     
-    style A fill:#e3f2fd
-    style E fill:#c8e6c9
+
 ```
 
 **Steps:**
@@ -197,8 +188,7 @@ graph LR
     B --> C[Create Saved Dataset]
     C --> D[Save Training Dataset]
     
-    style A fill:#e3f2fd
-    style D fill:#c8e6c9
+
 ```
 
 **Steps:**
@@ -237,10 +227,6 @@ graph TB
     F --> G[Log to MLflow]
     G --> H[Cleanup]
     
-    style A fill:#fff9c4
-    style D fill:#ffccbc
-    style G fill:#c5cae9
-    style H fill:#b2dfdb
 ```
 
 **Detailed Steps:**
@@ -306,11 +292,7 @@ graph TB
     D --> E[Make Predictions]
     E --> F[Save Predictions]
     F --> G[Cleanup]
-    
-    style A fill:#e1bee7
-    style E fill:#ffccbc
-    style F fill:#c8e6c9
-    style G fill:#b2dfdb
+  
 ```
 
 **Detailed Steps:**
