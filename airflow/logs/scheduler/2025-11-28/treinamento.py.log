@@ -2343,3 +2343,31 @@
 [2025-11-28T12:06:06.927+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:06.925+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2025-11-28T12:06:06.943+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:06.942+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_training_pipeline to 2025-11-30 00:00:00+00:00, run_after=2025-12-07 00:00:00+00:00
 [2025-11-28T12:06:06.963+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/treinamento.py took 3.009 seconds
+[2025-11-28T12:06:37.855+0000] {processor.py:161} INFO - Started process (PID=3170) to work on /opt/airflow/dags/treinamento.py
+[2025-11-28T12:06:37.857+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/treinamento.py for tasks to queue
+[2025-11-28T12:06:37.858+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:37.858+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/treinamento.py
+[2025-11-28T12:06:40.507+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:40.507+0000] {__init__.py:537} WARNING - mkdir -p failed for path /home/airflow/.cache/matplotlib: [Errno 13] Permission denied: '/home/airflow/.cache/matplotlib'
+[2025-11-28T12:06:40.508+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:40.508+0000] {__init__.py:554} WARNING - Matplotlib created a temporary cache directory at /tmp/matplotlib-xufvu990 because there was an issue with the default path (/home/airflow/.cache/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+[2025-11-28T12:06:40.623+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:40.623+0000] {font_manager.py:1639} INFO - generated new fontManager
+[2025-11-28T12:06:40.809+0000] {logging_mixin.py:188} INFO - ✅ IP resolvido para MLflow: http://192.168.65.254:5000/
+[2025-11-28T12:06:40.809+0000] {logging_mixin.py:188} INFO - ✅ IP resolvido para MLflow: http://192.168.65.254:5000/
+[2025-11-28T12:06:40.812+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/treinamento.py:37 RemovedInAirflow3Warning: Function `days_ago` is deprecated and will be removed in Airflow 3.0. You can achieve equivalent behavior with `pendulum.today('UTC').add(days=-N, ...)`
+[2025-11-28T12:06:40.813+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/treinamento.py:32 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-28T12:06:40.818+0000] {processor.py:840} INFO - DAG(s) 'ml_training_pipeline' retrieved from /opt/airflow/dags/treinamento.py
+[2025-11-28T12:06:40.843+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:40.842+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-28T12:06:40.861+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:40.860+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_training_pipeline to 2025-11-30 00:00:00+00:00, run_after=2025-12-07 00:00:00+00:00
+[2025-11-28T12:06:40.881+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/treinamento.py took 3.030 seconds
+[2025-11-28T12:07:11.018+0000] {processor.py:161} INFO - Started process (PID=3215) to work on /opt/airflow/dags/treinamento.py
+[2025-11-28T12:07:11.019+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/treinamento.py for tasks to queue
+[2025-11-28T12:07:11.021+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:11.020+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/treinamento.py
+[2025-11-28T12:07:13.794+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:13.794+0000] {__init__.py:537} WARNING - mkdir -p failed for path /home/airflow/.cache/matplotlib: [Errno 13] Permission denied: '/home/airflow/.cache/matplotlib'
+[2025-11-28T12:07:13.795+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:13.795+0000] {__init__.py:554} WARNING - Matplotlib created a temporary cache directory at /tmp/matplotlib-id23jm09 because there was an issue with the default path (/home/airflow/.cache/matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+[2025-11-28T12:07:13.946+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:13.945+0000] {font_manager.py:1639} INFO - generated new fontManager
+[2025-11-28T12:07:14.150+0000] {logging_mixin.py:188} INFO - ✅ IP resolvido para MLflow: http://192.168.65.254:5000/
+[2025-11-28T12:07:14.151+0000] {logging_mixin.py:188} INFO - ✅ IP resolvido para MLflow: http://192.168.65.254:5000/
+[2025-11-28T12:07:14.154+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/treinamento.py:37 RemovedInAirflow3Warning: Function `days_ago` is deprecated and will be removed in Airflow 3.0. You can achieve equivalent behavior with `pendulum.today('UTC').add(days=-N, ...)`
+[2025-11-28T12:07:14.155+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/treinamento.py:32 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-28T12:07:14.160+0000] {processor.py:840} INFO - DAG(s) 'ml_training_pipeline' retrieved from /opt/airflow/dags/treinamento.py
+[2025-11-28T12:07:14.187+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:14.186+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-28T12:07:14.205+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:14.205+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_training_pipeline to 2025-11-30 00:00:00+00:00, run_after=2025-12-07 00:00:00+00:00
+[2025-11-28T12:07:14.224+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/treinamento.py took 3.212 seconds

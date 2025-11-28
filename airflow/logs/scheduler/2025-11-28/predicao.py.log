@@ -497,3 +497,30 @@
 [2025-11-28T12:05:43.235+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:05:43.234+0000] {dag.py:3096} INFO - Sync 1 DAGs
 [2025-11-28T12:05:43.253+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:05:43.253+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_prediction_pipeline to 2025-11-28 00:00:00+00:00, run_after=2025-11-29 00:00:00+00:00
 [2025-11-28T12:05:43.271+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predicao.py took 2.523 seconds
+[2025-11-28T12:06:14.018+0000] {processor.py:161} INFO - Started process (PID=3145) to work on /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:14.020+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predicao.py for tasks to queue
+[2025-11-28T12:06:14.021+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:14.021+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:16.728+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:34 RemovedInAirflow3Warning: Function `days_ago` is deprecated and will be removed in Airflow 3.0. You can achieve equivalent behavior with `pendulum.today('UTC').add(days=-N, ...)`
+[2025-11-28T12:06:16.729+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:29 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-28T12:06:16.734+0000] {processor.py:840} INFO - DAG(s) 'ml_prediction_pipeline' retrieved from /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:16.758+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:16.757+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-28T12:06:16.776+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:16.776+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_prediction_pipeline to 2025-11-28 00:00:00+00:00, run_after=2025-11-29 00:00:00+00:00
+[2025-11-28T12:06:16.794+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predicao.py took 2.781 seconds
+[2025-11-28T12:06:46.892+0000] {processor.py:161} INFO - Started process (PID=3190) to work on /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:46.893+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predicao.py for tasks to queue
+[2025-11-28T12:06:46.894+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:46.894+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:49.515+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:34 RemovedInAirflow3Warning: Function `days_ago` is deprecated and will be removed in Airflow 3.0. You can achieve equivalent behavior with `pendulum.today('UTC').add(days=-N, ...)`
+[2025-11-28T12:06:49.518+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:29 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-28T12:06:49.524+0000] {processor.py:840} INFO - DAG(s) 'ml_prediction_pipeline' retrieved from /opt/airflow/dags/predicao.py
+[2025-11-28T12:06:49.548+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:49.548+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-28T12:06:49.580+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:06:49.580+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_prediction_pipeline to 2025-11-28 00:00:00+00:00, run_after=2025-11-29 00:00:00+00:00
+[2025-11-28T12:06:49.610+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predicao.py took 2.723 seconds
+[2025-11-28T12:07:20.051+0000] {processor.py:161} INFO - Started process (PID=3235) to work on /opt/airflow/dags/predicao.py
+[2025-11-28T12:07:20.051+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predicao.py for tasks to queue
+[2025-11-28T12:07:20.053+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:20.053+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predicao.py
+[2025-11-28T12:07:22.025+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:34 RemovedInAirflow3Warning: Function `days_ago` is deprecated and will be removed in Airflow 3.0. You can achieve equivalent behavior with `pendulum.today('UTC').add(days=-N, ...)`
+[2025-11-28T12:07:22.027+0000] {logging_mixin.py:188} WARNING - /opt/airflow/dags/predicao.py:29 RemovedInAirflow3Warning: Param `schedule_interval` is deprecated and will be removed in a future release. Please use `schedule` instead.
+[2025-11-28T12:07:22.032+0000] {processor.py:840} INFO - DAG(s) 'ml_prediction_pipeline' retrieved from /opt/airflow/dags/predicao.py
+[2025-11-28T12:07:22.053+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:22.053+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-11-28T12:07:22.071+0000] {logging_mixin.py:188} INFO - [2025-11-28T12:07:22.071+0000] {dag.py:3954} INFO - Setting next_dagrun for ml_prediction_pipeline to 2025-11-28 00:00:00+00:00, run_after=2025-11-29 00:00:00+00:00
+[2025-11-28T12:07:22.091+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predicao.py took 2.045 seconds
