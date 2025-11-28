@@ -1,0 +1,56 @@
+[2025-11-28T00:45:43.310+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T00:45:43.333+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline_v2.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T00:45:43.339+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline_v2.make_predictions scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T00:45:43.339+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T00:45:43.348+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): make_predictions> on 2025-11-27 00:00:00+00:00
+[2025-11-28T00:45:43.354+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=657) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T00:45:43.355+0000] {standard_task_runner.py:63} INFO - Started process 662 to run task
+[2025-11-28T00:45:43.354+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline_v2', 'make_predictions', 'scheduled__2025-11-27T00:00:00+00:00', '--job-id', '112', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpk6cv02hx']
+[2025-11-28T00:45:43.356+0000] {standard_task_runner.py:91} INFO - Job 112: Subtask make_predictions
+[2025-11-28T00:45:43.408+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline_v2.make_predictions scheduled__2025-11-27T00:00:00+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T00:45:43.474+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline_v2' AIRFLOW_CTX_TASK_ID='make_predictions' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T00:00:00+00:00'
+[2025-11-28T00:45:43.475+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T00:45:43.484+0000] {logging_mixin.py:188} INFO - 🔮 Fazendo predições...
+[2025-11-28T00:45:44.208+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T00:45:44.208+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipe_prediction_monitoring.py", line 182, in make_predictions
+    predictions = model.predict(X)
+                  ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/linear_model/_base.py", line 375, in predict
+    scores = self.decision_function(X)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/linear_model/_base.py", line 352, in decision_function
+    X = validate_data(self, X, accept_sparse="csr", reset=False)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2929, in validate_data
+    _check_feature_names(_estimator, X, reset=reset)
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/utils/validation.py", line 2787, in _check_feature_names
+    raise ValueError(message)
+ValueError: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Glucose
+
+[2025-11-28T00:45:44.221+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=ml_prediction_monitoring_pipeline_v2, task_id=make_predictions, run_id=scheduled__2025-11-27T00:00:00+00:00, execution_date=20251127T000000, start_date=20251128T004543, end_date=20251128T004544
+[2025-11-28T00:45:44.233+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 112 for task make_predictions (The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- Glucose
+; 662)
+[2025-11-28T00:45:44.262+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-11-28T00:45:44.278+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T00:45:44.281+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

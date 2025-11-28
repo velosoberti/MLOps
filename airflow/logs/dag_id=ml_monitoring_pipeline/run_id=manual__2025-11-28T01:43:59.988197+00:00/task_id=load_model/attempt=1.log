@@ -1,0 +1,30 @@
+[2025-11-28T01:44:14.889+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T01:44:14.909+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_monitoring_pipeline.load_model manual__2025-11-28T01:43:59.988197+00:00 [queued]>
+[2025-11-28T01:44:14.918+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_monitoring_pipeline.load_model manual__2025-11-28T01:43:59.988197+00:00 [queued]>
+[2025-11-28T01:44:14.918+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T01:44:14.930+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_model> on 2025-11-28 01:43:59.988197+00:00
+[2025-11-28T01:44:14.937+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=6405) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T01:44:14.938+0000] {standard_task_runner.py:63} INFO - Started process 6408 to run task
+[2025-11-28T01:44:14.937+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_monitoring_pipeline', 'load_model', 'manual__2025-11-28T01:43:59.988197+00:00', '--job-id', '230', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpj1qorhpy']
+[2025-11-28T01:44:14.939+0000] {standard_task_runner.py:91} INFO - Job 230: Subtask load_model
+[2025-11-28T01:44:14.979+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_monitoring_pipeline.load_model manual__2025-11-28T01:43:59.988197+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T01:44:15.044+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_monitoring_pipeline' AIRFLOW_CTX_TASK_ID='load_model' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T01:43:59.988197+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T01:43:59.988197+00:00'
+[2025-11-28T01:44:15.044+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T01:44:15.054+0000] {logging_mixin.py:188} INFO - 🤖 Carregando modelo 'diabete_model'...
+[2025-11-28T01:44:15.056+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/pipe_prediction_monitoring.py:150 FutureWarning: ``mlflow.tracking.client.MlflowClient.get_latest_versions`` is deprecated since 2.9.0. Model registry stages will be removed in a future major release. To learn more about the deprecation of model registry stages, see our migration guide here: https://mlflow.org/docs/latest/model-registry.html#migrating-from-stages
+[2025-11-28T01:44:15.110+0000] {logging_mixin.py:188} INFO - 📦 Versão encontrada: 1
+[2025-11-28T01:44:15.157+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/5 [00:00<?, ?it/s]
+[2025-11-28T01:44:15.172+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 1/5 [00:00<00:00, 70.22it/s]
+[2025-11-28T01:44:15.204+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 2/5 [00:00<00:00, 43.08it/s]
+[2025-11-28T01:44:15.205+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 3/5 [00:00<00:00, 63.17it/s]
+[2025-11-28T01:44:15.206+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 4/5 [00:00<00:00, 82.71it/s]
+[2025-11-28T01:44:15.206+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 102.46it/s]
+[2025-11-28T01:44:15.207+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 101.75it/s]
+[2025-11-28T01:44:15.950+0000] {logging_mixin.py:188} INFO - 📋 Features do modelo: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+[2025-11-28T01:44:15.968+0000] {logging_mixin.py:188} INFO - ✅ Modelo carregado!
+[2025-11-28T01:44:15.989+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-28T01:44:15.989+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T01:44:15.996+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_monitoring_pipeline, task_id=load_model, run_id=manual__2025-11-28T01:43:59.988197+00:00, execution_date=20251128T014359, start_date=20251128T014414, end_date=20251128T014415
+[2025-11-28T01:44:16.040+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T01:44:16.061+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T01:44:16.064+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

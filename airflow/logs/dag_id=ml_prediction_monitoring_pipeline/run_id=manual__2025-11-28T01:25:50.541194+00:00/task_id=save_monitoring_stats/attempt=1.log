@@ -1,0 +1,27 @@
+[2025-11-28T01:26:22.772+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T01:26:22.799+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.save_monitoring_stats manual__2025-11-28T01:25:50.541194+00:00 [queued]>
+[2025-11-28T01:26:22.808+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.save_monitoring_stats manual__2025-11-28T01:25:50.541194+00:00 [queued]>
+[2025-11-28T01:26:22.809+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T01:26:22.822+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): save_monitoring_stats> on 2025-11-28 01:25:50.541194+00:00
+[2025-11-28T01:26:22.831+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=4212) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T01:26:22.832+0000] {standard_task_runner.py:63} INFO - Started process 4221 to run task
+[2025-11-28T01:26:22.833+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline', 'save_monitoring_stats', 'manual__2025-11-28T01:25:50.541194+00:00', '--job-id', '182', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpu2bk2k6j']
+[2025-11-28T01:26:22.836+0000] {standard_task_runner.py:91} INFO - Job 182: Subtask save_monitoring_stats
+[2025-11-28T01:26:22.879+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline.save_monitoring_stats manual__2025-11-28T01:25:50.541194+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T01:26:22.956+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline' AIRFLOW_CTX_TASK_ID='save_monitoring_stats' AIRFLOW_CTX_EXECUTION_DATE='2025-11-28T01:25:50.541194+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-11-28T01:25:50.541194+00:00'
+[2025-11-28T01:26:22.957+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T01:26:22.968+0000] {logging_mixin.py:188} INFO - 💾 Salvando estatísticas de monitoramento...
+[2025-11-28T01:26:22.977+0000] {logging_mixin.py:188} INFO - ✅ Estatísticas salvas: /tmp/monitoring/monitoring_stats_20251128_012622.json
+[2025-11-28T01:26:22.977+0000] {logging_mixin.py:188} INFO - ✅ Histórico de stats atualizado: /tmp/monitoring/monitoring_history.jsonl
+[2025-11-28T01:26:22.983+0000] {logging_mixin.py:188} INFO - ✅ Resumo do monitoramento salvo: /tmp/monitoring/monitoring_summary.csv
+[2025-11-28T01:26:22.983+0000] {logging_mixin.py:188} INFO - 
+📊 Resumo do Histórico de Monitoramento:
+[2025-11-28T01:26:22.983+0000] {logging_mixin.py:188} INFO -    Total de execuções: 1
+[2025-11-28T01:26:22.984+0000] {logging_mixin.py:188} INFO -    Proporção classe 1 (média): 0.000
+[2025-11-28T01:26:22.985+0000] {logging_mixin.py:188} INFO -    Proporção classe 1 (std): nan
+[2025-11-28T01:26:23.007+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-28T01:26:23.008+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T01:26:23.015+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_monitoring_pipeline, task_id=save_monitoring_stats, run_id=manual__2025-11-28T01:25:50.541194+00:00, execution_date=20251128T012550, start_date=20251128T012622, end_date=20251128T012623
+[2025-11-28T01:26:23.047+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T01:26:23.066+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T01:26:23.069+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

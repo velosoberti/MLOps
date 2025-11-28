@@ -1,0 +1,57 @@
+# =============================================================================
+# .gitignore para data/artifacts
+# =============================================================================
+
+# ============================
+# ARQUIVOS GRANDES DE PREDIÇÕES
+# ============================
+# Não versionar arquivos de predições (podem ficar muito grandes)
+predictions/*.parquet
+predictions/*.csv
+
+# Histórico completo de predições (muito grande para git)
+predictions_history.parquet
+predictions_history.csv
+
+# ============================
+# MONITORAMENTO
+# ============================
+# Arquivos individuais de stats (manter apenas nos últimos commits)
+monitoring/monitoring_stats_*.json
+
+# Manter históricos acumulados (pequenos, versionáveis)
+# Esses arquivos SÃO versionados para auditoria
+# !monitoring/monitoring_history.jsonl
+# !monitoring/monitoring_summary.csv
+# !monitoring/drift_history.jsonl
+
+# ============================
+# ANÁLISES E RELATÓRIOS
+# ============================
+# Gráficos podem ser regerados, não versionar
+analysis/*.png
+analysis/*.jpg
+analysis/*.pdf
+
+# Relatórios JSON/TXT podem ser versionados
+# !analysis/summary_report.json
+# !analysis/summary_report.txt
+
+# ============================
+# ARQUIVOS TEMPORÁRIOS
+# ============================
+*.tmp
+*.temp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# ============================
+# MANTER ESTRUTURA DE DIRETÓRIOS
+# ============================
+# Garante que as pastas vazias sejam mantidas no git
+!predictions/.gitkeep
+!monitoring/.gitkeep
+!analysis/.gitkeep
+!.gitkeep

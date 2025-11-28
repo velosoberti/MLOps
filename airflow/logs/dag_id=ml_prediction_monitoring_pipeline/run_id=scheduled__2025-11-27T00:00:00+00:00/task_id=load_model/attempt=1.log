@@ -1,0 +1,96 @@
+[2025-11-28T00:43:55.411+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T00:43:55.435+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T00:43:55.446+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T00:43:55.446+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T00:43:55.456+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_model> on 2025-11-27 00:00:00+00:00
+[2025-11-28T00:43:55.464+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=338) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T00:43:55.464+0000] {standard_task_runner.py:63} INFO - Started process 372 to run task
+[2025-11-28T00:43:55.465+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline', 'load_model', 'scheduled__2025-11-27T00:00:00+00:00', '--job-id', '102', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmpv3qviq67']
+[2025-11-28T00:43:55.467+0000] {standard_task_runner.py:91} INFO - Job 102: Subtask load_model
+[2025-11-28T00:43:55.513+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T00:43:55.579+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline' AIRFLOW_CTX_TASK_ID='load_model' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T00:00:00+00:00'
+[2025-11-28T00:43:55.580+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T00:43:55.588+0000] {logging_mixin.py:188} INFO - 🤖 Carregando modelo 'log_reg_diabetes_predict'...
+[2025-11-28T00:43:55.590+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/pipe_prediction_monitoring.py:145 FutureWarning: ``mlflow.tracking.client.MlflowClient.get_latest_versions`` is deprecated since 2.9.0. Model registry stages will be removed in a future major release. To learn more about the deprecation of model registry stages, see our migration guide here: https://mlflow.org/docs/latest/model-registry.html#migrating-from-stages
+[2025-11-28T00:43:55.649+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T00:43:55.649+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/pipe_prediction_monitoring.py", line 145, in load_model
+    latest_versions = client.get_latest_versions(MODEL_NAME)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/annotations.py", line 186, in deprecated_func
+    return obj(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/client.py", line 4101, in get_latest_versions
+    self._raise_if_prompt(name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/client.py", line 5455, in _raise_if_prompt
+    rm = self.get_registered_model(name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/client.py", line 4022, in get_registered_model
+    rm = self._get_registry_client().get_registered_model(name)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/tracking/_model_registry/client.py", line 180, in get_registered_model
+    return self.store.get_registered_model(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/store/model_registry/rest_store.py", line 205, in get_registered_model
+    response_proto = self._call_endpoint(GetRegisteredModel, req_body)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/store/model_registry/base_rest_store.py", line 42, in _call_endpoint
+    return call_endpoint(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/rest_utils.py", line 596, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/mlflow/utils/rest_utils.py", line 315, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: RESOURCE_DOES_NOT_EXIST: Registered Model with name=log_reg_diabetes_predict not found
+[2025-11-28T00:43:55.666+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=ml_prediction_monitoring_pipeline, task_id=load_model, run_id=scheduled__2025-11-27T00:00:00+00:00, execution_date=20251127T000000, start_date=20251128T004355, end_date=20251128T004355
+[2025-11-28T00:43:55.678+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 102 for task load_model (RESOURCE_DOES_NOT_EXIST: Registered Model with name=log_reg_diabetes_predict not found; 372)
+[2025-11-28T00:43:55.719+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-11-28T00:43:55.737+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T00:43:55.740+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-11-28T01:19:13.638+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-11-28T01:19:13.666+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T01:19:13.677+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [queued]>
+[2025-11-28T01:19:13.677+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-11-28T01:19:13.689+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_model> on 2025-11-27 00:00:00+00:00
+[2025-11-28T01:19:13.698+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=3145) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-11-28T01:19:13.699+0000] {standard_task_runner.py:63} INFO - Started process 3150 to run task
+[2025-11-28T01:19:13.701+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'ml_prediction_monitoring_pipeline', 'load_model', 'scheduled__2025-11-27T00:00:00+00:00', '--job-id', '150', '--raw', '--subdir', 'DAGS_FOLDER/pipe_prediction_monitoring.py', '--cfg-path', '/tmp/tmp1k7i6dpw']
+[2025-11-28T01:19:13.704+0000] {standard_task_runner.py:91} INFO - Job 150: Subtask load_model
+[2025-11-28T01:19:13.762+0000] {task_command.py:426} INFO - Running <TaskInstance: ml_prediction_monitoring_pipeline.load_model scheduled__2025-11-27T00:00:00+00:00 [running]> on host 0c5da11f058c
+[2025-11-28T01:19:13.849+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_EMAIL='data-team@example.com' AIRFLOW_CTX_DAG_OWNER='data_science_team' AIRFLOW_CTX_DAG_ID='ml_prediction_monitoring_pipeline' AIRFLOW_CTX_TASK_ID='load_model' AIRFLOW_CTX_EXECUTION_DATE='2025-11-27T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-27T00:00:00+00:00'
+[2025-11-28T01:19:13.850+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-11-28T01:19:13.863+0000] {logging_mixin.py:188} INFO - 🤖 Carregando modelo 'diabete_model'...
+[2025-11-28T01:19:13.866+0000] {logging_mixin.py:188} WARNING - /opt/***/dags/pipe_prediction_monitoring.py:145 FutureWarning: ``mlflow.tracking.client.MlflowClient.get_latest_versions`` is deprecated since 2.9.0. Model registry stages will be removed in a future major release. To learn more about the deprecation of model registry stages, see our migration guide here: https://mlflow.org/docs/latest/model-registry.html#migrating-from-stages
+[2025-11-28T01:19:13.944+0000] {logging_mixin.py:188} INFO - 📦 Versão encontrada: 1
+[2025-11-28T01:19:14.012+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:   0%|          | 0/5 [00:00<?, ?it/s]
+[2025-11-28T01:19:14.049+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  20%|##        | 1/5 [00:00<00:00, 28.14it/s]
+[2025-11-28T01:19:14.087+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  40%|####      | 2/5 [00:00<00:00, 26.78it/s]
+[2025-11-28T01:19:14.089+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  60%|######    | 3/5 [00:00<00:00, 39.04it/s]
+[2025-11-28T01:19:14.105+0000] {logging_mixin.py:188} WARNING - Downloading artifacts:  80%|########  | 4/5 [00:00<00:00, 43.33it/s]
+[2025-11-28T01:19:14.112+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 50.09it/s]
+[2025-11-28T01:19:14.113+0000] {logging_mixin.py:188} WARNING - Downloading artifacts: 100%|##########| 5/5 [00:00<00:00, 49.80it/s]
+[2025-11-28T01:19:14.973+0000] {logging_mixin.py:188} INFO - 📋 Features do modelo: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+[2025-11-28T01:19:14.992+0000] {logging_mixin.py:188} INFO - ✅ Modelo carregado!
+[2025-11-28T01:19:15.018+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-11-28T01:19:15.019+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-11-28T01:19:15.028+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ml_prediction_monitoring_pipeline, task_id=load_model, run_id=scheduled__2025-11-27T00:00:00+00:00, execution_date=20251127T000000, start_date=20251128T011913, end_date=20251128T011915
+[2025-11-28T01:19:15.083+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-11-28T01:19:15.109+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-11-28T01:19:15.111+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

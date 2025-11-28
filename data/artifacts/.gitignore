@@ -1,0 +1,45 @@
+# =============================================================================
+# .gitignore para data/artifacts
+# =============================================================================
+
+# ============================
+# ARQUIVOS GRANDES DE PREDIÇÕES
+# ============================
+predictions/*.parquet
+predictions/*.csv
+predictions_history.parquet
+predictions_history.csv
+
+# ============================
+# MONITORAMENTO (Manter históricos)
+# ============================
+monitoring/monitoring_stats_*.json
+# Históricos acumulados SÃO versionados:
+!monitoring/monitoring_history.jsonl
+!monitoring/monitoring_summary.csv
+!monitoring/drift_history.jsonl
+
+# ============================
+# ANÁLISES (Regeráveis)
+# ============================
+analysis/*.png
+analysis/*.jpg
+analysis/*.pdf
+
+# ============================
+# TEMPORÁRIOS
+# ============================
+*.tmp
+*.temp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# ============================
+# MANTER ESTRUTURA
+# ============================
+!predictions/.gitkeep
+!monitoring/.gitkeep
+!analysis/.gitkeep
+!.gitkeep
