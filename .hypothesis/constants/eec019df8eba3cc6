@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/config/__init__.py
+# hypothesis_version: 6.151.4
+
+['Settings', 'settings']

@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/config/settings.py
+# hypothesis_version: 6.151.4
+
+[5005, 65535, '.env', '0.0.0.0', 'CRITICAL', 'DEBUG', 'ERROR', 'INFO', 'ML_', 'Path to log file', 'Port for Flask API', 'WARNING', 'api.log', 'api_port', 'artifacts', 'data/artifacts', 'data/diabetes.csv', 'diabete_model', 'diabetes.csv', 'ignore', 'log_level', 'my_training_dataset', 'n_patients', 'predictions', 'utf-8']

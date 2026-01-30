@@ -3,7 +3,7 @@ Script principal para executar predições manuais
 Importa o framework e define os dados de exemplo
 """
 import sys
-from framework.manual_predict_by_api_request import (
+from src.manual_predict_by_api_request import (
     PredictionClient,
     example_single_prediction,
     example_batch_prediction,
@@ -13,7 +13,7 @@ from framework.manual_predict_by_api_request import (
 )
 
 
-# ==================== EXEMPLOS PRÉ-DEFINIDOS ====================
+#  EXEMPLOS PRÉ-DEFINIDOS 
 
 EXAMPLE_PATIENTS = {
     "alto_risco": {
@@ -47,7 +47,7 @@ EXAMPLE_PATIENTS = {
 }
 
 
-# ==================== MAIN ====================
+#  MAIN 
 
 def main():
     """Função principal."""

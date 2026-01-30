@@ -1,0 +1,20 @@
+2026-01-30 12:50:16,372 - src.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2026-01-30 12:50:16,758 - src.api_consctructor - ERROR - Erro ao carregar modelo: INVALID_PARAMETER_VALUE: Missing value for required parameter 'experiment_id'. See the API docs for more information about request parameters.
+2026-01-30 12:50:16,768 - src.api_consctructor - ERROR - Traceback (most recent call last):
+  File "/home/luisveloso/MLOps_projects/src/api_consctructor.py", line 99, in load_model
+    mlflow.set_experiment(experiment_id=self.experiment_id)
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/tracking/fluent.py", line 205, in set_experiment
+    experiment = client.get_experiment(experiment_id)
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/tracking/_tracking_service/client.py", line 270, in get_experiment
+    return self.store.get_experiment(experiment_id)
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/store/tracking/rest_store.py", line 269, in get_experiment
+    response_proto = self._call_endpoint(GetExperiment, req_body)
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/store/tracking/rest_store.py", line 203, in _call_endpoint
+    return call_endpoint(
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/utils/rest_utils.py", line 596, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "/home/luisveloso/MLOps_projects/.venv/lib/python3.10/site-packages/mlflow/utils/rest_utils.py", line 315, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: INVALID_PARAMETER_VALUE: Missing value for required parameter 'experiment_id'. See the API docs for more information about request parameters.
+
+2026-01-30 12:50:16,768 - src.api_consctructor - CRITICAL - Critical failure initializing API: INVALID_PARAMETER_VALUE: Missing value for required parameter 'experiment_id'. See the API docs for more information about request parameters.

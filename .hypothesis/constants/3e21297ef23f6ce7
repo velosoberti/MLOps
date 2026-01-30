@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/src/api_request.py
+# hypothesis_version: 6.151.4
+
+[0.627, 26.6, 33.6, 148, 200, 400, 404, 405, 503, '\nHeaders:', '/health', '/invalid', '/model/info', '/predict', '/predict/batch', '=', 'BMI', 'Batch Vazio', 'Batch Válido', 'Batch sem Instances', 'Body Vazio', 'Content-Type', 'Deve conter erros', 'Endpoint Inexistente', 'Feature Null', 'Features Faltantes', 'GET', 'Glucose', 'Headers de Segurança', 'Health Check', 'Insulin', 'Model Info', 'Método Não Permitido', 'POST', 'Predição Válida', 'RESUMO DOS TESTES', 'SkinThickness', 'X-', 'X-Frame-Options', 'X-Response-Time', 'available_endpoints', 'confidence', 'diabetes', 'error', 'errors', 'faltantes', 'features', 'healthy', 'instance_index', 'instances', 'invalid', 'message', 'missing', 'model_name', 'model_version', 'no_diabetes', 'not a json', 'null', 'prediction', 'predictions', 'score', 'services', 'status', 'text/plain', 'total', 'unhealthy', '✅', '❌']

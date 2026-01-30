@@ -327,3 +327,27 @@
 2025-11-28 17:39:35,085 - framework.api_consctructor - INFO -  Batch concluído: 3/3 sucessos
 2025-11-28 17:39:35,085 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.006s
 2025-11-28 17:39:35,086 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:35] "POST /predict/batch HTTP/1.1" 200 -
+2026-01-30 11:47:00,979 - src.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2026-01-30 11:47:04,932 - src.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v1
+2026-01-30 11:47:04,933 - src.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2026-01-30 11:47:04,933 - src.api_consctructor - INFO -  API inicializada com sucesso
+2026-01-30 11:47:04,937 - src.api_consctructor - INFO - ================================================================================
+2026-01-30 11:47:04,938 - src.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2026-01-30 11:47:04,938 - src.api_consctructor - INFO - ================================================================================
+2026-01-30 11:47:04,938 - src.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2026-01-30 11:47:04,938 - src.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2026-01-30 11:47:04,938 - src.api_consctructor - INFO -  Modelo: diabete_model v1
+2026-01-30 11:47:04,939 - src.api_consctructor - INFO -  Features: 4
+2026-01-30 11:47:04,939 - src.api_consctructor - INFO - ================================================================================
+2026-01-30 11:47:04,939 - src.api_consctructor - INFO - Endpoints disponíveis:
+2026-01-30 11:47:04,939 - src.api_consctructor - INFO -   GET  /health
+2026-01-30 11:47:04,939 - src.api_consctructor - INFO -   GET  /model/info
+2026-01-30 11:47:04,940 - src.api_consctructor - INFO -   POST /predict
+2026-01-30 11:47:04,940 - src.api_consctructor - INFO -   POST /predict/batch
+2026-01-30 11:47:04,940 - src.api_consctructor - INFO -   POST /model/reload
+2026-01-30 11:47:04,940 - src.api_consctructor - INFO - ================================================================================
+2026-01-30 11:47:04,954 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2026-01-30 11:47:04,955 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
