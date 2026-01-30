@@ -13,7 +13,6 @@ concurrency:
 
 env:
   PYTHON_VERSION: "3.10"
-  UV_CACHE_DIR: /tmp/.uv-cache
 
 jobs:
   lint:
@@ -26,14 +25,15 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
         with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
+          version: "latest"
 
       - name: Set up Python
         run: uv python install ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
-        run: uv sync --dev
+      - name: Create venv and install dependencies
+        run: |
+          uv venv
+          uv sync --dev
 
       - name: Run ruff check
         run: uv run ruff check .
@@ -51,14 +51,15 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
         with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
+          version: "latest"
 
       - name: Set up Python
         run: uv python install ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
-        run: uv sync --dev
+      - name: Create venv and install dependencies
+        run: |
+          uv venv
+          uv sync --dev
 
       - name: Run mypy
         run: uv run mypy src/ etl_functions/ config/
@@ -73,24 +74,18 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
         with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
+          version: "latest"
 
       - name: Set up Python
         run: uv python install ${{ env.PYTHON_VERSION }}
 
-      - name: Install dependencies
-        run: uv sync --dev
+      - name: Create venv and install dependencies
+        run: |
+          uv venv
+          uv sync --dev
 
       - name: Run pytest with coverage
-        run: uv run pytest tests/ --cov=src --cov=etl_functions --cov=config --cov-report=xml --cov-report=term-missing
-
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage.xml
-          retention-days: 7
+        run: uv run pytest tests/ --cov=src --cov=etl_functions --cov=config --cov-report=term-missing
 
   lock-file-check:
     name: Lock File Validation
@@ -102,8 +97,7 @@ jobs:
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
         with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
+          version: "latest"
 
       - name: Set up Python
         run: uv python install ${{ env.PYTHON_VERSION }}
