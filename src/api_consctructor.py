@@ -24,7 +24,7 @@ try:
 
     Flask: Any = _flask.Flask  # type: ignore[attr-defined]
     jsonify: Any = _flask.jsonify  # type: ignore[attr-defined]
-    request: Any = _flask.request
+    request: Any = _flask.request  # type: ignore[attr-defined]
     Response: Any = _flask.Response  # type: ignore[attr-defined]
 finally:
     sys.path = _original_path

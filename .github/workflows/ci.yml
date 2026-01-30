@@ -6,111 +6,86 @@ on:
   push:
     branches: [main, develop]
 
-# Cancel in-progress runs for the same branch
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
-env:
-  PYTHON_VERSION: "3.10"
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Python
-        run: uv python install ${{ env.PYTHON_VERSION }}
-
-      - name: Create venv and install dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      
+      - name: Install dependencies
         run: |
-          echo "Creating virtual environment..."
-          uv venv
-          echo "Installing dependencies..."
-          uv sync --dev
-          echo "Checking if ruff is installed..."
-          uv run which ruff || echo "ruff not found!"
-          uv run ruff --version || echo "ruff version check failed!"
-
+          python -m pip install --upgrade pip
+          pip install ruff
+      
       - name: Run ruff check
-        run: uv run ruff check .
-
+        run: ruff check .
+      
       - name: Run ruff format check
-        run: uv run ruff format --check .
+        run: ruff format --check .
 
   type-check:
     name: Type Check
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Python
-        run: uv python install ${{ env.PYTHON_VERSION }}
-
-      - name: Create venv and install dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      
+      - name: Install dependencies
         run: |
-          uv venv
-          uv sync --dev
-
+          python -m pip install --upgrade pip
+          pip install mypy pydantic pydantic-settings pandas-stubs types-requests
+      
       - name: Run mypy
-        run: uv run mypy src/ etl_functions/ config/
+        run: mypy src/ etl_functions/ config/
 
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-
+      - uses: actions/checkout@v4
+      
       - name: Set up Python
-        run: uv python install ${{ env.PYTHON_VERSION }}
-
-      - name: Create venv and install dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      
+      - name: Install dependencies
         run: |
-          uv venv
-          uv sync --dev
-
-      - name: Run pytest with coverage
-        run: uv run pytest tests/ --cov=src --cov=etl_functions --cov=config --cov-report=term-missing
+          python -m pip install --upgrade pip
+          pip install pytest pytest-cov hypothesis pydantic pydantic-settings pandas numpy scikit-learn mlflow feast
+      
+      - name: Run pytest
+        run: pytest tests/ --cov=src --cov=etl_functions --cov=config --cov-report=term-missing -v
 
   lock-file-check:
     name: Lock File Validation
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+      
       - name: Set up uv
         uses: astral-sh/setup-uv@v4
-        with:
-          version: "latest"
-
+      
       - name: Set up Python
-        run: uv python install ${{ env.PYTHON_VERSION }}
-
+        run: uv python install 3.10
+      
       - name: Verify uv.lock is in sync
         run: uv lock --check
 
-  # Summary job that depends on all other jobs
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest
