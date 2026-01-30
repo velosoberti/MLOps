@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main, develop]
   push:
-    branches: [main]
+    branches: [main, develop]
 
 # Cancel in-progress runs for the same branch
 concurrency:

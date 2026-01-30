@@ -3991,3 +3991,157 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'config'
 [2026-01-30T17:14:30.819+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
 [2026-01-30T17:14:30.836+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.346 seconds
+[2026-01-30T17:15:03.241+0000] {processor.py:161} INFO - Started process (PID=9959) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:15:03.243+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:15:03.244+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:03.244+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:15:03.638+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:03.636+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:15:03.639+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:15:03.671+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.436 seconds
+[2026-01-30T17:15:36.512+0000] {processor.py:161} INFO - Started process (PID=9987) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:15:36.513+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:15:36.514+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:36.513+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:15:36.846+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:36.842+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:15:36.846+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:15:36.883+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.378 seconds
+[2026-01-30T17:16:08.758+0000] {processor.py:161} INFO - Started process (PID=10015) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:16:08.760+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:16:08.761+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:08.761+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:16:09.099+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:09.093+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:16:09.100+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:16:09.139+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.387 seconds
+[2026-01-30T17:16:41.105+0000] {processor.py:161} INFO - Started process (PID=10043) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:16:41.106+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:16:41.107+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:41.106+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:16:41.418+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:41.414+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:16:41.419+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:16:41.448+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.352 seconds
+[2026-01-30T17:17:12.176+0000] {processor.py:161} INFO - Started process (PID=10071) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:17:12.179+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:17:12.180+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:12.180+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:17:14.035+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:14.033+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:17:14.035+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:17:14.059+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.322 seconds
+[2026-01-30T17:17:46.896+0000] {processor.py:161} INFO - Started process (PID=10099) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:17:46.897+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:17:46.899+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:46.898+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:17:47.381+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:47.379+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:17:47.383+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:17:47.409+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.524 seconds
+[2026-01-30T17:18:19.325+0000] {processor.py:161} INFO - Started process (PID=10127) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:18:19.326+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:18:19.327+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:19.327+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:18:19.598+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:19.597+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:18:19.599+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:18:19.619+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.299 seconds
+[2026-01-30T17:18:52.278+0000] {processor.py:161} INFO - Started process (PID=10155) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:18:52.279+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:18:52.279+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:52.279+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:18:52.638+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:52.635+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:18:52.639+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:18:52.671+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.399 seconds
+[2026-01-30T17:19:24.686+0000] {processor.py:161} INFO - Started process (PID=10183) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:19:24.689+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:19:24.690+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:24.690+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:19:25.073+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:25.068+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:19:25.074+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:19:25.105+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.427 seconds
+[2026-01-30T17:19:57.853+0000] {processor.py:161} INFO - Started process (PID=10211) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:19:57.854+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:19:57.855+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:57.854+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:19:58.180+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:58.178+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:19:58.180+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:19:58.207+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.362 seconds
+[2026-01-30T17:20:30.155+0000] {processor.py:161} INFO - Started process (PID=10239) to work on /opt/airflow/dags/etl.py
+[2026-01-30T17:20:30.159+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/etl.py for tasks to queue
+[2026-01-30T17:20:30.160+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:30.160+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/etl.py
+[2026-01-30T17:20:30.546+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:30.543+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/etl.py", line 13, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:20:30.546+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/etl.py
+[2026-01-30T17:20:30.579+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/etl.py took 0.434 seconds

@@ -3028,3 +3028,157 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'config'
 [2026-01-30T17:14:18.580+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
 [2026-01-30T17:14:18.600+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 3.481 seconds
+[2026-01-30T17:14:48.930+0000] {processor.py:161} INFO - Started process (PID=9943) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:14:48.930+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:14:48.931+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:14:48.931+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:14:51.285+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:14:51.284+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:14:51.286+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:14:51.320+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.395 seconds
+[2026-01-30T17:15:21.424+0000] {processor.py:161} INFO - Started process (PID=9971) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:21.427+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:15:21.429+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:21.428+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:24.779+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:24.777+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:15:24.779+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:24.802+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 3.389 seconds
+[2026-01-30T17:15:54.984+0000] {processor.py:161} INFO - Started process (PID=9999) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:54.985+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:15:54.985+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:54.985+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:57.315+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:15:57.313+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:15:57.316+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:15:57.341+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.364 seconds
+[2026-01-30T17:16:27.830+0000] {processor.py:161} INFO - Started process (PID=10027) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:16:27.832+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:16:27.833+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:27.833+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:16:30.198+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:16:30.197+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:16:30.199+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:16:30.218+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.394 seconds
+[2026-01-30T17:17:00.553+0000] {processor.py:161} INFO - Started process (PID=10055) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:00.555+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:17:00.557+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:00.556+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:02.843+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:02.842+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:17:02.844+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:02.862+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.317 seconds
+[2026-01-30T17:17:33.162+0000] {processor.py:161} INFO - Started process (PID=10083) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:33.164+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:17:33.165+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:33.165+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:36.283+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:17:36.281+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:17:36.284+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:17:36.311+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 3.156 seconds
+[2026-01-30T17:18:06.509+0000] {processor.py:161} INFO - Started process (PID=10111) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:06.510+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:18:06.511+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:06.511+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:08.606+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:08.605+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:18:08.607+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:08.624+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.121 seconds
+[2026-01-30T17:18:38.716+0000] {processor.py:161} INFO - Started process (PID=10139) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:38.717+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:18:38.718+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:38.717+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:41.413+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:18:41.411+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:18:41.413+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:18:41.440+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.730 seconds
+[2026-01-30T17:19:11.804+0000] {processor.py:161} INFO - Started process (PID=10167) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:11.806+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:19:11.808+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:11.807+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:14.839+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:14.837+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:19:14.840+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:14.869+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 3.074 seconds
+[2026-01-30T17:19:45.308+0000] {processor.py:161} INFO - Started process (PID=10205) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:45.311+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:19:45.314+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:45.313+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:48.110+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:19:48.109+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:19:48.111+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:19:48.131+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 2.834 seconds
+[2026-01-30T17:20:18.421+0000] {processor.py:161} INFO - Started process (PID=10233) to work on /opt/airflow/dags/feature_store.py
+[2026-01-30T17:20:18.422+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/feature_store.py for tasks to queue
+[2026-01-30T17:20:18.423+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:18.423+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:20:21.603+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:21.592+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/feature_store.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/feature_store.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:20:21.604+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/feature_store.py
+[2026-01-30T17:20:21.645+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/feature_store.py took 3.231 seconds
