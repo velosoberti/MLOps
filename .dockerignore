@@ -1,0 +1,85 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv
+venv
+ENV
+env
+.mypy_cache
+.pytest_cache
+.hypothesis
+.ruff_cache
+.coverage
+htmlcov
+coverage.xml
+*.egg-info
+dist
+build
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# Testing
+tests/
+.pytest_cache/
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# CI/CD
+.github/
+
+# Kiro specs
+.kiro/
+
+# DVC
+.dvc
+.dvcignore
+dvc_cache
+
+# Airflow (not needed for API container)
+airflow/
+
+# Streamlit (not needed for API container)
+eda_streamlit/
+
+# MLflow local data (should be external)
+mlflow/
+
+# Feature store local data
+feature_store/data/
+
+# Data files (should be mounted or external)
+data/*.csv
+data/artifacts/
+
+# Logs
+*.log
+logs/
+
+# Environment files (secrets should be injected at runtime)
+.env
+.env.*
+!.env.example
+
+# Jupyter
+*.ipynb
+.ipynb_checkpoints/
+
+# Misc
+*.bak
+*.tmp
+Makefile

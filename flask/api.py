@@ -1,430 +1,415 @@
 """
-API Flask Profissional para Predição de Diabetes
-Com tratamento de erros, validação, logging e health check completo
+Flask API for Diabetes Prediction.
+
+Professional API with error handling, validation, logging, and health checks.
+Uses application factory pattern for testability and configuration injection.
 """
 
-from flask import Flask, request, jsonify
-import mlflow
+from __future__ import annotations
+
+import os
+import sys
+from datetime import datetime
+from typing import Any
+
+# Handle path for imports - add parent directory for local modules FIRST
+_parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+if _parent_dir not in sys.path:
+    sys.path.insert(0, _parent_dir)
+
+# Import Flask - the api_consctructor module handles the import correctly
+# Import Pydantic models for request validation
+# Use importlib to avoid conflict with Flask package
+import importlib.util
+
 import pandas as pd
 
-from datetime import datetime
-from typing import Dict, Any, Optional
-import sys
-from functools import wraps
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from framework.api_consctructor import *
+import mlflow
+from config.settings import Settings, settings
+from src.api_consctructor import (
+    Flask,
+    InputValidator,
+    ModelManager,
+    handle_errors,
+    jsonify,
+    log_request,
+    logger,
+    request,
+)
 
-# ================== INICIALIZAÇÃO ==================
-app = Flask(__name__)
-app.config['JSON_SORT_KEYS'] = False
+_models_path = os.path.join(os.path.dirname(__file__), "models.py")
+_spec = importlib.util.spec_from_file_location("flask_models", _models_path)
+if _spec is None:
+    raise ImportError("Failed to load flask_models spec")
+_flask_models = importlib.util.module_from_spec(_spec)  # type: ignore[arg-type]
+if _spec.loader is None:
+    raise ImportError("Failed to get loader for flask_models")
+_spec.loader.exec_module(_flask_models)  # type: ignore[union-attr]
+PredictionRequest = _flask_models.PredictionRequest
+BatchPredictionRequest = _flask_models.BatchPredictionRequest
+validate_prediction_request = _flask_models.validate_prediction_request
+validate_batch_request = _flask_models.validate_batch_request
 
-# Inicializa gerenciador de modelo
-try:
-    model_manager = ModelManager()
-    logger.info(" API inicializada com sucesso")
-except Exception as e:
-    logger.critical(f" Falha crítica ao inicializar API: {e}")
-    sys.exit(1)
 
+def create_app(config: Settings | None = None) -> Flask:
+    """Application factory for Flask app.
 
-# ================== ENDPOINTS ==================
+    Creates and configures a Flask application with the provided settings.
+    Initializes ModelManager with injected configuration for testability.
 
-@app.route("/health", methods=['GET'])
-@log_request
-def health_check():
-    """
-    Health check completo da API.
-    
-    Verifica:
-    - Status da API
-    - Conexão com MLflow
-    - Status do modelo
-    - Disponibilidade de features
-    
+    Args:
+        config: Optional settings override for testing. If None, uses global settings.
+
     Returns:
-        JSON com status detalhado
+        Configured Flask application.
     """
+    cfg = config or settings
+    app = Flask(__name__)
+    app.config["JSON_SORT_KEYS"] = False
+
+    # Store config in app for access in routes
+    app.config["ML_SETTINGS"] = cfg
+
+    # Initialize model manager with injected config
     try:
-        # Verifica modelo
-        model_health = model_manager.is_healthy()
-        
-        # Verifica conexão com MLflow
-        mlflow_healthy = False
-        mlflow_error = None
-        try:
-            client = mlflow.client.MlflowClient()
-            client.get_experiment(EXPERIMENT_ID)
-            mlflow_healthy = True
-        except Exception as e:
-            mlflow_error = str(e)
-            logger.error(f" MLflow não acessível: {e}")
-        
-        # Determina status geral
-        all_healthy = model_health["model_loaded"] and mlflow_healthy
-        status_code = 200 if all_healthy else 503
-        
-        response = {
-            "status": "healthy" if all_healthy else "unhealthy",
-            "timestamp": datetime.now().isoformat(),
-            "services": {
-                "api": "running",
-                "mlflow": {
-                    "status": "connected" if mlflow_healthy else "disconnected",
-                    "tracking_uri": MLFLOW_TRACKING_URI,
-                    "error": mlflow_error
-                },
-                "model": model_health
-            }
-        }
-        
-        if all_healthy:
-            logger.info(" Health check: HEALTHY")
-        else:
-            logger.warning("  Health check: UNHEALTHY")
-        
-        return jsonify(response), status_code
-        
+        model_manager = ModelManager(
+            tracking_uri=cfg.mlflow_tracking_uri, experiment_id=cfg.mlflow_experiment_id, model_name=cfg.model_name
+        )
+        app.config["MODEL_MANAGER"] = model_manager
+        logger.info("API initialized successfully")
     except Exception as e:
-        logger.error(f" Erro no health check: {e}")
-        return jsonify({
-            "status": "error",
-            "message": str(e),
-            "timestamp": datetime.now().isoformat()
-        }), 500
+        logger.critical(f"Critical failure initializing API: {e}")
+        app.config["MODEL_MANAGER"] = None
+        app.config["MODEL_INIT_ERROR"] = str(e)
+
+    # Register routes
+    _register_routes(app)
+    _register_error_handlers(app)
+    _register_hooks(app)
+
+    return app
 
 
-@app.route("/predict", methods=['POST'])
-@log_request
-@handle_errors
-def predict():
-    """
-    Endpoint de predição.
-    
-    Request Body (JSON):
-        {
-            "Glucose": 148,
-            "BMI": 33.6,
-            "DiabetesPedigreeFunction": 0.627,
-            "Insulin": 0,
-            "SkinThickness": 35
-        }
-    
-    Response (JSON):
-        {
-            "score": 0.6523,
-            "prediction": "diabetes",
-            "confidence": 0.6523,
-            "model_version": 3,
-            "timestamp": "2025-11-26T10:30:00"
-        }
-    """
-    # Valida Content-Type
-    if not request.is_json:
-        return jsonify({
-            "error": "Invalid Content-Type",
-            "message": "Content-Type deve ser 'application/json'",
-            "received": request.content_type
-        }), 400
-    
-    # Obtém dados
-    data = request.get_json(silent=True)
-    
-    # Valida entrada
-    is_valid, error_message = InputValidator.validate_prediction_input(
-        data, 
-        model_manager.feature_names
-    )
-    
-    if not is_valid:
-        logger.warning(f"  Validação falhou: {error_message}")
-        return jsonify({
-            "error": "Invalid Input",
-            "message": error_message,
-            "expected_features": model_manager.feature_names,
-            "received_features": list(data.keys()) if data else []
-        }), 400
-    
-    # Cria DataFrame
-    df = pd.DataFrame([data])
-    
-    # Faz predição
-    score = model_manager.predict(df)
-    prediction_label = "diabetes" if score >= 0.5 else "no_diabetes"
-    
-    # Monta resposta
-    response = {
-        "score": round(score, 4),
-        "prediction": prediction_label,
-        "confidence": round(score if score >= 0.5 else 1 - score, 4),
-        "model_version": model_manager.model_version,
-        "timestamp": datetime.now().isoformat()
-    }
-    
-    logger.info(f" Predição: {prediction_label} (score: {score:.4f})")
-    
-    return jsonify(response), 200
+def _register_routes(app: Flask) -> None:
+    """Register all API routes on the Flask app."""
 
+    @app.route("/health", methods=["GET"])
+    @log_request
+    def health_check() -> tuple[Any, int]:
+        """Health check endpoint."""
+        cfg: Settings = app.config["ML_SETTINGS"]
+        model_manager: ModelManager | None = app.config.get("MODEL_MANAGER")
 
-@app.route("/predict/batch", methods=['POST'])
-@log_request
-@handle_errors
-def predict_batch():
-    """
-    Endpoint de predição em batch.
-    
-    Request Body (JSON):
-        {
-            "instances": [
-                {
-                    "Glucose": 148,
-                    "BMI": 33.6,
-                    ...
-                },
-                {
-                    "Glucose": 85,
-                    "BMI": 26.6,
-                    ...
-                }
-            ]
-        }
-    
-    Response (JSON):
-        {
-            "predictions": [
-                {
-                    "score": 0.6523,
-                    "prediction": "diabetes",
-                    "instance_index": 0
-                },
-                ...
-            ],
-            "total": 2,
-            "model_version": 3,
-            "timestamp": "2025-11-26T10:30:00"
-        }
-    """
-    # Valida Content-Type
-    if not request.is_json:
-        return jsonify({
-            "error": "Invalid Content-Type",
-            "message": "Content-Type deve ser 'application/json'"
-        }), 400
-    
-    data = request.get_json(silent=True)
-    
-    if not data or 'instances' not in data:
-        return jsonify({
-            "error": "Invalid Input",
-            "message": "Request body deve conter 'instances' (lista de objetos)",
-            "example": {
-                "instances": [
-                    {"Glucose": 148, "BMI": 33.6, "...": "..."}
-                ]
-            }
-        }), 400
-    
-    instances = data['instances']
-    
-    if not isinstance(instances, list) or len(instances) == 0:
-        return jsonify({
-            "error": "Invalid Input",
-            "message": "'instances' deve ser uma lista não vazia"
-        }), 400
-    
-    if len(instances) > 1000:
-        return jsonify({
-            "error": "Batch Too Large",
-            "message": f"Máximo de 1000 instâncias por batch (recebido: {len(instances)})"
-        }), 400
-    
-    logger.info(f" Processando batch com {len(instances)} instâncias")
-    
-    predictions = []
-    errors = []
-    
-    for idx, instance in enumerate(instances):
         try:
-            # Valida instância
-            is_valid, error_message = InputValidator.validate_prediction_input(
-                instance,
-                model_manager.feature_names
-            )
-            
-            if not is_valid:
-                errors.append({
-                    "instance_index": idx,
-                    "error": error_message
-                })
-                continue
-            
-            # Predição
-            df = pd.DataFrame([instance])
-            score = model_manager.predict(df)
-            prediction_label = "diabetes" if score >= 0.5 else "no_diabetes"
-            
-            predictions.append({
-                "score": round(score, 4),
-                "prediction": prediction_label,
-                "confidence": round(score if score >= 0.5 else 1 - score, 4),
-                "instance_index": idx
-            })
-            
+            if model_manager:
+                model_health = model_manager.is_healthy()
+            else:
+                model_health = {
+                    "model_loaded": False,
+                    "error": app.config.get("MODEL_INIT_ERROR", "Model not initialized"),
+                }
+
+            mlflow_healthy = False
+            mlflow_error = None
+            try:
+                mlflow.set_tracking_uri(cfg.mlflow_tracking_uri)
+                client = mlflow.client.MlflowClient()
+                if cfg.mlflow_experiment_id:
+                    client.get_experiment(cfg.mlflow_experiment_id)
+                mlflow_healthy = True
+            except Exception as e:
+                mlflow_error = str(e)
+                logger.error(f"MLflow not accessible: {e}")
+
+            all_healthy = model_health.get("model_loaded", False) and mlflow_healthy
+            status_code = 200 if all_healthy else 503
+
+            response = {
+                "status": "healthy" if all_healthy else "unhealthy",
+                "timestamp": datetime.now().isoformat(),
+                "services": {
+                    "api": "running",
+                    "mlflow": {
+                        "status": "connected" if mlflow_healthy else "disconnected",
+                        "tracking_uri": cfg.mlflow_tracking_uri,
+                        "error": mlflow_error,
+                    },
+                    "model": model_health,
+                },
+            }
+
+            return jsonify(response), status_code
+
         except Exception as e:
-            logger.error(f" Erro na instância {idx}: {e}")
-            errors.append({
-                "instance_index": idx,
-                "error": str(e)
-            })
-    
-    response = {
-        "predictions": predictions,
-        "total": len(predictions),
-        "errors": errors if errors else None,
-        "model_version": model_manager.model_version,
-        "timestamp": datetime.now().isoformat()
-    }
-    
-    logger.info(f" Batch concluído: {len(predictions)}/{len(instances)} sucessos")
-    
-    return jsonify(response), 200
+            logger.error(f"Error in health check: {e}")
+            return jsonify({"status": "error", "message": str(e), "timestamp": datetime.now().isoformat()}), 500
 
+    @app.route("/predict", methods=["POST"])
+    @log_request
+    @handle_errors
+    def predict() -> tuple[Any, int]:
+        """Prediction endpoint."""
+        model_manager: ModelManager | None = app.config.get("MODEL_MANAGER")
 
-@app.route("/model/info", methods=['GET'])
-@log_request
-def model_info():
-    """
-    Retorna informações detalhadas do modelo.
-    
-    Response (JSON):
-        {
-            "model_name": "log_reg_diabetes_predict",
-            "model_version": 3,
-            "features": [...],
-            "feature_count": 5,
-            "loaded_at": "2025-11-26T10:00:00",
-            "mlflow_tracking_uri": "http://127.0.0.1:5000/"
+        if model_manager is None:
+            return jsonify(
+                {
+                    "error": "Service Unavailable",
+                    "message": "Model is not loaded. Check MLflow connectivity.",
+                    "timestamp": datetime.now().isoformat(),
+                }
+            ), 503
+
+        if not request.is_json:
+            return jsonify(
+                {
+                    "error": "Invalid Content-Type",
+                    "message": "Content-Type must be 'application/json'",
+                    "received": request.content_type,
+                }
+            ), 400
+
+        data = request.get_json(silent=True)
+
+        feature_names: list[str] = model_manager.feature_names or []
+        is_valid, error_message = InputValidator.validate_prediction_input(data, feature_names)
+
+        if not is_valid:
+            logger.warning(f"Validation failed: {error_message}")
+            return jsonify(
+                {
+                    "error": "Validation Error",
+                    "message": error_message,
+                    "expected_features": model_manager.feature_names,
+                    "received_features": list(data.keys()) if data else [],
+                }
+            ), 400
+
+        df = pd.DataFrame([data])
+        score = model_manager.predict(df)
+        prediction_label = "diabetes" if score >= 0.5 else "no_diabetes"
+
+        response = {
+            "score": round(score, 4),
+            "prediction": prediction_label,
+            "confidence": round(score if score >= 0.5 else 1 - score, 4),
+            "model_version": model_manager.model_version,
+            "timestamp": datetime.now().isoformat(),
         }
-    """
-    return jsonify({
-        "model_name": MODEL_NAME,
-        "model_version": model_manager.model_version,
-        "features": model_manager.feature_names,
-        "feature_count": len(model_manager.feature_names),
-        "loaded_at": model_manager.model_loaded_at.isoformat() if model_manager.model_loaded_at else None,
-        "mlflow_tracking_uri": MLFLOW_TRACKING_URI,
-        "experiment_id": EXPERIMENT_ID
-    }), 200
 
+        logger.info(f"Prediction: {prediction_label} (score: {score:.4f})")
+        return jsonify(response), 200
 
-@app.route("/model/reload", methods=['POST'])
-@log_request
-@handle_errors
-def reload_model():
-    """
-    Recarrega modelo do MLflow (útil após novo treinamento).
-    
-    Response (JSON):
-        {
-            "message": "Modelo recarregado com sucesso",
-            "previous_version": 3,
-            "current_version": 4,
-            "reloaded_at": "2025-11-26T10:30:00"
+    @app.route("/predict/batch", methods=["POST"])
+    @log_request
+    @handle_errors
+    def predict_batch() -> tuple[Any, int]:
+        """Batch prediction endpoint."""
+        model_manager: ModelManager | None = app.config.get("MODEL_MANAGER")
+
+        if model_manager is None:
+            return jsonify(
+                {
+                    "error": "Service Unavailable",
+                    "message": "Model is not loaded. Check MLflow connectivity.",
+                    "timestamp": datetime.now().isoformat(),
+                }
+            ), 503
+
+        if not request.is_json:
+            return jsonify({"error": "Invalid Content-Type", "message": "Content-Type must be 'application/json'"}), 400
+
+        data = request.get_json(silent=True)
+
+        if not data or "instances" not in data:
+            return jsonify(
+                {
+                    "error": "Invalid Input",
+                    "message": "Request body must contain 'instances' (list of objects)",
+                    "example": {"instances": [{"Glucose": 148, "BMI": 33.6}]},
+                }
+            ), 400
+
+        instances = data["instances"]
+
+        if not isinstance(instances, list) or len(instances) == 0:
+            return jsonify({"error": "Invalid Input", "message": "'instances' must be a non-empty list"}), 400
+
+        if len(instances) > 1000:
+            return jsonify(
+                {
+                    "error": "Batch Too Large",
+                    "message": f"Maximum 1000 instances per batch (received: {len(instances)})",
+                }
+            ), 400
+
+        logger.info(f"Processing batch with {len(instances)} instances")
+
+        predictions = []
+        errors = []
+
+        for idx, instance in enumerate(instances):
+            try:
+                feature_names_batch: list[str] = model_manager.feature_names or []
+                is_valid, error_message = InputValidator.validate_prediction_input(instance, feature_names_batch)
+
+                if not is_valid:
+                    errors.append({"instance_index": idx, "error": error_message})
+                    continue
+
+                df = pd.DataFrame([instance])
+                score = model_manager.predict(df)
+                prediction_label = "diabetes" if score >= 0.5 else "no_diabetes"
+
+                predictions.append(
+                    {
+                        "score": round(score, 4),
+                        "prediction": prediction_label,
+                        "confidence": round(score if score >= 0.5 else 1 - score, 4),
+                        "instance_index": idx,
+                    }
+                )
+
+            except Exception as e:
+                logger.error(f"Error in instance {idx}: {e}")
+                errors.append({"instance_index": idx, "error": str(e)})
+
+        response = {
+            "predictions": predictions,
+            "total": len(predictions),
+            "errors": errors if errors else None,
+            "model_version": model_manager.model_version,
+            "timestamp": datetime.now().isoformat(),
         }
-    """
-    reload_info = model_manager.reload_model()
-    
-    return jsonify({
-        "message": "Modelo recarregado com sucesso",
-        **reload_info
-    }), 200
+
+        logger.info(f"Batch completed: {len(predictions)}/{len(instances)} successes")
+        return jsonify(response), 200
+
+    @app.route("/model/info", methods=["GET"])
+    @log_request
+    def model_info() -> tuple[Any, int]:
+        """Return detailed model information."""
+        cfg: Settings = app.config["ML_SETTINGS"]
+        model_manager: ModelManager | None = app.config.get("MODEL_MANAGER")
+
+        if model_manager is None:
+            return jsonify(
+                {
+                    "error": "Service Unavailable",
+                    "message": "Model is not loaded",
+                    "timestamp": datetime.now().isoformat(),
+                }
+            ), 503
+
+        return jsonify(
+            {
+                "model_name": cfg.model_name,
+                "model_version": model_manager.model_version,
+                "features": model_manager.feature_names,
+                "feature_count": len(model_manager.feature_names) if model_manager.feature_names else 0,
+                "loaded_at": model_manager.model_loaded_at.isoformat() if model_manager.model_loaded_at else None,
+                "mlflow_tracking_uri": cfg.mlflow_tracking_uri,
+                "experiment_id": cfg.mlflow_experiment_id,
+            }
+        ), 200
+
+    @app.route("/model/reload", methods=["POST"])
+    @log_request
+    @handle_errors
+    def reload_model() -> tuple[Any, int]:
+        """Reload model from MLflow."""
+        model_manager: ModelManager | None = app.config.get("MODEL_MANAGER")
+
+        if model_manager is None:
+            return jsonify(
+                {
+                    "error": "Service Unavailable",
+                    "message": "Model manager not initialized",
+                    "timestamp": datetime.now().isoformat(),
+                }
+            ), 503
+
+        reload_info = model_manager.reload_model()
+        return jsonify({"message": "Model reloaded successfully", **reload_info}), 200
 
 
-# ================== ERROR HANDLERS ==================
+def _register_error_handlers(app: Flask) -> None:
+    """Register error handlers on the Flask app."""
 
-@app.errorhandler(404)
-def not_found(e):
-    """Handler para rotas não encontradas."""
-    logger.warning(f"  Rota não encontrada: {request.path}")
-    return jsonify({
-        "error": "Not Found",
-        "message": f"Endpoint '{request.path}' não existe",
-        "available_endpoints": [
-            "GET  /health",
-            "GET  /model/info",
-            "POST /predict",
-            "POST /predict/batch",
-            "POST /model/reload"
-        ]
-    }), 404
+    @app.errorhandler(404)
+    def not_found(e: Exception) -> tuple[Any, int]:
+        logger.warning(f"Route not found: {request.path}")
+        return jsonify(
+            {
+                "error": "Not Found",
+                "message": f"Endpoint '{request.path}' does not exist",
+                "available_endpoints": [
+                    "GET  /health",
+                    "GET  /model/info",
+                    "POST /predict",
+                    "POST /predict/batch",
+                    "POST /model/reload",
+                ],
+            }
+        ), 404
 
+    @app.errorhandler(405)
+    def method_not_allowed(e: Exception) -> tuple[Any, int]:
+        logger.warning(f"Method not allowed: {request.method} {request.path}")
+        return jsonify(
+            {
+                "error": "Method Not Allowed",
+                "message": f"Method {request.method} is not allowed for {request.path}",
+                "allowed_methods": getattr(e, "valid_methods", []),
+            }
+        ), 405
 
-@app.errorhandler(405)
-def method_not_allowed(e):
-    """Handler para métodos não permitidos."""
-    logger.warning(f"  Método não permitido: {request.method} {request.path}")
-    return jsonify({
-        "error": "Method Not Allowed",
-        "message": f"Método {request.method} não é permitido para {request.path}",
-        "allowed_methods": e.valid_methods if hasattr(e, 'valid_methods') else []
-    }), 405
-
-
-@app.errorhandler(500)
-def internal_error(e):
-    """Handler para erros internos."""
-    logger.error(f" Erro interno: {e}")
-    return jsonify({
-        "error": "Internal Server Error",
-        "message": "Ocorreu um erro interno. Verifique os logs do servidor.",
-        "timestamp": datetime.now().isoformat()
-    }), 500
-
-
-# ================== STARTUP ==================
-
-@app.before_request
-def before_request():
-    """Hook executado antes de cada requisição."""
-    request.start_time = datetime.now()
+    @app.errorhandler(500)
+    def internal_error(e: Exception) -> tuple[Any, int]:
+        logger.error(f"Internal error: {e}")
+        return jsonify(
+            {
+                "error": "Internal Server Error",
+                "message": "An unexpected error occurred. Check server logs.",
+                "timestamp": datetime.now().isoformat(),
+            }
+        ), 500
 
 
-@app.after_request
-def after_request(response):
-    """Hook executado após cada requisição."""
-    if hasattr(request, 'start_time'):
-        elapsed = (datetime.now() - request.start_time).total_seconds()
-        response.headers['X-Response-Time'] = f"{elapsed:.3f}s"
-    
-    # Adiciona headers de segurança
-    response.headers['X-Content-Type-Options'] = 'nosniff'
-    response.headers['X-Frame-Options'] = 'DENY'
-    
-    return response
+def _register_hooks(app: Flask) -> None:
+    """Register request hooks on the Flask app."""
+
+    @app.before_request
+    def before_request() -> None:
+        request.start_time = datetime.now()
+
+    @app.after_request
+    def after_request(response: Any) -> Any:
+        if hasattr(request, "start_time"):
+            elapsed = (datetime.now() - request.start_time).total_seconds()
+            response.headers["X-Response-Time"] = f"{elapsed:.3f}s"
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        return response
 
 
-# ================== MAIN ==================
+# Create default app instance for backward compatibility
+app = create_app()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
+    cfg = settings
+    model_manager = app.config.get("MODEL_MANAGER")
+
     logger.info("=" * 80)
-    logger.info(" Iniciando API de Predição de Diabetes")
+    logger.info("Starting Diabetes Prediction API")
     logger.info("=" * 80)
-    logger.info(f" Servidor: http://0.0.0.0:5002")
-    logger.info(f" MLflow: {MLFLOW_TRACKING_URI}")
-    logger.info(f" Modelo: {MODEL_NAME} v{model_manager.model_version}")
-    logger.info(f" Features: {len(model_manager.feature_names)}")
+    logger.info(f"Server: http://{cfg.api_host}:{cfg.api_port}")
+    logger.info(f"MLflow: {cfg.mlflow_tracking_uri}")
+    logger.info(f"Model: {cfg.model_name}")
+    if model_manager:
+        logger.info(f"Model Version: {model_manager.model_version}")
+        logger.info(f"Features: {len(model_manager.feature_names) if model_manager.feature_names else 0}")
     logger.info("=" * 80)
-    logger.info("Endpoints disponíveis:")
-    logger.info("  GET  /health")
-    logger.info("  GET  /model/info")
-    logger.info("  POST /predict")
-    logger.info("  POST /predict/batch")
-    logger.info("  POST /model/reload")
-    logger.info("=" * 80)
-    
-    app.run(
-        host='0.0.0.0',
-        port=5005,
-        debug=False  # True em desenvolvimento
-    )
+
+    app.run(host=cfg.api_host, port=cfg.api_port, debug=cfg.api_debug)

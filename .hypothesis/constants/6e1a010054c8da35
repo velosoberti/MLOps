@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/src/api_consctructor.py
+# hypothesis_version: 6.151.4
+
+[200, 400, 500, '.', 'F', 'ML_SETTINGS', 'Modelo não carregado', 'Runtime Error', 'Validation Error', 'current_version', 'error', 'features_count', 'loaded_at', 'message', 'model_loaded', 'model_name', 'model_version', 'previous_version', 'reloaded_at', 'timestamp']

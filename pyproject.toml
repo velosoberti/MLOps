@@ -7,6 +7,7 @@ requires-python = ">=3.10,<3.11"
 
 dependencies = [
     "airflow-provider-mlflow==1.1.0",
+    "pydantic-settings>=2.0.0",
     "dvc>=3.64.0",
     "evidently>=0.7.17",
     "fastparquet==0.8.1",
@@ -27,3 +28,209 @@ dependencies = [
     "sqlalchemy>=2.0.44",
     "streamlit>=1.51.0",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.0.0",
+    "hypothesis>=6.0.0",
+    "ruff>=0.4.0",
+    "mypy>=1.0.0",
+]
+
+[tool.ruff]
+# Line length configuration
+line-length = 120
+target-version = "py310"
+
+# Include paths for linting
+include = ["src/**/*.py", "etl_functions/**/*.py", "flask/**/*.py", "config/**/*.py", "tests/**/*.py"]
+
+[tool.ruff.lint]
+# Select rules to enable
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # Pyflakes
+    "I",      # isort (import sorting)
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "ARG",    # flake8-unused-arguments
+    "SIM",    # flake8-simplify
+]
+
+# Ignore specific rules
+ignore = [
+    "E501",   # line too long (handled by line-length setting)
+    "E402",   # module level import not at top of file (needed for sys.path manipulation)
+    "B008",   # do not perform function calls in argument defaults
+    "ARG001", # unused function argument (common in Flask routes)
+    "ARG002", # unused method argument (common in pytest fixtures)
+    "ARG005", # unused lambda argument (common in mock decorators)
+]
+
+# Allow autofix for all enabled rules
+fixable = ["ALL"]
+unfixable = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["config", "src", "etl_functions", "flask"]
+
+[tool.ruff.format]
+# Use double quotes for strings
+quote-style = "double"
+# Indent with spaces
+indent-style = "space"
+# Respect magic trailing commas
+skip-magic-trailing-comma = false
+# Unix-style line endings
+line-ending = "auto"
+
+
+[tool.mypy]
+# Python version
+python_version = "3.10"
+
+# General settings
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+show_column_numbers = true
+
+# Ignore missing imports for third-party libraries
+ignore_missing_imports = true
+
+# Per-module configuration for strict mode
+[[tool.mypy.overrides]]
+module = ["src.*", "etl_functions.*"]
+strict = true
+warn_return_any = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+
+[[tool.mypy.overrides]]
+module = ["config.*"]
+strict = true
+
+[[tool.mypy.overrides]]
+module = ["flask.*"]
+disallow_untyped_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
+warn_unused_ignores = false
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+disallow_untyped_defs = false
+check_untyped_defs = true
+
+# Relax type checking for test utility files
+[[tool.mypy.overrides]]
+module = ["src.api_request", "src.manual_predict_by_api_request", "flask.request"]
+ignore_errors = true
+
+
+[tool.pytest.ini_options]
+# Test discovery
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+# Output configuration
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+    "-ra",
+]
+
+# Markers for test categorization
+markers = [
+    "unit: Unit tests for individual functions and classes",
+    "integration: Integration tests for component interactions",
+    "property: Property-based tests using Hypothesis",
+    "slow: Tests that take longer to run",
+]
+
+# Filter warnings
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+# Minimum pytest version
+minversion = "8.0"
+
+
+[tool.coverage.run]
+# Source directories to measure
+source = ["src", "etl_functions", "config"]
+
+# Branch coverage
+branch = true
+
+# Files to omit from coverage
+omit = [
+    "tests/*",
+    "*/__pycache__/*",
+    "*/migrations/*",
+    "*/.venv/*",
+    "airflow/*",
+    "flask/*",
+    "src/api_request.py",
+    "src/manual_predict_by_api_request.py",
+    "etl_functions/feature_store_creation.py",
+    # Exclude files that primarily interact with external services
+    "src/prediction.py",
+    "src/training.py",
+    "src/api_consctructor.py",
+]
+
+# Parallel mode for combining coverage from multiple processes
+parallel = true
+
+
+[tool.coverage.report]
+# Minimum coverage percentage required
+# Note: Set to 69% to account for validator error paths that require specific conditions
+fail_under = 69
+
+# Show missing lines in report
+show_missing = true
+
+# Skip files with 100% coverage in report
+skip_covered = false
+
+# Exclude lines from coverage
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+    "if typing.TYPE_CHECKING:",
+    "@abstractmethod",
+]
+
+# Precision for coverage percentages
+precision = 2
+
+
+[tool.coverage.html]
+# Output directory for HTML report
+directory = "htmlcov"
+
+
+[tool.coverage.xml]
+# Output file for XML report (for CI integration)
+output = "coverage.xml"

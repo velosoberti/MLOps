@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/src/prediction.py
+# hypothesis_version: 6.151.4
+
+[1000, '%Y%m%d_%H%M%S', '.csv', '.parquet', 'Fazendo predições...', 'Limpeza concluída!', 'Modelo carregado!', 'batch_id', 'feature_names_in_', 'features_shape', 'historical_file', 'host.docker.internal', 'load_model', 'mlflow_uri', 'model_features', 'model_uri', 'model_version', 'n_class_0', 'n_class_1', 'n_predictions', 'n_valid_patients', 'patient_id', 'prediction', 'prediction_timestamp', 'predictions_csv_file', 'predictions_file', 'probability_class_0', 'probability_class_1', 'ti', 'valid_patient_ids']

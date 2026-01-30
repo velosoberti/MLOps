@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/etl_functions/etl.py
+# hypothesis_version: 6.151.4
+
+['D', 'Outcome', 'event_timestamp', 'patient_id', 'pyarrow']

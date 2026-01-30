@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/src/training.py
+# hypothesis_version: 6.151.4
+
+[0.25, ' Limpeza concluída!', '/tmp/X_test.parquet', '/tmp/X_train.parquet', '/tmp/features.txt', '/tmp/model.pkl', '/tmp/y_test.parquet', '/tmp/y_train.parquet', 'Avaliando modelo...', 'Modelo treinado!', 'Outcome', 'acc_test', 'acc_train', 'airflow', 'airflow_pipeline', 'algorithm', 'classification', 'data_path', 'data_shape', 'dataset', 'developer', 'diabetes_dataset', 'environment', 'evaluate_model', 'event_timestamp', 'experiment_id', 'feature_names', 'host.docker.internal', 'logistic_regression', 'max_iter', 'mlflow_uri', 'model', 'model_max_iter', 'model_penalty', 'model_solver', 'model_type', 'n_features', 'n_test_samples', 'n_train_samples', 'orchestrator', 'patient_id', 'penalty', 'production', 'solver', 'ti', 'train_model', 'train_positive_ratio', 'w', 'y_pred']

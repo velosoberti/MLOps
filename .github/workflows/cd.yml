@@ -1,0 +1,196 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+
+# Cancel in-progress runs for the same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHON_VERSION: "3.10"
+  UV_CACHE_DIR: /tmp/.uv-cache
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}/ml-pipeline-api
+
+jobs:
+  # Run full test suite on main
+  test:
+    name: Full Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Run linting
+        run: uv run ruff check .
+
+      - name: Run type checking
+        run: uv run mypy src/ etl_functions/ config/
+
+      - name: Run full test suite with coverage
+        run: uv run pytest tests/ --cov=src --cov=etl_functions --cov=config --cov-report=xml --cov-report=term-missing --cov-fail-under=70
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
+          retention-days: 30
+
+  # Validate Airflow DAG syntax
+  validate-dags:
+    name: Validate Airflow DAGs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Validate DAG Python syntax
+        run: |
+          echo "Validating Airflow DAG syntax..."
+          python -m py_compile airflow/dags/etl.py
+          python -m py_compile airflow/dags/train.py
+          python -m py_compile airflow/dags/predict.py
+          python -m py_compile airflow/dags/feature_store.py
+          echo "All DAG files have valid Python syntax"
+
+      - name: Run DAG import tests
+        run: uv run pytest tests/integration/test_dag_import.py -v
+
+  # Build and validate Docker image
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: [test, validate-dags]
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=sha,prefix=
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          load: true
+          tags: ml-pipeline-api:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Test Docker image health check
+        run: |
+          echo "Starting container for health check test..."
+          docker run -d --name test-api -p 5005:5005 ml-pipeline-api:test || true
+          sleep 5
+          echo "Container logs:"
+          docker logs test-api || true
+          echo "Stopping container..."
+          docker stop test-api || true
+          docker rm test-api || true
+          echo "Docker image build validated successfully"
+
+      - name: Push Docker image
+        if: github.event_name != 'pull_request' && startsWith(github.ref, 'refs/tags/v')
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # Create release artifacts
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: [build]
+    if: startsWith(github.ref, 'refs/tags/v')
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-beta') || contains(github.ref, '-alpha') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Summary job that depends on all other jobs
+  cd-success:
+    name: CD Success
+    runs-on: ubuntu-latest
+    needs: [test, validate-dags, build]
+    if: always()
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.test.result }}" != "success" ]] || \
+             [[ "${{ needs.validate-dags.result }}" != "success" ]] || \
+             [[ "${{ needs.build.result }}" != "success" ]]; then
+            echo "One or more CD jobs failed"
+            echo "Test: ${{ needs.test.result }}"
+            echo "Validate DAGs: ${{ needs.validate-dags.result }}"
+            echo "Build: ${{ needs.build.result }}"
+            exit 1
+          fi
+          echo "All CD jobs passed successfully"
