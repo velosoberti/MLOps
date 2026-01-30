@@ -32,8 +32,13 @@ jobs:
 
       - name: Create venv and install dependencies
         run: |
+          echo "Creating virtual environment..."
           uv venv
+          echo "Installing dependencies..."
           uv sync --dev
+          echo "Checking if ruff is installed..."
+          uv run which ruff || echo "ruff not found!"
+          uv run ruff --version || echo "ruff version check failed!"
 
       - name: Run ruff check
         run: uv run ruff check .
