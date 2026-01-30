@@ -101,7 +101,7 @@ mlflow ui --host 0.0.0.0 --port 5000
 cd airflow && docker compose up -d
 
 # 8. Start Flask API (Terminal 3)
-python flask/api.py
+python api/api.py
 ```
 
 Access the services:
@@ -556,7 +556,7 @@ The Flask API serves predictions in real-time.
 
 ```bash
 # Make sure MLflow is running first!
-python flask/api.py
+python api/api.py
 
 # API available at http://localhost:5005
 ```
@@ -684,7 +684,7 @@ uv run ruff check .
 uv run ruff format --check .
 
 # Run type checking
-uv run mypy src/ etl_functions/ flask/ config/
+uv run mypy src/ etl_functions/ api/ config/
 
 # Run tests with coverage
 uv run pytest tests/ -v --cov
@@ -761,7 +761,7 @@ MLOps_projects/
 │   └── etl.py              # Extract, Transform, Load
 ├── feature_store/           # Feast feature store
 │   └── feature_repo/       # Feature definitions
-├── flask/                   # REST API
+├── api/                     # REST API
 │   ├── api.py              # Flask application
 │   └── models.py           # Pydantic models
 ├── mlflow/                  # MLflow data

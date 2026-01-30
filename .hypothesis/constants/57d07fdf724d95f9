@@ -1,0 +1,4 @@
+# file: /home/luisveloso/MLOps_projects/api/models.py
+# hypothesis_version: 6.151.4
+
+[0.351, 0.627, 26.6, 33.6, 148, 1000, "'(\\w+)'", "'instances'", '2-Hour serum insulin', 'BMI', 'Body mass index', 'Confidence score', 'Error message', 'Error timestamp', 'Error type', 'Field required', 'Glucose', 'Insulin', 'List of predictions', 'MLflow experiment ID', 'MLflow tracking URI', 'Model load timestamp', 'Model version', 'Model version used', 'Name of the model', 'Number of features', 'Prediction timestamp', 'SkinThickness', 'at least 1 item', 'at most 1000', 'examples', 'instances', 'json_schema_extra']

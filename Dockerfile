@@ -48,7 +48,7 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Copy application code
 COPY config/ ./config/
 COPY src/ ./src/
-COPY flask/ ./flask/
+COPY api/ ./api/
 COPY etl_functions/ ./etl_functions/
 
 # Create directories for data and logs
@@ -69,4 +69,4 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
 
 # Run the Flask API
 # Using python directly instead of flask run for better control
-CMD ["python", "-m", "flask.api"]
+CMD ["python", "-m", "api.api"]

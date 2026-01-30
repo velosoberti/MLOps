@@ -8,7 +8,6 @@ This module tests that the Flask API correctly validates prediction requests
 and returns appropriate error responses for invalid inputs.
 """
 
-import importlib.util
 import os
 import sys
 
@@ -23,17 +22,11 @@ from hypothesis import assume, given  # noqa: E402
 from hypothesis import settings as hypothesis_settings  # noqa: E402
 from hypothesis import strategies as st  # noqa: E402
 
-# Import flask.models using importlib to avoid the flask directory conflict
-_models_path = os.path.join(_project_root, "flask", "models.py")
-_spec = importlib.util.spec_from_file_location("flask_models", _models_path)
-_flask_models = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_flask_models)
-
-PredictionRequest = _flask_models.PredictionRequest
-BatchPredictionRequest = _flask_models.BatchPredictionRequest
-validate_prediction_request = _flask_models.validate_prediction_request
-validate_batch_request = _flask_models.validate_batch_request
-
+# Import api.models directly now that the folder is renamed
+from api.models import (
+    validate_batch_request,
+    validate_prediction_request,
+)
 
 # Strategy for valid numeric values (positive floats)
 valid_numeric = st.floats(min_value=0, max_value=1000, allow_nan=False, allow_infinity=False)

@@ -44,7 +44,7 @@ line-length = 120
 target-version = "py310"
 
 # Include paths for linting
-include = ["src/**/*.py", "etl_functions/**/*.py", "flask/**/*.py", "config/**/*.py", "tests/**/*.py"]
+include = ["src/**/*.py", "etl_functions/**/*.py", "api/**/*.py", "config/**/*.py", "tests/**/*.py"]
 
 [tool.ruff.lint]
 # Select rules to enable
@@ -185,7 +185,7 @@ omit = [
     "*/migrations/*",
     "*/.venv/*",
     "airflow/*",
-    "flask/*",
+    "api/*",
     "src/api_request.py",
     "src/manual_predict_by_api_request.py",
     "etl_functions/feature_store_creation.py",

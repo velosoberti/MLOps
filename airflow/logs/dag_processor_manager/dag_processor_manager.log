@@ -9731,3 +9731,520 @@ File Path                             PID  Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/train.py                                   0           1  0.09s           2026-01-30T17:20:14
 /opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:20:14
 ================================================================================
+[2026-01-30T17:20:53.512+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py  10262  1.01s             0           1  3.27s           2026-01-30T17:20:21
+/opt/airflow/dags/etl.py                                     0           1  0.47s           2026-01-30T17:20:30
+/opt/airflow/dags/predict.py                                 0           1  0.09s           2026-01-30T17:20:44
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:20:44
+================================================================================
+[2026-01-30T17:21:26.309+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.18s           2026-01-30T17:20:56
+/opt/airflow/dags/etl.py                                     0           1  0.76s           2026-01-30T17:21:04
+/opt/airflow/dags/train.py                                   0           1  0.11s           2026-01-30T17:21:15
+/opt/airflow/dags/predict.py                                 0           1  0.10s           2026-01-30T17:21:15
+================================================================================
+[2026-01-30T17:21:59.528+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.82s           2026-01-30T17:21:31
+/opt/airflow/dags/etl.py                                     0           1  0.46s           2026-01-30T17:21:36
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:21:45
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:21:45
+================================================================================
+[2026-01-30T17:22:20.376+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-30T17:22:20.380+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2026-01-30T17:22:32.451+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.82s           2026-01-30T17:22:04
+/opt/airflow/dags/etl.py                                     0           1  1.93s           2026-01-30T17:22:08
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:22:16
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:22:16
+================================================================================
+[2026-01-30T17:23:05.572+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  6.42s           2026-01-30T17:22:40
+/opt/airflow/dags/etl.py                                     0           1  0.44s           2026-01-30T17:22:41
+/opt/airflow/dags/train.py                                   0           1  0.16s           2026-01-30T17:22:46
+/opt/airflow/dags/predict.py                                 0           1  0.10s           2026-01-30T17:22:46
+================================================================================
+[2026-01-30T17:23:38.637+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.73s           2026-01-30T17:23:16
+/opt/airflow/dags/etl.py                                     0           1  2.18s           2026-01-30T17:23:13
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:23:17
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:23:16
+================================================================================
+[2026-01-30T17:24:11.790+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.71s           2026-01-30T17:23:49
+/opt/airflow/dags/etl.py                                     0           1  0.57s           2026-01-30T17:23:46
+/opt/airflow/dags/predict.py                                 0           1  0.20s           2026-01-30T17:23:47
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:23:48
+================================================================================
+[2026-01-30T17:24:44.548+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.38s           2026-01-30T17:24:23
+/opt/airflow/dags/predict.py                                 0           1  1.67s           2026-01-30T17:24:18
+/opt/airflow/dags/etl.py                                     0           1  0.63s           2026-01-30T17:24:19
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:24:19
+================================================================================
+[2026-01-30T17:25:17.341+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.58s           2026-01-30T17:24:57
+/opt/airflow/dags/etl.py                                     0           1  0.30s           2026-01-30T17:24:52
+/opt/airflow/dags/train.py                                   0           1  0.05s           2026-01-30T17:24:51
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:24:51
+================================================================================
+[2026-01-30T17:25:50.229+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.35s           2026-01-30T17:25:30
+/opt/airflow/dags/etl.py                                     0           1  0.39s           2026-01-30T17:25:24
+/opt/airflow/dags/train.py                                   0           1  0.07s           2026-01-30T17:25:24
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:25:24
+================================================================================
+[2026-01-30T17:26:23.149+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.77s           2026-01-30T17:26:04
+/opt/airflow/dags/train.py                                   0           1  1.63s           2026-01-30T17:25:57
+/opt/airflow/dags/predict.py                                 0           1  1.62s           2026-01-30T17:25:57
+/opt/airflow/dags/etl.py                                     0           1  0.36s           2026-01-30T17:25:57
+================================================================================
+[2026-01-30T17:26:56.304+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.51s           2026-01-30T17:26:37
+/opt/airflow/dags/etl.py                                     0           1  0.29s           2026-01-30T17:26:30
+/opt/airflow/dags/train.py                                   0           1  0.04s           2026-01-30T17:26:29
+/opt/airflow/dags/predict.py                                 0           1  0.04s           2026-01-30T17:26:29
+================================================================================
+[2026-01-30T17:27:20.394+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-30T17:27:20.398+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2026-01-30T17:27:29.152+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.29s           2026-01-30T17:27:10
+/opt/airflow/dags/etl.py                                     0           1  0.49s           2026-01-30T17:27:03
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:27:02
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:27:02
+================================================================================
+[2026-01-30T17:28:02.450+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.67s           2026-01-30T17:27:44
+/opt/airflow/dags/etl.py                                     0           1  1.94s           2026-01-30T17:27:35
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:27:33
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:27:33
+================================================================================
+[2026-01-30T17:28:36.045+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.01s           2026-01-30T17:28:18
+/opt/airflow/dags/etl.py                                     0           1  0.38s           2026-01-30T17:28:08
+/opt/airflow/dags/train.py                                   0           1  0.33s           2026-01-30T17:28:34
+/opt/airflow/dags/predict.py                                 0           1  0.25s           2026-01-30T17:28:34
+================================================================================
+[2026-01-30T17:29:09.172+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.19s           2026-01-30T17:28:51
+/opt/airflow/dags/etl.py                                     0           1  0.86s           2026-01-30T17:28:41
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:29:04
+/opt/airflow/dags/train.py                                   0           1  0.05s           2026-01-30T17:29:04
+================================================================================
+[2026-01-30T17:29:42.283+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.38s           2026-01-30T17:29:23
+/opt/airflow/dags/etl.py                                     0           1  0.33s           2026-01-30T17:29:14
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:29:34
+/opt/airflow/dags/train.py                                   0           1  0.04s           2026-01-30T17:29:34
+================================================================================
+[2026-01-30T17:30:16.793+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.55s           2026-01-30T17:29:56
+/opt/airflow/dags/etl.py                                     0           1  0.87s           2026-01-30T17:29:46
+/opt/airflow/dags/train.py                                   0           1  0.10s           2026-01-30T17:30:04
+/opt/airflow/dags/predict.py                                 0           1  0.10s           2026-01-30T17:30:04
+================================================================================
+[2026-01-30T17:30:51.551+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.45s           2026-01-30T17:30:29
+/opt/airflow/dags/etl.py            10777  0.00s             0           1  0.35s           2026-01-30T17:30:19
+/opt/airflow/dags/predict.py                                 0           1  0.09s           2026-01-30T17:30:34
+/opt/airflow/dags/train.py                                   0           1  0.09s           2026-01-30T17:30:34
+================================================================================
+[2026-01-30T17:31:24.638+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.23s           2026-01-30T17:31:01
+/opt/airflow/dags/etl.py            10805  0.00s             0           1  0.28s           2026-01-30T17:30:51
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:31:04
+/opt/airflow/dags/train.py                                   0           1  0.05s           2026-01-30T17:31:04
+================================================================================
+[2026-01-30T17:31:57.598+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.86s           2026-01-30T17:31:34
+/opt/airflow/dags/etl.py                                     0           1  0.27s           2026-01-30T17:31:56
+/opt/airflow/dags/predict.py                                 0           1  0.09s           2026-01-30T17:31:35
+/opt/airflow/dags/train.py                                   0           1  0.09s           2026-01-30T17:31:35
+================================================================================
+[2026-01-30T17:32:20.914+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-30T17:32:20.917+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2026-01-30T17:32:30.843+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.23s           2026-01-30T17:32:07
+/opt/airflow/dags/etl.py                                     0           1  0.60s           2026-01-30T17:32:30
+/opt/airflow/dags/predict.py                                 0           1  0.06s           2026-01-30T17:32:05
+/opt/airflow/dags/train.py                                   0           1  0.06s           2026-01-30T17:32:06
+================================================================================
+[2026-01-30T17:33:04.153+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.39s           2026-01-30T17:32:40
+/opt/airflow/dags/etl.py                                     0           1  0.35s           2026-01-30T17:33:02
+/opt/airflow/dags/train.py                                   0           1  0.05s           2026-01-30T17:32:36
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:32:36
+================================================================================
+[2026-01-30T17:33:37.017+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.67s           2026-01-30T17:33:14
+/opt/airflow/dags/etl.py                                     0           1  0.32s           2026-01-30T17:33:35
+/opt/airflow/dags/train.py          10926  0.00s             0           1  0.09s           2026-01-30T17:33:06
+/opt/airflow/dags/predict.py        10923  0.01s             0           1  0.08s           2026-01-30T17:33:06
+================================================================================
+[2026-01-30T17:34:10.079+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.47s           2026-01-30T17:33:47
+/opt/airflow/dags/etl.py                                     0           1  0.63s           2026-01-30T17:34:08
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:34:07
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:34:07
+================================================================================
+[2026-01-30T17:34:43.021+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.43s           2026-01-30T17:34:21
+/opt/airflow/dags/etl.py                                     0           1  0.56s           2026-01-30T17:34:41
+/opt/airflow/dags/train.py                                   0           1  0.15s           2026-01-30T17:34:40
+/opt/airflow/dags/predict.py                                 0           1  0.14s           2026-01-30T17:34:40
+================================================================================
+[2026-01-30T17:35:15.857+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.96s           2026-01-30T17:34:56
+/opt/airflow/dags/etl.py                                     0           1  0.71s           2026-01-30T17:35:13
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:35:12
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:35:12
+================================================================================
+[2026-01-30T17:35:48.707+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.74s           2026-01-30T17:35:29
+/opt/airflow/dags/etl.py                                     0           1  0.36s           2026-01-30T17:35:46
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:35:45
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:35:45
+================================================================================
+[2026-01-30T17:36:21.546+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.36s           2026-01-30T17:36:02
+/opt/airflow/dags/etl.py                                     0           1  2.13s           2026-01-30T17:36:18
+/opt/airflow/dags/train.py                                   0           1  0.10s           2026-01-30T17:36:16
+/opt/airflow/dags/predict.py                                 0           1  0.09s           2026-01-30T17:36:16
+================================================================================
+[2026-01-30T17:36:54.563+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  7.41s           2026-01-30T17:36:40
+/opt/airflow/dags/etl.py                                     0           1  0.39s           2026-01-30T17:36:51
+/opt/airflow/dags/predict.py                                 0           1  0.11s           2026-01-30T17:36:46
+/opt/airflow/dags/train.py                                   0           1  0.10s           2026-01-30T17:36:46
+================================================================================
+[2026-01-30T17:37:23.771+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-30T17:37:23.782+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2026-01-30T17:37:27.880+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.26s           2026-01-30T17:37:14
+/opt/airflow/dags/etl.py                                     0           1  1.06s           2026-01-30T17:37:24
+/opt/airflow/dags/predict.py                                 0           1  0.11s           2026-01-30T17:37:17
+/opt/airflow/dags/train.py                                   0           1  0.11s           2026-01-30T17:37:17
+================================================================================
+[2026-01-30T17:38:00.963+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.34s           2026-01-30T17:37:48
+/opt/airflow/dags/etl.py                                     0           1  0.43s           2026-01-30T17:37:57
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:37:48
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:37:48
+================================================================================
+[2026-01-30T17:38:33.737+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.49s           2026-01-30T17:38:20
+/opt/airflow/dags/etl.py                                     0           1  0.60s           2026-01-30T17:38:29
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:38:18
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:38:18
+================================================================================
+[2026-01-30T17:39:06.555+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.74s           2026-01-30T17:38:54
+/opt/airflow/dags/etl.py                                     0           1  0.38s           2026-01-30T17:39:01
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:38:48
+/opt/airflow/dags/train.py                                   0           1  0.07s           2026-01-30T17:38:48
+================================================================================
+[2026-01-30T17:39:39.813+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  3.30s           2026-01-30T17:39:28
+/opt/airflow/dags/etl.py                                     0           1  2.18s           2026-01-30T17:39:34
+/opt/airflow/dags/predict.py                                 0           1  0.08s           2026-01-30T17:39:19
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:39:19
+================================================================================
+[2026-01-30T17:40:12.547+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.52s           2026-01-30T17:40:03
+/opt/airflow/dags/etl.py                                     0           1  0.46s           2026-01-30T17:40:07
+/opt/airflow/dags/train.py                                   0           1  0.07s           2026-01-30T17:39:49
+/opt/airflow/dags/predict.py                                 0           1  0.06s           2026-01-30T17:39:49
+================================================================================
+[2026-01-30T17:40:45.874+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  5.30s           2026-01-30T17:40:39
+/opt/airflow/dags/etl.py                                     0           1  2.05s           2026-01-30T17:40:39
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:40:19
+/opt/airflow/dags/train.py                                   0           1  0.07s           2026-01-30T17:40:19
+================================================================================
+[2026-01-30T17:41:18.688+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.89s           2026-01-30T17:41:15
+/opt/airflow/dags/etl.py                                     0           1  0.39s           2026-01-30T17:41:13
+/opt/airflow/dags/predict.py                                 0           1  0.09s           2026-01-30T17:40:49
+/opt/airflow/dags/train.py                                   0           1  0.09s           2026-01-30T17:40:49
+================================================================================
+[2026-01-30T17:41:51.628+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.75s           2026-01-30T17:41:48
+/opt/airflow/dags/etl.py                                     0           1  0.46s           2026-01-30T17:41:45
+/opt/airflow/dags/train.py                                   0           1  0.05s           2026-01-30T17:41:50
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:41:50
+================================================================================
+[2026-01-30T17:42:23.974+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2026-01-30T17:42:23.987+0000] {manager.py:740} INFO - There are 4 files in /opt/airflow/dags
+[2026-01-30T17:42:24.242+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  4.04s           2026-01-30T17:42:22
+/opt/airflow/dags/etl.py                                     0           1  0.60s           2026-01-30T17:42:18
+/opt/airflow/dags/predict.py                                 0           1  0.13s           2026-01-30T17:42:21
+/opt/airflow/dags/train.py                                   0           1  0.13s           2026-01-30T17:42:21
+================================================================================
+[2026-01-30T17:42:57.133+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.33s           2026-01-30T17:42:55
+/opt/airflow/dags/etl.py                                     0           1  0.22s           2026-01-30T17:42:51
+/opt/airflow/dags/predict.py                                 0           1  0.04s           2026-01-30T17:42:52
+/opt/airflow/dags/train.py                                   0           1  0.04s           2026-01-30T17:42:52
+================================================================================
+[2026-01-30T17:43:29.904+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl.py                                     0           1  1.92s           2026-01-30T17:43:23
+/opt/airflow/dags/feature_store.py                           0           1  1.58s           2026-01-30T17:43:27
+/opt/airflow/dags/train.py                                   0           1  0.08s           2026-01-30T17:43:23
+/opt/airflow/dags/predict.py                                 0           1  0.07s           2026-01-30T17:43:23
+================================================================================
+[2026-01-30T17:44:02.919+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.56s           2026-01-30T17:44:00
+/opt/airflow/dags/train.py                                   0           1  1.68s           2026-01-30T17:43:55
+/opt/airflow/dags/predict.py                                 0           1  1.68s           2026-01-30T17:43:55
+/opt/airflow/dags/etl.py                                     0           1  0.49s           2026-01-30T17:43:56
+================================================================================
+[2026-01-30T17:44:35.892+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  1.49s           2026-01-30T17:44:33
+/opt/airflow/dags/etl.py                                     0           1  0.22s           2026-01-30T17:44:28
+/opt/airflow/dags/predict.py                                 0           1  0.04s           2026-01-30T17:44:28
+/opt/airflow/dags/train.py                                   0           1  0.04s           2026-01-30T17:44:28
+================================================================================
+[2026-01-30T17:45:08.632+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  2.87s           2026-01-30T17:45:06
+/opt/airflow/dags/etl.py                                     0           1  0.29s           2026-01-30T17:45:02
+/opt/airflow/dags/train.py                                   0           1  0.06s           2026-01-30T17:45:01
+/opt/airflow/dags/predict.py                                 0           1  0.05s           2026-01-30T17:45:01
+================================================================================
+[2026-01-30T17:45:41.509+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/feature_store.py                           0           1  1.79s           2026-01-30T17:45:38
+/opt/airflow/dags/predict.py                                 0           1  1.64s           2026-01-30T17:45:33
+/opt/airflow/dags/etl.py                                     0           1  0.57s           2026-01-30T17:45:34
+/opt/airflow/dags/train.py                                   0           1  0.06s           2026-01-30T17:45:33
+================================================================================
+[2026-01-30T17:45:43.781+0000] {manager.py:452} INFO - Exiting gracefully upon receiving signal 15

@@ -4072,3 +4072,689 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'config'
 [2026-01-30T17:20:14.317+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
 [2026-01-30T17:20:14.355+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.053 seconds
+[2026-01-30T17:20:44.472+0000] {processor.py:161} INFO - Started process (PID=10252) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:20:44.474+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:20:44.476+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:44.475+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:20:44.483+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:20:44.481+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:20:44.484+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:20:44.515+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.057 seconds
+[2026-01-30T17:21:15.179+0000] {processor.py:161} INFO - Started process (PID=10274) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:21:15.180+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:21:15.182+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:21:15.181+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:21:15.186+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:21:15.184+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:21:15.187+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:21:15.234+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.066 seconds
+[2026-01-30T17:21:45.404+0000] {processor.py:161} INFO - Started process (PID=10302) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:21:45.407+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:21:45.408+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:21:45.408+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:21:45.416+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:21:45.414+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:21:45.416+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:21:45.445+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.050 seconds
+[2026-01-30T17:22:16.298+0000] {processor.py:161} INFO - Started process (PID=10330) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:22:16.299+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:22:16.300+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:22:16.300+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:22:16.306+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:22:16.304+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:22:16.306+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:22:16.339+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.050 seconds
+[2026-01-30T17:22:46.386+0000] {processor.py:161} INFO - Started process (PID=10358) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:22:46.390+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:22:46.392+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:22:46.391+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:22:46.397+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:22:46.396+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:22:46.398+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:22:46.435+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.056 seconds
+[2026-01-30T17:23:16.498+0000] {processor.py:161} INFO - Started process (PID=10386) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:23:16.499+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:23:16.500+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:23:16.499+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:23:16.504+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:23:16.503+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:23:16.504+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:23:16.534+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.045 seconds
+[2026-01-30T17:23:47.057+0000] {processor.py:161} INFO - Started process (PID=10411) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:23:47.061+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:23:47.070+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:23:47.068+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:23:47.086+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:23:47.076+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:23:47.087+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:23:47.174+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.139 seconds
+[2026-01-30T17:24:18.908+0000] {processor.py:161} INFO - Started process (PID=10430) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:24:18.909+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:24:18.910+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:24:18.910+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:24:18.918+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:24:18.916+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:24:18.920+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:24:18.961+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.064 seconds
+[2026-01-30T17:24:51.891+0000] {processor.py:161} INFO - Started process (PID=10459) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:24:51.892+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:24:51.893+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:24:51.892+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:24:51.897+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:24:51.895+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:24:51.898+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:24:51.917+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.031 seconds
+[2026-01-30T17:25:24.341+0000] {processor.py:161} INFO - Started process (PID=10487) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:25:24.342+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:25:24.343+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:25:24.342+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:25:24.347+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:25:24.346+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:25:24.347+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:25:24.380+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.047 seconds
+[2026-01-30T17:25:55.417+0000] {processor.py:161} INFO - Started process (PID=10515) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:25:55.418+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:25:55.419+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:25:55.419+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:25:56.995+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:25:56.994+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:25:56.996+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:25:57.016+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.033 seconds
+[2026-01-30T17:26:29.863+0000] {processor.py:161} INFO - Started process (PID=10543) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:26:29.864+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:26:29.865+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:26:29.864+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:26:29.867+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:26:29.866+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:26:29.867+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:26:29.885+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.026 seconds
+[2026-01-30T17:27:02.480+0000] {processor.py:161} INFO - Started process (PID=10571) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:27:02.482+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:27:02.483+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:27:02.483+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:27:02.489+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:27:02.487+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:27:02.489+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:27:02.522+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.051 seconds
+[2026-01-30T17:27:33.332+0000] {processor.py:161} INFO - Started process (PID=10599) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:27:33.333+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:27:33.333+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:27:33.333+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:27:33.338+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:27:33.336+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:27:33.338+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:27:33.368+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.046 seconds
+[2026-01-30T17:28:03.474+0000] {processor.py:161} INFO - Started process (PID=10627) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:28:03.476+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:28:03.477+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:28:03.477+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:28:03.482+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:28:03.480+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:28:03.483+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:28:03.513+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.046 seconds
+[2026-01-30T17:28:33.856+0000] {processor.py:161} INFO - Started process (PID=10655) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:28:33.858+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:28:33.860+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:28:33.859+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:28:33.882+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:28:33.874+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:28:33.884+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:28:33.991+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.167 seconds
+[2026-01-30T17:29:04.111+0000] {processor.py:161} INFO - Started process (PID=10683) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:29:04.113+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:29:04.114+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:29:04.114+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:29:04.117+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:29:04.116+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:29:04.117+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:29:04.137+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.031 seconds
+[2026-01-30T17:29:34.253+0000] {processor.py:161} INFO - Started process (PID=10711) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:29:34.253+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:29:34.254+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:29:34.254+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:29:34.257+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:29:34.256+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:29:34.257+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:29:34.277+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.029 seconds
+[2026-01-30T17:30:04.529+0000] {processor.py:161} INFO - Started process (PID=10739) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:30:04.531+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:30:04.533+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:30:04.532+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:30:04.539+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:30:04.538+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:30:04.541+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:30:04.583+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.064 seconds
+[2026-01-30T17:30:34.823+0000] {processor.py:161} INFO - Started process (PID=10767) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:30:34.824+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:30:34.825+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:30:34.825+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:30:34.830+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:30:34.828+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:30:34.831+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:30:34.873+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.060 seconds
+[2026-01-30T17:31:04.919+0000] {processor.py:161} INFO - Started process (PID=10789) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:31:04.921+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:31:04.922+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:31:04.921+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:31:04.926+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:31:04.924+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:31:04.926+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:31:04.947+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.033 seconds
+[2026-01-30T17:31:35.741+0000] {processor.py:161} INFO - Started process (PID=10817) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:31:35.742+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:31:35.743+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:31:35.743+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:31:35.750+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:31:35.747+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:31:35.751+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:31:35.791+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.060 seconds
+[2026-01-30T17:32:05.917+0000] {processor.py:161} INFO - Started process (PID=10843) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:32:05.919+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:32:05.920+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:32:05.920+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:32:05.923+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:32:05.922+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:32:05.924+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:32:05.948+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.037 seconds
+[2026-01-30T17:32:36.329+0000] {processor.py:161} INFO - Started process (PID=10867) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:32:36.330+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:32:36.331+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:32:36.330+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:32:36.334+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:32:36.333+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:32:36.334+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:32:36.355+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.031 seconds
+[2026-01-30T17:33:06.531+0000] {processor.py:161} INFO - Started process (PID=10895) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:33:06.534+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:33:06.536+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:33:06.535+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:33:06.541+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:33:06.539+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:33:06.542+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:33:06.578+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.057 seconds
+[2026-01-30T17:33:37.020+0000] {processor.py:161} INFO - Started process (PID=10923) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:33:37.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:33:37.024+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:33:37.023+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:33:37.028+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:33:37.027+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:33:37.028+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:33:37.054+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.038 seconds
+[2026-01-30T17:34:07.370+0000] {processor.py:161} INFO - Started process (PID=10945) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:34:07.375+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:34:07.377+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:34:07.376+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:34:07.381+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:34:07.380+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:34:07.382+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:34:07.413+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.050 seconds
+[2026-01-30T17:34:40.329+0000] {processor.py:161} INFO - Started process (PID=10973) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:34:40.332+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:34:40.341+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:34:40.333+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:34:40.357+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:34:40.353+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:34:40.358+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:34:40.417+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.100 seconds
+[2026-01-30T17:35:12.772+0000] {processor.py:161} INFO - Started process (PID=11001) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:35:12.775+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:35:12.776+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:35:12.775+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:35:12.781+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:35:12.779+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:35:12.782+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:35:12.815+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.053 seconds
+[2026-01-30T17:35:45.626+0000] {processor.py:161} INFO - Started process (PID=11029) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:35:45.627+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:35:45.628+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:35:45.628+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:35:45.632+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:35:45.631+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:35:45.633+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:35:45.668+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.051 seconds
+[2026-01-30T17:36:16.324+0000] {processor.py:161} INFO - Started process (PID=11058) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:36:16.326+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:36:16.328+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:36:16.327+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:36:16.338+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:36:16.334+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:36:16.340+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:36:16.376+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.065 seconds
+[2026-01-30T17:36:46.747+0000] {processor.py:161} INFO - Started process (PID=11086) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:36:46.750+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:36:46.752+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:36:46.751+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:36:46.757+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:36:46.756+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:36:46.758+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:36:46.807+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.071 seconds
+[2026-01-30T17:37:16.950+0000] {processor.py:161} INFO - Started process (PID=11114) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:37:16.952+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:37:16.954+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:37:16.953+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:37:16.960+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:37:16.958+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:37:16.961+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:37:17.006+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.069 seconds
+[2026-01-30T17:37:48.011+0000] {processor.py:161} INFO - Started process (PID=11140) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:37:48.013+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:37:48.014+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:37:48.013+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:37:48.020+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:37:48.018+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:37:48.021+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:37:48.055+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.053 seconds
+[2026-01-30T17:38:18.321+0000] {processor.py:161} INFO - Started process (PID=11165) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:38:18.323+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:38:18.324+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:38:18.324+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:38:18.328+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:38:18.327+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:38:18.328+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:38:18.359+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.048 seconds
+[2026-01-30T17:38:48.713+0000] {processor.py:161} INFO - Started process (PID=11193) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:38:48.713+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:38:48.714+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:38:48.714+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:38:48.718+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:38:48.716+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:38:48.719+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:38:48.749+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.046 seconds
+[2026-01-30T17:39:19.016+0000] {processor.py:161} INFO - Started process (PID=11221) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:39:19.019+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:39:19.020+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:39:19.019+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:39:19.024+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:39:19.022+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:39:19.025+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:39:19.061+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.053 seconds
+[2026-01-30T17:39:49.292+0000] {processor.py:161} INFO - Started process (PID=11243) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:39:49.293+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:39:49.294+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:39:49.294+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:39:49.298+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:39:49.297+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:39:49.299+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:39:49.323+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.038 seconds
+[2026-01-30T17:40:19.592+0000] {processor.py:161} INFO - Started process (PID=11271) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:40:19.595+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:40:19.598+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:40:19.596+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:40:19.603+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:40:19.601+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:40:19.604+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:40:19.631+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.045 seconds
+[2026-01-30T17:40:49.918+0000] {processor.py:161} INFO - Started process (PID=11299) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:40:49.919+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:40:49.920+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:40:49.919+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:40:49.925+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:40:49.923+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:40:49.926+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:40:49.968+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.062 seconds
+[2026-01-30T17:41:20.227+0000] {processor.py:161} INFO - Started process (PID=11327) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:41:20.228+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:41:20.229+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:41:20.229+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:41:20.232+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:41:20.231+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:41:20.233+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:41:20.256+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.036 seconds
+[2026-01-30T17:41:50.587+0000] {processor.py:161} INFO - Started process (PID=11355) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:41:50.588+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:41:50.589+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:41:50.589+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:41:50.591+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:41:50.590+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:41:50.591+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:41:50.613+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.032 seconds
+[2026-01-30T17:42:21.000+0000] {processor.py:161} INFO - Started process (PID=11381) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:42:21.003+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:42:21.005+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:42:21.004+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:42:21.012+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:42:21.010+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:42:21.013+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:42:21.070+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.084 seconds
+[2026-01-30T17:42:52.064+0000] {processor.py:161} INFO - Started process (PID=11405) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:42:52.064+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:42:52.065+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:42:52.065+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:42:52.068+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:42:52.067+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:42:52.068+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:42:52.087+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.027 seconds
+[2026-01-30T17:43:23.234+0000] {processor.py:161} INFO - Started process (PID=11431) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:43:23.235+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:43:23.236+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:43:23.236+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:43:23.240+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:43:23.239+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:43:23.241+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:43:23.280+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.050 seconds
+[2026-01-30T17:43:54.219+0000] {processor.py:161} INFO - Started process (PID=11455) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:43:54.222+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:43:54.224+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:43:54.223+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:43:54.231+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:43:54.229+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:43:54.232+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:43:55.853+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.066 seconds
+[2026-01-30T17:44:28.615+0000] {processor.py:161} INFO - Started process (PID=11483) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:44:28.616+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:44:28.616+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:44:28.616+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:44:28.619+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:44:28.618+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:44:28.619+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:44:28.635+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.025 seconds
+[2026-01-30T17:45:01.687+0000] {processor.py:161} INFO - Started process (PID=11511) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:45:01.687+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:45:01.688+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:45:01.688+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:45:01.690+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:45:01.689+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:45:01.690+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:45:01.712+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.029 seconds
+[2026-01-30T17:45:33.863+0000] {processor.py:161} INFO - Started process (PID=11538) to work on /opt/airflow/dags/predict.py
+[2026-01-30T17:45:33.865+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/predict.py for tasks to queue
+[2026-01-30T17:45:33.866+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:45:33.865+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/predict.py
+[2026-01-30T17:45:33.868+0000] {logging_mixin.py:188} INFO - [2026-01-30T17:45:33.867+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/predict.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/predict.py", line 22, in <module>
+    from config.settings import settings
+ModuleNotFoundError: No module named 'config'
+[2026-01-30T17:45:33.869+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/predict.py
+[2026-01-30T17:45:33.893+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/predict.py took 0.037 seconds

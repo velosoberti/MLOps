@@ -5,7 +5,6 @@ from MLflow, and the InputValidator class for validating prediction requests.
 """
 
 import logging
-import os
 import sys
 import traceback
 from collections.abc import Callable
@@ -13,26 +12,13 @@ from datetime import datetime
 from functools import wraps
 from typing import Any, TypeVar
 
-# Handle flask import - remove current directory from path temporarily
-# to avoid conflict with local flask directory
-_original_path = sys.path.copy()
-# Remove only the project root and empty paths that could cause the local flask to be found
-_project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path = [p for p in sys.path if p not in ("", ".", _project_root)]
-try:
-    import flask as _flask
-
-    Flask: Any = _flask.Flask  # type: ignore[attr-defined]
-    jsonify: Any = _flask.jsonify  # type: ignore[attr-defined]
-    request: Any = _flask.request  # type: ignore[attr-defined]
-    Response: Any = _flask.Response  # type: ignore[attr-defined]
-finally:
-    sys.path = _original_path
-
 import pandas as pd
 
 import mlflow
 from config.settings import Settings, settings
+
+# Flask imports - no longer need workaround since api/ folder doesn't conflict
+from flask import Flask, jsonify, request
 
 # Configure logging
 logging.basicConfig(
