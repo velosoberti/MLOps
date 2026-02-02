@@ -13,3 +13,5 @@ api.log
 .python-version
 tests/
 scr/
+config/
+.vscode
