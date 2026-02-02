@@ -346,3 +346,35 @@
 2026-02-02 08:54:01,559 - framework.api_consctructor - INFO -   POST /predict/batch
 2026-02-02 08:54:01,559 - framework.api_consctructor - INFO -   POST /model/reload
 2026-02-02 08:54:01,559 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 18:13:41,522 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2026-02-02 18:13:42,171 - framework.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v2
+2026-02-02 18:13:42,171 - framework.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2026-02-02 18:13:42,171 - framework.api_consctructor - INFO -  API inicializada com sucesso
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2026-02-02 18:13:42,172 - framework.api_consctructor - INFO -  Modelo: diabete_model v2
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -  Features: 4
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -   GET  /health
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -   GET  /model/info
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -   POST /predict
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -   POST /predict/batch
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO -   POST /model/reload
+2026-02-02 18:13:42,173 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 18:13:42,178 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.30.74.91:5005
+2026-02-02 18:13:42,178 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2026-02-02 18:15:02,266 - werkzeug - INFO - 127.0.0.1 - - [02/Feb/2026 18:15:02] "OPTIONS /predict HTTP/1.1" 200 -
+2026-02-02 18:15:02,521 - framework.api_consctructor - INFO - POST /predict - IP: 127.0.0.1
+2026-02-02 18:15:02,522 - framework.api_consctructor - WARNING - Features extras ignoradas: ['Glucose']
+2026-02-02 18:15:02,526 - framework.api_consctructor - INFO -  Predição: diabetes (score: 0.5043)
+2026-02-02 18:15:02,527 - framework.api_consctructor - INFO - POST /predict - Status: 200 - Tempo: 0.005s
+2026-02-02 18:15:02,527 - werkzeug - INFO - 127.0.0.1 - - [02/Feb/2026 18:15:02] "POST /predict HTTP/1.1" 200 -
+2026-02-02 18:16:05,405 - framework.api_consctructor - WARNING -   Rota não encontrada: /
+2026-02-02 18:16:05,406 - werkzeug - INFO - 127.0.0.1 - - [02/Feb/2026 18:16:05] "[33mGET / HTTP/1.1[0m" 404 -
