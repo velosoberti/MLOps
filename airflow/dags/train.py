@@ -93,3 +93,5 @@ task_cleanup = PythonOperator(
 # ===================== DEFINIÇÃO DO FLUXO =====================
 
 task_setup_mlflow >> task_load_data >> task_prepare_data >> task_train >> task_evaluate >> task_artifacts >> task_log_mlflow >> task_cleanup
+
+#comments

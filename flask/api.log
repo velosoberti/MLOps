@@ -327,3 +327,22 @@
 2025-11-28 17:39:35,085 - framework.api_consctructor - INFO -  Batch concluído: 3/3 sucessos
 2025-11-28 17:39:35,085 - framework.api_consctructor - INFO - POST /predict/batch - Status: 200 - Tempo: 0.006s
 2025-11-28 17:39:35,086 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2025 17:39:35] "POST /predict/batch HTTP/1.1" 200 -
+2026-02-02 08:54:00,807 - framework.api_consctructor - INFO - 🔄 Carregando modelo do MLflow...
+2026-02-02 08:54:01,556 - framework.api_consctructor - INFO - Modelo carregado com sucesso: diabete_model v2
+2026-02-02 08:54:01,557 - framework.api_consctructor - INFO - Features esperadas: ['BMI', 'DiabetesPedigreeFunction', 'Insulin', 'SkinThickness']
+2026-02-02 08:54:01,557 - framework.api_consctructor - INFO -  API inicializada com sucesso
+2026-02-02 08:54:01,557 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -  Iniciando API de Predição de Diabetes
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -  Servidor: http://0.0.0.0:5002
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -  MLflow: http://127.0.0.1:5000/
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -  Modelo: diabete_model v2
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -  Features: 4
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO - ================================================================================
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO - Endpoints disponíveis:
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -   GET  /health
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -   GET  /model/info
+2026-02-02 08:54:01,558 - framework.api_consctructor - INFO -   POST /predict
+2026-02-02 08:54:01,559 - framework.api_consctructor - INFO -   POST /predict/batch
+2026-02-02 08:54:01,559 - framework.api_consctructor - INFO -   POST /model/reload
+2026-02-02 08:54:01,559 - framework.api_consctructor - INFO - ================================================================================

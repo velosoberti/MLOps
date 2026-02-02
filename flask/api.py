@@ -3,7 +3,7 @@ API Flask Profissional para Predição de Diabetes
 Com tratamento de erros, validação, logging e health check completo
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 import mlflow
 import pandas as pd
 
@@ -19,6 +19,29 @@ from framework.api_consctructor import *
 # ================== INICIALIZAÇÃO ==================
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
+
+
+# ================== CORS SUPPORT ==================
+@app.after_request
+def add_cors_headers(response):
+    """Add CORS headers to all responses."""
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    return response
+
+
+@app.before_request
+def handle_preflight():
+    """Handle CORS preflight requests."""
+    if request.method == 'OPTIONS':
+        response = make_response()
+        response.headers['Access-Control-Allow-Origin'] = '*'
+        response.headers['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+        response.headers['Access-Control-Max-Age'] = '86400'
+        return response
+
 
 # Inicializa gerenciador de modelo
 try:

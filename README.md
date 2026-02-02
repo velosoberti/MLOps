@@ -1,6 +1,6 @@
 # 🚀 MLOps - Complete Machine Learning Pipeline for Diabetes Prediction
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/)
 [![MLflow](https://img.shields.io/badge/MLflow-Tracking-0194E2?logo=mlflow)](https://mlflow.org/)
 [![DVC](https://img.shields.io/badge/DVC-Data%20Versioning-945DD6?logo=dvc)](https://dvc.org/)
 [![Feast](https://img.shields.io/badge/Feast-Feature%20Store-FF6B6B)](https://feast.dev/)
@@ -20,96 +20,45 @@ This project demonstrates a **complete and professional end-to-end MLOps pipelin
 - ✅ **Automated pipeline orchestration** with Airflow
 - ✅ **Experiment tracking** and model registry with MLflow
 - ✅ **Professional REST API** for serving predictions with Flask
-- ✅ **Prediction monitoring** with accumulated history
+- ✅ **Interactive Dashboard** for monitoring and visualization
 - ✅ **Containerization** with Docker
 
 ---
 
 ## 🏗️ System Architecture
 
-### Workflow Overview
-
-```mermaid
-graph TB
-    subgraph "1. Data Layer"
-        A[diabetes.csv] -->|DVC Version Control| B[Git Repository]
-        A -->|ETL DAG Execution| C[Parquet Files]
-    end
-    
-    subgraph "2. Feature Store - Feast"
-        C -->|feast apply| D[Offline Store<br/>Parquet]
-        D -->|feast materialize| E[Online Store<br/>SQLite]
-        D -->|get_historical_features| F[Training Dataset<br/>my_training_dataset.parquet]
-    end
-    
-    subgraph "3. Orchestration - Airflow DAGs"
-        G[etl_pipeline_final<br/>Daily] -.->|Generates| C
-        H[feature_store_cre<br/>Daily] -.->|Creates| F
-        I[ml_training_pipeline<br/>Weekly] -.->|Triggers| J[Model Training]
-        K[ml_prediction_pipeline<br/>Daily] -.->|Triggers| L[Batch Predictions]
-    end
-    
-    subgraph "4. ML Layer - Training & Registry"
-        F -->|Load for Training| J
-        J -->|mlflow.log_metrics| M[MLflow Tracking<br/>Experiments]
-        J -->|mlflow.register_model| N[MLflow Model Registry<br/>diabete_model]
-    end
-    
-    subgraph "5. Prediction Layer"
-        N -->|Load Model| L
-        E -->|get_online_features| L
-        L -->|Save Batch| O[predictions_YYYYMMDD.parquet]
-        O -->|Accumulate| P[predictions_history.parquet]
-    end
-    
-    subgraph "6. Serving Layer - API"
-        N -->|Load Latest Version| Q[Flask API :5005]
-        E -->|Fetch Features| Q
-        Q -->|POST /predict| R[Real-time Predictions]
-        Q -->|POST /predict/batch| R
-    end
-    
-    subgraph "7. Monitoring & Analytics"
-        P -->|Read History| S[Monitoring Dashboard<br/>EDA & Metrics]
-        M -->|Track Metrics| S
-    end
-
-
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           ML PROJECT DASHBOARD                               │
+│                         http://localhost:8086                                │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐           │
+│  │  Home   │  │   API   │  │   EDA   │  │ MLflow  │  │ Dataset │           │
+│  │         │  │ Predict │  │Streamlit│  │  Runs   │  │  View   │           │
+│  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘           │
+└───────┼────────────┼────────────┼────────────┼────────────┼─────────────────┘
+        │            │            │            │            │
+        ▼            ▼            ▼            ▼            ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│   Flask     │ │  Streamlit  │ │   MLflow    │ │   Feast     │ │    DVC      │
+│   API       │ │    EDA      │ │   Server    │ │   Store     │ │   Data      │
+│  :5005      │ │   :8501     │ │   :5000     │ │   Local     │ │  Version    │
+└─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
+        │                              │               │
+        └──────────────────────────────┼───────────────┘
+                                       ▼
+                            ┌─────────────────────┐
+                            │      Airflow        │
+                            │   Orchestration     │
+                            │      :8080          │
+                            └─────────────────────┘
 ```
 
 ### Directory Structure
 
 ```
 MLOps_projects/
-├── 📁 data/                        # Data Layer
-│   ├── diabetes.csv                # Original dataset (768 records)
-│   ├── diabetes.csv.dvc            # DVC metadata
-│   └── artifacts/                  # Processed artifacts
-│       ├── predictor.parquet       # Features (8 columns + metadata)
-│       ├── target.parquet          # Target (Outcome + metadata)
-│       ├── predictions/            # Historical predictions
-│       │   ├── predictions_history.parquet
-│       │   ├── predictions_history.csv
-│       │   └── predictions_YYYYMMDD_HHMMSS.parquet
-│       └── monitoring/             # Monitoring metrics
-│           ├── monitoring_history.parquet
-│           └── monitoring_stats_*.json
-│
-├── 📁 feature_store/               # Feature Store (Feast)
-│   ├── feature_repo/               # Feast Repository
-│   │   ├── feature_store.yaml      # Feast configuration
-│   │   ├── example_repo.py         # Feature definitions
-│   │   └── data/                   # Feast Stores
-│   │       ├── online_store.db     # SQLite Online Store
-│   │       └── registry.db         # Feast Registry
-│   └── data/
-│       └── my_training_dataset.parquet  # Training dataset
-│
-├── 📁 etl_functions/               # Reusable ETL Functions
-│   ├── etl.py                      # Extract, Transform, Load
-│   └── feature_store_creation.py   # Feast dataset creation
-│
-├── 📁 airflow/                     # Orchestration
+├── 📁 airflow/                     # Orchestration (Docker)
 │   ├── dags/                       # Airflow DAGs
 │   │   ├── etl.py                  # Daily ETL pipeline
 │   │   ├── feature_store.py        # Training dataset creation
@@ -119,23 +68,37 @@ MLOps_projects/
 │   ├── Dockerfile                  # Custom image
 │   └── requirements.txt            # Airflow dependencies
 │
+├── 📁 dashboard/                   # Web Dashboard
+│   ├── index.html                  # Main HTML
+│   ├── css/styles.css              # Styles
+│   ├── js/                         # JavaScript modules
+│   └── server/server.py            # Backend server
+│
+├── 📁 data/                        # Data Layer
+│   ├── diabetes.csv                # Original dataset
+│   ├── diabetes.csv.dvc            # DVC metadata
+│   └── artifacts/                  # Processed artifacts
+│
+├── 📁 eda_streamlit/               # Exploratory Analysis
+│   └── eda.py                      # Streamlit dashboard
+│
+├── 📁 feature_store/               # Feature Store (Feast)
+│   └── feature_repo/               # Feast Repository
+│       ├── feature_store.yaml      # Feast configuration
+│       └── example_repo.py         # Feature definitions
+│
+├── 📁 flask/                       # REST API
+│   ├── api.py                      # Flask server
+│   └── request.py                  # Test client
+│
 ├── 📁 framework/                   # Reusable ML Framework
 │   ├── training.py                 # Training functions
 │   ├── prediction.py               # Prediction functions
-│   ├── api_constructor.py          # API builder
-│   └── api_request.py              # API client
+│   └── api_constructor.py          # API builder
 │
 ├── 📁 mlflow/                      # Tracking and Registry
 │   ├── mlruns/                     # Local experiments
 │   └── mlartifacts/                # Model artifacts
-│
-├── 📁 flask/                       # REST API
-│   ├── api.py                      # Flask server
-│   ├── request.py                  # Test client
-│   └── api.log                     # API logs
-│
-├── 📁 eda_streamlit/               # Exploratory Analysis
-│   └── eda.py                      # Interactive dashboard
 │
 ├── 📄 requirements.txt             # Project dependencies
 ├── 📄 pyproject.toml               # Project configuration
@@ -144,741 +107,824 @@ MLOps_projects/
 
 ---
 
-## 🔄 Detailed Workflows
-
-### 1️⃣ ETL Pipeline (Daily)
-
-**DAG:** `etl_pipeline_final`  
-**Frequency:** Daily (`@daily`)  
-**Objective:** Process raw data and prepare for Feature Store
-
-```mermaid
-graph LR
-    A[Extract CSV] --> B[Transform]
-    B --> C[Add Timestamps]
-    C --> D[Add Patient IDs]
-    D --> E[Save Parquet]
-    
-
-```
-
-**Steps:**
-
-1. **Extract**: Reads `diabetes.csv` (768 records, 9 columns)
-2. **Transform**: Separates features (8 columns) and target (Outcome)
-3. **Add Timestamps**: Creates incremental timestamps (date_range)
-4. **Add Patient IDs**: Generates unique IDs (0 to 767)
-5. **Save Parquet**: Saves to `data/artifacts/`
-
-**Outputs:**
-- `predictor.parquet`: 768 rows × 10 columns (8 features + patient_id + event_timestamp)
-- `target.parquet`: 768 rows × 3 columns (Outcome + patient_id + event_timestamp)
-
----
-
-### 2️⃣ Feature Store Pipeline (Daily)
-
-**DAG:** `feature_store_cre`  
-**Frequency:** Daily (`@daily`)  
-**Objective:** Create training dataset with historical features
-
-```mermaid
-graph LR
-    A[Load Target] --> B[Get Historical Features]
-    B --> C[Create Saved Dataset]
-    C --> D[Save Training Dataset]
-    
-
-```
-
-**Steps:**
-
-1. **Load Target**: Loads `target.parquet` as entity dataframe
-2. **Get Historical Features**: Fetches 4 features from Feast Offline Store
-3. **Create Saved Dataset**: Registers dataset in Feast Registry
-4. **Save Training Dataset**: Saves `my_training_dataset.parquet`
-
-**Features Used:**
-- `DiabetesPedigreeFunction` (float)
-- `BMI` (float)
-- `SkinThickness` (int)
-- `Insulin` (int)
-
-**Note:** The model **DOES NOT** use `Glucose`, `Pregnancies`, `BloodPressure`, and `Age`
-
-**Outputs:**
-- `feature_store/data/my_training_dataset.parquet`: 768 rows × 7 columns
-
----
-
-### 3️⃣ Training Pipeline (Weekly)
-
-**DAG:** `ml_training_pipeline`  
-**Frequency:** Weekly (`@weekly`)  
-**Objective:** Train model and register in MLflow
-
-```mermaid
-graph TB
-    A[Setup MLflow] --> B[Load Data from Feast]
-    B --> C[Prepare & Split Data]
-    C --> D[Train Model]
-    D --> E[Evaluate Model]
-    E --> F[Create Artifacts]
-    F --> G[Log to MLflow]
-    G --> H[Cleanup]
-    
-```
-
-**Detailed Steps:**
-
-| # | Step | Description | Outputs |
-|---|------|-------------|---------|
-| 1 | **Setup MLflow** | Configure tracking URI and experiment ID | XCom: mlflow_uri |
-| 2 | **Load Data** | Load dataset from Feast | `/tmp/training_data.parquet` |
-| 3 | **Prepare Data** | 75/25 stratified split | `/tmp/X_train.parquet`, `/tmp/X_test.parquet` |
-| 4 | **Train Model** | LogisticRegression (default params) | `/tmp/model.pkl` |
-| 5 | **Evaluate** | Calculate train/test accuracy | XCom: acc_train, acc_test |
-| 6 | **Create Artifacts** | Confusion matrix + feature list | `/tmp/confusion_matrix.png` |
-| 7 | **Log MLflow** | Register everything in MLflow | MLflow Run |
-| 8 | **Cleanup** | Remove temporary files | - |
-
-**Metrics Logged:**
-- `acc_train`: Training accuracy (~0.78)
-- `acc_test`: Test accuracy (~0.75)
-
-**Artifacts Logged:**
-- Trained Model (sklearn)
-- Confusion Matrix (PNG)
-- Feature List (TXT)
-
-**Parameters Logged:**
-```python
-{
-    "penalty": "l2",
-    "solver": "lbfgs",
-    "max_iter": 100,
-    "n_features": 4,
-    "n_train_samples": 576,
-    "n_test_samples": 192,
-    "train_positive_ratio": 0.349
-}
-```
-
-**MLflow Tags:**
-```python
-{
-    "model_type": "classification",
-    "algorithm": "logistic_regression",
-    "dataset": "diabetes_dataset",
-    "developer": "airflow_pipeline",
-    "environment": "develop",
-    "orchestrator": "airflow"
-}
-```
-
----
-
-### 4️⃣ Prediction Pipeline (Daily)
-
-**DAG:** `ml_prediction_pipeline`  
-**Frequency:** Daily (`@daily`)  
-**Objective:** Make batch predictions and accumulate history
-
-```mermaid
-graph TB
-    A[Setup & Materialize] --> B[Find Valid Patients]
-    B --> C[Fetch Features]
-    C --> D[Load Model]
-    D --> E[Make Predictions]
-    E --> F[Save Predictions]
-    F --> G[Cleanup]
-  
-```
-
-**Detailed Steps:**
-
-| # | Step | Description | Details |
-|---|------|-------------|---------|
-| 1 | **Setup & Materialize** | Materialize features to Online Store | `feast materialize_incremental` |
-| 2 | **Find Valid Patients** | Find 50 valid patients | Iterate patient_id 1000→1, filter NaN |
-| 3 | **Fetch Features** | Fetch from Online Store | `get_online_features()` |
-| 4 | **Load Model** | Load from MLflow Registry | `models:/diabete_model/latest` |
-| 5 | **Make Predictions** | Generate predictions + probabilities | `predict()` + `predict_proba()` |
-| 6 | **Save Predictions** | Save batch + accumulate history | See structure below |
-| 7 | **Cleanup** | Remove temporary files | `/tmp/*` |
-
-**Prediction Structure:**
-```json
-{
-    "patient_id": 999,
-    "DiabetesPedigreeFunction": 0.627,
-    "BMI": 33.6,
-    "SkinThickness": 35,
-    "Insulin": 0,
-    "prediction": 1,
-    "probability_class_0": 0.3477,
-    "probability_class_1": 0.6523,
-    "prediction_timestamp": "2025-11-28T01:44:22",
-    "batch_id": "20251128_014422",
-    "model_version": 3
-}
-```
-
-**Outputs:**
-- `predictions/predictions_YYYYMMDD_HHMMSS.parquet` (individual batch)
-- `predictions/predictions_YYYYMMDD_HHMMSS.csv` (individual batch)
-- `predictions/predictions_history.parquet` (accumulated history)
-- `predictions/predictions_history.csv` (accumulated history)
-
----
-
-### 5️⃣ Flask API (Serving)
-
-**Server:** Flask REST API  
-**Port:** 5005  
-**Objective:** Serve predictions in real-time
-
-#### Available Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Complete health check (API + MLflow + Model) |
-| GET | `/model/info` | Information about loaded model |
-| POST | `/predict` | Individual prediction |
-| POST | `/predict/batch` | Batch prediction (up to 1000 instances) |
-| POST | `/model/reload` | Reload model from MLflow |
-
-#### Usage Examples
-
-**1. Health Check:**
-```bash
-curl http://localhost:5005/health
-```
-
-Response:
-```json
-{
-  "status": "healthy",
-  "timestamp": "2025-11-28T10:30:00",
-  "services": {
-    "api": "running",
-    "mlflow": {
-      "status": "connected",
-      "tracking_uri": "http://127.0.0.1:5000/"
-    },
-    "model": {
-      "model_loaded": true,
-      "model_version": 3,
-      "feature_count": 4
-    }
-  }
-}
-```
-
-**2. Individual Prediction:**
-```bash
-curl -X POST http://localhost:5005/predict \
-  -H "Content-Type: application/json" \
-  -d '{
-    "Insulin": 0,
-    "SkinThickness": 35,
-    "DiabetesPedigreeFunction": 0.627,
-    "BMI": 33.6
-  }'
-```
-
-Response:
-```json
-{
-  "score": 0.6523,
-  "prediction": "diabetes",
-  "confidence": 0.6523,
-  "model_version": 3,
-  "timestamp": "2025-11-28T10:30:00"
-}
-```
-
-**3. Batch Prediction:**
-```bash
-curl -X POST http://localhost:5005/predict/batch \
-  -H "Content-Type: application/json" \
-  -d '{
-    "instances": [
-      {
-        "Insulin": 0,
-        "SkinThickness": 35,
-        "DiabetesPedigreeFunction": 0.627,
-        "BMI": 33.6
-      },
-      {
-        "Insulin": 94,
-        "SkinThickness": 28,
-        "DiabetesPedigreeFunction": 0.351,
-        "BMI": 31.2
-      }
-    ]
-  }'
-```
-
-Response:
-```json
-{
-  "predictions": [
-    {
-      "score": 0.6523,
-      "prediction": "diabetes",
-      "confidence": 0.6523,
-      "instance_index": 0
-    },
-    {
-      "score": 0.3214,
-      "prediction": "no_diabetes",
-      "confidence": 0.6786,
-      "instance_index": 1
-    }
-  ],
-  "total": 2,
-  "errors": null,
-  "model_version": 3,
-  "timestamp": "2025-11-28T10:30:00"
-}
-```
-
-**4. Model Information:**
-```bash
-curl http://localhost:5005/model/info
-```
-
-Response:
-```json
-{
-  "model_name": "diabete_model",
-  "model_version": 3,
-  "features": [
-    "BMI",
-    "DiabetesPedigreeFunction",
-    "Insulin",
-    "SkinThickness"
-  ],
-  "feature_count": 4,
-  "loaded_at": "2025-11-28T10:00:00",
-  "mlflow_tracking_uri": "http://127.0.0.1:5000/",
-  "experiment_id": "467326610704772702"
-}
-```
-
-**5. Reload Model:**
-```bash
-curl -X POST http://localhost:5005/model/reload
-```
-
-Response:
-```json
-{
-  "message": "Model reloaded successfully",
-  "previous_version": 3,
-  "current_version": 4,
-  "reloaded_at": "2025-11-28T10:35:00"
-}
-```
-
-#### API Features:
-
-✅ Input validation with detailed messages  
-✅ Structured logging to file (api.log)  
-✅ Complete health check  
-✅ Robust error handling  
-✅ Security headers (X-Content-Type-Options, X-Frame-Options)  
-✅ Response time in header (X-Response-Time)  
-✅ Batch support (up to 1000 instances)  
-✅ Model reload without restart  
-
----
-
-## 🛠️ Technologies Used
-
-| Tool | Version | Purpose | Details |
-|------|---------|---------|---------|
-| Python | 3.8+ | Base language | - |
-| DVC | Latest | Data versioning | Tracks diabetes.csv |
-| Feast | Latest | Feature Store | Online Store (SQLite) + Offline Store (Parquet) |
-| Streamlit | Latest | EDA Dashboard | Interactive exploratory analysis |
-| Airflow | 2.x | Orchestration | 4 DAGs (ETL, Feature Store, Train, Predict) |
-| MLflow | Latest | Tracking + Registry | Experiments + Versioned models |
-| Flask | Latest | REST API | Prediction serving |
-| Scikit-learn | Latest | ML Framework | LogisticRegression |
-| Docker | Latest | Containerization | Containerized Airflow |
-| Pandas | Latest | Data manipulation | DataFrames |
-| PyArrow | Latest | Parquet I/O | Efficient read/write |
-
----
-
 ## 📦 Prerequisites
 
-- Python 3.8+
-- Docker and Docker Compose
-- Git
-- 4GB RAM minimum (8GB recommended)
-- 5GB disk space
+- **Python 3.10** (required - not 3.11+)
+- **Docker and Docker Compose**
+- **Git**
+- **4GB RAM minimum** (8GB recommended)
+- **5GB disk space**
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Complete Installation Guide (From Zero)
 
+### Step 1: Linux Environment Setup (Windows Users)
 
-### Linux enviroment
+If you're on Windows, install WSL (Windows Subsystem for Linux):
 
 ```bash
-# 1. Instalar o WSL e o Ubuntu
-# (Isso exigirá reiniciar o computador após a conclusão)
+# Install WSL and Ubuntu
 wsl --install -d Ubuntu
 
-# 2. Instalar o Visual Studio Code (via Winget)
-winget install Microsoft.VisualStudioCode
-
+# Restart your computer after installation
+# Then open Ubuntu terminal
 ```
 
-### 1️⃣ Installation (Ubuntu)
+### Step 2: Install UV Package Manager
 
 ```bash
-
-# UV instalation
+# Install UV (fast Python package manager)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 source $HOME/.cargo/env
+```
 
+### Step 3: Clone and Setup Project
+
+```bash
 # Clone the repository
 git clone https://github.com/velosoberti/MLOps_projects.git
 cd MLOps_projects
 
-# Create a virtual environment
-uv init
-uv venv
-source venv/bin/activate  # Linux/Mac
+# Create virtual environment with Python 3.10
+uv venv --python 3.10
+source .venv/bin/activate
 
-# Install dependencies
-uv add -r requirements.txt
-uv sync
+# Install all dependencies
+uv pip install -r requirements.txt
 
-# Open VSCode 
-code .
+# Verify installation
+python --version  # Should show Python 3.10.x
 ```
 
-### 2️⃣ DVC Configuration
+---
+
+## 🔧 Service Configuration & Startup
+
+### Service Ports Overview
+
+| Service | Port | URL |
+|---------|------|-----|
+| **Dashboard** | 8086 | http://localhost:8086 |
+| **MLflow** | 5000 | http://localhost:5000 |
+| **Flask API** | 5005 | http://localhost:5005 |
+| **Streamlit EDA** | 8501 | http://localhost:8501 |
+| **Airflow** | 8080 | http://localhost:8080 |
+
+---
+
+## 1️⃣ DVC - Data Version Control
+
+DVC tracks and versions your data files, similar to how Git tracks code.
+
+### Initialize DVC (First Time Only)
 
 ```bash
-# Initialize DVC (if not already done)
+# Initialize DVC in the project
 dvc init
 
-# Download versioned data
+# Configure local cache (already done in this project)
+dvc remote add -d localcache ./dvc_cache
+```
+
+### Pull Versioned Data
+
+```bash
+# Download the versioned dataset
 dvc pull
 
-# Check status
+# Verify the data exists
+ls -la data/diabetes.csv
+
+# Check DVC status
 dvc status
 ```
 
-**Updating data:**
+### Update Data (When You Modify the Dataset)
+
 ```bash
 # After modifying diabetes.csv
 dvc add data/diabetes.csv
+
+# Commit the changes
 git add data/diabetes.csv.dvc
 git commit -m "Update dataset"
+
+# Push data to remote storage
 dvc push
 ```
 
-### 3️⃣ Feast Configuration
+### Useful DVC Commands
 
 ```bash
-cd feature_store/feature_repo
+# Check what's tracked
+dvc list . --dvc-only
 
-# Apply feature definitions
-feast apply
+# View file info
+dvc diff
 
-# Materialize features to Online Store
-feast materialize-incremental $(date -u +"%Y-%m-%dT%H:%M:%S")
-
-# Verify feature views
-feast feature-views list
+# Restore previous version
+git checkout <commit-hash> data/diabetes.csv.dvc
+dvc checkout
 ```
 
-**Expected output:**
-```
-NAME                              ENTITIES           TYPE
-predictors_df_feature_view        {'patient_id'}     FeatureView
-ptarget_df_feature_view           {'patient_id'}     FeatureView
-```
+---
 
-### 4️⃣ Exploratory Analysis (Streamlit)
+## 2️⃣ MLflow - Experiment Tracking & Model Registry
+
+MLflow tracks experiments, logs metrics, and stores trained models.
+
+### Start MLflow Server
 
 ```bash
-cd eda_streamlit
-streamlit run eda.py
-```
+# Activate virtual environment
+source .venv/bin/activate
 
-Access: http://localhost:8501
-
-### 5️⃣ Orchestration with Airflow
-
-```bash
-cd airflow
-
-# First time: Initialize database
-docker compose up airflow-init
-
-# Start services
-docker compose up -d
-
-# Check logs
-docker compose logs -f airflow-webserver
-```
-
-Access: http://localhost:8080  
-Credentials: `airflow` / `airflow`
-
-**DAG Execution Order:**
-
-1. ✅ `etl_pipeline_final` (generates predictor.parquet and target.parquet)
-2. ✅ `feature_store_cre` (creates my_training_dataset.parquet)
-3. ✅ `ml_training_pipeline` (trains model and registers in MLflow)
-4. ✅ `ml_prediction_pipeline` (makes batch predictions)
-
-**Tip:** Execute manually the first time to ensure correct order.
-
-### 6️⃣ Tracking with MLflow
-
-```bash
-# Start MLflow server
+# Start MLflow UI on port 5000
 mlflow ui --host 0.0.0.0 --port 5000
 ```
 
-Access: http://localhost:5000
+**Access:** http://localhost:5000
 
-**Register model manually (if necessary):**
+### MLflow Directory Structure
+
+```
+mlflow/
+├── mlruns/           # Experiment runs and metrics
+│   └── <experiment_id>/
+│       └── <run_id>/
+│           ├── metrics/
+│           ├── params/
+│           └── artifacts/
+└── mlartifacts/      # Model artifacts
+```
+
+### Useful MLflow Commands
+
 ```bash
-# List runs
-mlflow runs list --experiment-id 467326610704772702
+# List all experiments
+mlflow experiments list
 
-# Register model
+# List runs for an experiment
+mlflow runs list --experiment-id <EXPERIMENT_ID>
+
+# Register a model from a run
 mlflow models register -m "runs:/<run_id>/model" -n "diabete_model"
+
+# Serve a model directly
+mlflow models serve -m "models:/diabete_model/latest" -p 5001
 ```
 
-### 7️⃣ Flask API
+### View Registered Models
 
-```bash
-cd flask
-
-# Start server
-python api.py
-```
-
-Access: http://localhost:5005
-
-**Test API:**
-```bash
-# Health check
-curl http://localhost:5005/health
-
-# Prediction via Flask test client
-python request.py
-
-# Prediction via curl
-curl -X POST http://localhost:5005/predict \
-  -H "Content-Type: application/json" \
-  -d '{"Insulin": 0, "SkinThickness": 35, "DiabetesPedigreeFunction": 0.627, "BMI": 33.6}'
-```
-
-### 8️⃣ Manual Predictions & Utilities
-
-**Initialize Artifacts Folders:**
-```bash
-# Creates data/artifacts/predictions/ and data/artifacts/monitoring/
-python framework/create_artifacts.py
-```
-
-**Manual Predictions (Using API with your data):**
-```bash
-# Make predictions using stored model
-python framework/manual_pred.py
-```
-
-**Note:** `manual_pred.py` is different from `flask/request.py`:
-- `manual_pred.py`: Direct model inference real time
-- `flask/request.py`: API client that sends HTTP requests to Flask server just for testing
+1. Open http://localhost:5000
+2. Click on "Models" tab
+3. View model versions and stages
 
 ---
 
-## 📊 Monitoring and Observability
+## 3️⃣ Feast - Feature Store
 
-### Monitored Metrics
+Feast manages features for ML models with both offline (training) and online (serving) stores.
 
-| Metric | Description | Location |
-|--------|-------------|----------|
-| Training Accuracy | Accuracy on training set | MLflow Metrics |
-| Test Accuracy | Accuracy on test set | MLflow Metrics |
-| Confusion Matrix | Error visualization (TP, TN, FP, FN) | MLflow Artifacts |
-| Feature List | List of features used | MLflow Artifacts |
-| Historical Predictions | All accumulated predictions | data/artifacts/predictions/ |
-| Class Distribution | Diabetes/non-diabetes proportion | Predictions History |
-| Model Version | Version of model used | Predictions History |
-| Batch ID | Identifier for each execution | Predictions History |
-| Probabilities | P(class 0) and P(class 1) | Predictions History |
-
----
-
-## 🔧 Useful Commands
-
-### Project Setup
+### Navigate to Feature Store
 
 ```bash
-# Create artifacts folders (predictions/ and monitoring/)
-python framework/create_artifacts.py
-
-# Verify folder structure
-ls -R data/artifacts/
+cd feature_store/feature_repo
 ```
 
-### DVC
+### Apply Feature Definitions
 
 ```bash
-# Download data from remote
-dvc pull
-
-# Check status
-dvc status
-
-# Restore previous version
-git checkout <commit> data/diabetes.csv.dvc
-dvc checkout
-
-# Configure S3 remote
-dvc remote add -d myremote s3://mybucket/path
-dvc remote modify myremote access_key_id <KEY>
-dvc remote modify myremote secret_access_key <SECRET>
-
-# Configure Google Drive remote
-dvc remote add -d myremote gdrive://folder_id
-
-# Configure local remote
-dvc remote add -d myremote /path/to/storage
-
-# Push data
-dvc push
+# Register entities and feature views
+feast apply
 ```
 
-### Feast
+Expected output:
+```
+Created entity patient_id
+Created feature view predictors_df_feature_view
+Created feature view ptarget_df_feature_view
+```
+
+### Materialize Features to Online Store
+
+```bash
+# Materialize features for serving (run after ETL pipeline)
+feast materialize-incremental $(date -u +"%Y-%m-%dT%H:%M:%S")
+```
+
+### Verify Feature Store
 
 ```bash
 # List feature views
 feast feature-views list
 
-# Materialize features
-feast materialize-incremental $(date -u +"%Y-%m-%dT%H:%M:%S")
-
-# Get online features (test)
-feast get-online-features \
-  --feature-view predictors_df_feature_view \
-  --entity patient_id=1
-
-# Validate configuration
-feast validate
-
 # List entities
 feast entities list
 
-# Describe feature view
+# Describe a feature view
 feast feature-views describe predictors_df_feature_view
 ```
 
-### Airflow
+### Feature Store Configuration
 
-```bash
-# View logs
-docker compose logs -f airflow-webserver
-
-# Stop services
-docker compose down
-
-# Restart services
-docker compose restart
-
-# Access scheduler container
-docker compose exec airflow-scheduler bash
-
-# Access webserver container
-docker compose exec airflow-webserver bash
-
-# Force DAG refresh
-docker compose exec airflow-webserver airflow dags list
-
-# Trigger DAG manually
-docker compose exec airflow-scheduler airflow dags trigger etl_pipeline_final
-
-# Check DAG status
-docker compose exec airflow-scheduler airflow dags list-runs -d etl_pipeline_final
-
-# Clean up (remove volumes)
-docker compose down -v
+The `feature_store.yaml` defines:
+```yaml
+project: feature_store
+provider: local
+online_store:
+    type: sqlite
+    path: data/online_store.db
+registry: data/registry.db
 ```
 
-### MLflow
+### Return to Project Root
 
 ```bash
-# Start UI
-mlflow ui --host 0.0.0.0 --port 5000
-
-# List experiments
-mlflow experiments list
-
-# List runs
-mlflow runs list --experiment-id <ID>
-
-# Register model
-mlflow models register -m "runs:/<run_id>/model" -n "model_name"
-
-# Serve model
-mlflow models serve -m "models:/model_name/latest" -p 5001
-
-# Get model info
-mlflow models describe -m "models:/model_name/latest"
-```
-
-### Flask API
-
-```bash
-# Start API
-python flask/api.py
-
-# Test health
-curl http://localhost:5005/health
-
-# Test prediction with Flask client
-python flask/request.py
-
-# View logs
-tail -f flask/api.log
-```
-
-### Manual Predictions
-
-```bash
-# Run manual prediction (bypasses API, uses MLflow + Feast directly)
-python framework/manual_pred.py
-
-# This script:
-# 1. Loads model from MLflow Registry
-# 2. Fetches features from Feast Online Store
-# 3. Makes predictions
-# 4. Saves to data/artifacts/predictions/
+cd ../..
 ```
 
 ---
 
-## 🤝 Contributing
+## 4️⃣ Airflow - Pipeline Orchestration
 
-1. Fork the project
-2. Create a branch for your feature (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Airflow orchestrates the ML pipelines using Docker containers.
+
+### Navigate to Airflow Directory
+
+```bash
+cd airflow
+```
+
+### Create Environment File
+
+```bash
+# Create .env file with required variables
+echo "AIRFLOW_UID=$(id -u)" > .env
+echo "WEBSERVER_SECRET_KEY=$(python -c 'import secrets; print(secrets.token_hex(16))')" >> .env
+```
+
+### Initialize Airflow (First Time Only)
+
+```bash
+# Initialize the database and create admin user
+docker compose up airflow-init
+```
+
+Wait for the message: `airflow-init exited with code 0`
+
+### Start Airflow Services
+
+```bash
+# Start all services in background
+docker compose up -d
+
+# Check services are running
+docker compose ps
+```
+
+**Access:** http://localhost:8080  
+**Credentials:** `airflow` / `airflow`
+
+### Available DAGs
+
+| DAG Name | Schedule | Description |
+|----------|----------|-------------|
+| `etl_pipeline_final` | Daily | Process raw data → Parquet files |
+| `feature_store_cre` | Daily | Create training dataset from Feast |
+| `ml_training_pipeline` | Weekly | Train model and register in MLflow |
+| `ml_prediction_pipeline` | Daily | Make batch predictions |
+
+### Run DAGs from Terminal
+
+```bash
+# Trigger a DAG manually
+docker compose exec airflow-scheduler airflow dags trigger etl_pipeline_final
+
+# Check DAG run status
+docker compose exec airflow-scheduler airflow dags list-runs -d etl_pipeline_final
+
+# List all DAGs
+docker compose exec airflow-scheduler airflow dags list
+```
+
+### Run DAGs from UI
+
+1. Open http://localhost:8080
+2. Login with `airflow` / `airflow`
+3. Find the DAG in the list
+4. Toggle the DAG to "ON" (unpause)
+5. Click the "Play" button → "Trigger DAG"
+6. Monitor progress in the "Graph" or "Grid" view
+
+### Recommended Execution Order (First Time)
+
+Run these DAGs in order:
+
+1. **`etl_pipeline_final`** - Creates predictor.parquet and target.parquet
+2. **`feature_store_cre`** - Creates training dataset
+3. **`ml_training_pipeline`** - Trains and registers model
+4. **`ml_prediction_pipeline`** - Makes predictions
+
+### View Airflow Logs
+
+```bash
+# View webserver logs
+docker compose logs -f airflow-webserver
+
+# View scheduler logs
+docker compose logs -f airflow-scheduler
+
+# Access scheduler container
+docker compose exec airflow-scheduler bash
+```
+
+### Stop Airflow
+
+```bash
+# Stop services (keep data)
+docker compose down
+
+# Stop and remove all data (clean restart)
+docker compose down -v
+```
+
+### Return to Project Root
+
+```bash
+cd ..
+```
+
+---
+
+## 5️⃣ Flask API - Model Serving
+
+The Flask API serves predictions in real-time.
+
+### Start Flask API
+
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Start the API server
+cd flask
+python api.py
+```
+
+**Access:** http://localhost:5005
+
+### API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/health` | Health check |
+| GET | `/model/info` | Model information |
+| POST | `/predict` | Single prediction |
+| POST | `/predict/batch` | Batch predictions |
+| POST | `/model/reload` | Reload model |
+
+### Test the API
+
+```bash
+# Health check
+curl http://localhost:5005/health
+
+# Single prediction
+curl -X POST http://localhost:5005/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "Glucose": 148,
+    "BMI": 33.6,
+    "DiabetesPedigreeFunction": 0.627,
+    "Insulin": 0,
+    "SkinThickness": 35
+  }'
+
+# Model info
+curl http://localhost:5005/model/info
+```
+
+### Example Response
+
+```json
+{
+  "score": 0.6523,
+  "prediction": "diabetes",
+  "confidence": 0.6523,
+  "model_version": 1,
+  "timestamp": "2026-02-02T10:30:00"
+}
+```
+
+### Return to Project Root
+
+```bash
+cd ..
+```
+
+---
+
+## 6️⃣ Streamlit - Exploratory Data Analysis
+
+Streamlit provides an interactive EDA dashboard.
+
+### Start Streamlit
+
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Start Streamlit
+cd eda_streamlit
+streamlit run eda.py --server.port 8501
+```
+
+**Access:** http://localhost:8501
+
+### Features
+
+- 📊 Basic dataset information
+- 🔍 Missing values analysis
+- 📈 Statistical summaries
+- 📊 Distribution plots
+- 📦 Boxplots for outlier detection
+- 🔗 Correlation matrix
+- 🎯 Target variable analysis
+
+### Return to Project Root
+
+```bash
+cd ..
+```
+
+---
+
+## 7️⃣ Dashboard - Web Interface
+
+The dashboard provides a unified interface to monitor all services and make predictions.
+
+### Start Dashboard Server
+
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Start the dashboard
+cd dashboard
+python server/server.py --port 8086
+```
+
+**Access:** http://localhost:8086
+
+### Dashboard Panels
+
+| Panel | Description |
+|-------|-------------|
+| **Home** | Overview with quick links to all services |
+| **API** | 🧪 Interactive prediction form + API documentation |
+| **EDA** | Embedded Streamlit dashboard (requires Streamlit running) |
+| **MLflow** | Experiment tracking information |
+| **Database** | DVC versioning info (md5 hash, file size) |
+| **Dataset** | Browse and paginate diabetes.csv data |
+| **Feature Store** | Feast configuration, entities, and feature views |
+
+### API Panel Features
+
+The API panel includes:
+
+1. **Flask API Overview** - Base URL and link to open API directly
+2. **Interactive Prediction Form** - Test the model with custom values
+3. **Example Patient Selector** - Pre-loaded test cases
+4. **API Endpoints Documentation** - All available endpoints with examples
+5. **Input Features Reference** - Expected fields and their descriptions
+
+### Return to Project Root
+
+```bash
+cd ..
+```
+
+---
+
+## 8️⃣ Making Predictions - Multiple Methods
+
+There are **3 ways** to make predictions in this project:
+
+### Method 1: Dashboard Web Form (Recommended for Testing)
+
+The dashboard provides an interactive form to test predictions visually.
+
+**Prerequisites:** Flask API must be running on port 5005
+
+1. Open http://localhost:8086
+2. Click on **"API"** in the sidebar
+3. Use the **"Try the API"** section:
+
+**Using Pre-defined Examples:**
+- Select from dropdown: "Alto Risco", "Médio Risco", "Baixo Risco", or "Valores Normais"
+- Click **"Make Prediction"**
+
+**Using Custom Values:**
+- Fill in the form fields:
+  - **Glucose**: Plasma glucose concentration (mg/dL) - Range: 0-300
+  - **BMI**: Body mass index - Range: 10-70
+  - **DiabetesPedigreeFunction**: Diabetes pedigree score - Range: 0-3
+  - **Insulin**: 2-Hour serum insulin (mu U/ml) - Range: 0-900
+  - **SkinThickness**: Triceps skin fold thickness (mm) - Range: 0-100
+- Click **"Make Prediction"**
+
+**Result Display:**
+- ✅ Green card = No diabetes (low probability)
+- ⚠️ Yellow card = Diabetes (high probability)
+- Shows: Score, Confidence level, Model version, Interpretation
+
+### Method 2: Manual Prediction Script (Command Line)
+
+The `manual_pred.py` script provides a command-line interface for predictions.
+
+**Prerequisites:** Flask API must be running on port 5005
+
+```bash
+# Activate virtual environment
+source .venv/bin/activate
+
+# Interactive menu mode
+python manual_pred.py
+
+# Run pre-defined examples
+python manual_pred.py --example
+
+# Custom prediction mode
+python manual_pred.py --custom
+
+# Load from JSON file
+python manual_pred.py --file
+
+# Show help
+python manual_pred.py --help
+```
+
+**Pre-defined Example Patients:**
+
+| Example | Glucose | BMI | DiabetesPedigree | Insulin | SkinThickness |
+|---------|---------|-----|------------------|---------|---------------|
+| Alto Risco | 180 | 38.5 | 0.85 | 150 | 40 |
+| Médio Risco | 120 | 30.2 | 0.45 | 80 | 28 |
+| Baixo Risco | 85 | 24.5 | 0.25 | 40 | 20 |
+| Valores Normais | 95 | 26.0 | 0.30 | 50 | 25 |
+
+**Programmatic Usage:**
+
+```python
+from framework.manual_predict_by_api_request import PredictionClient
+
+# Create client
+client = PredictionClient()
+
+# Single prediction
+result = client.predict_single({
+    "Glucose": 148,
+    "BMI": 33.6,
+    "DiabetesPedigreeFunction": 0.627,
+    "Insulin": 0,
+    "SkinThickness": 35
+})
+print(result)
+
+# Batch prediction
+results = client.predict_batch([
+    {"Glucose": 180, "BMI": 38.5, "DiabetesPedigreeFunction": 0.85, "Insulin": 150, "SkinThickness": 40},
+    {"Glucose": 85, "BMI": 24.5, "DiabetesPedigreeFunction": 0.25, "Insulin": 40, "SkinThickness": 20}
+])
+print(results)
+```
+
+### Method 3: Direct API Calls (curl/Postman)
+
+Make HTTP requests directly to the Flask API.
+
+**Single Prediction:**
+```bash
+curl -X POST http://localhost:5005/predict \
+  -H "Content-Type: application/json" \
+  -d '{
+    "Glucose": 148,
+    "BMI": 33.6,
+    "DiabetesPedigreeFunction": 0.627,
+    "Insulin": 0,
+    "SkinThickness": 35
+  }'
+```
+
+**Batch Prediction:**
+```bash
+curl -X POST http://localhost:5005/predict/batch \
+  -H "Content-Type: application/json" \
+  -d '{
+    "instances": [
+      {"Glucose": 180, "BMI": 38.5, "DiabetesPedigreeFunction": 0.85, "Insulin": 150, "SkinThickness": 40},
+      {"Glucose": 85, "BMI": 24.5, "DiabetesPedigreeFunction": 0.25, "Insulin": 40, "SkinThickness": 20}
+    ]
+  }'
+```
+
+**Response Format:**
+```json
+{
+  "score": 0.6523,
+  "prediction": "diabetes",
+  "confidence": 0.6523,
+  "model_version": 1,
+  "timestamp": "2026-02-02T10:30:00"
+}
+```
+
+### Understanding the Results
+
+| Field | Description |
+|-------|-------------|
+| **score** | Probability of diabetes (0.0 to 1.0) |
+| **prediction** | "diabetes" if score ≥ 0.5, else "no_diabetes" |
+| **confidence** | How confident the model is (higher = more certain) |
+| **model_version** | Version of the model used |
+
+**Confidence Interpretation:**
+- **> 80%**: High confidence - Result is reliable
+- **60-80%**: Medium confidence - Consider additional tests
+- **< 60%**: Low confidence - Result is uncertain
+
+---
+
+## 🎯 Quick Start - Run Everything
+
+Open **5 terminal windows** and run each service:
+
+### Terminal 1: MLflow
+```bash
+cd MLOps_projects
+source .venv/bin/activate
+mlflow ui --host 0.0.0.0 --port 5000
+```
+
+### Terminal 2: Airflow
+```bash
+cd MLOps_projects/airflow
+docker compose up
+```
+
+### Terminal 3: Flask API
+```bash
+cd MLOps_projects
+source .venv/bin/activate
+cd flask
+python api.py
+```
+
+### Terminal 4: Streamlit
+```bash
+cd MLOps_projects
+source .venv/bin/activate
+cd eda_streamlit
+streamlit run eda.py --server.port 8501
+```
+
+### Terminal 5: Dashboard
+```bash
+cd MLOps_projects
+source .venv/bin/activate
+cd dashboard
+python server/server.py --port 8086
+```
+
+### Access All Services
+
+| Service | URL |
+|---------|-----|
+| **Dashboard** | http://localhost:8086 |
+| **MLflow** | http://localhost:5000 |
+| **Flask API** | http://localhost:5005 |
+| **Streamlit** | http://localhost:8501 |
+| **Airflow** | http://localhost:8080 |
+
+---
+
+## 🔄 Complete Workflow Example
+
+### 1. Initialize Data Pipeline
+
+```bash
+# Pull data with DVC
+dvc pull
+
+# Start MLflow (Terminal 1)
+mlflow ui --host 0.0.0.0 --port 5000
+
+# Start Airflow (Terminal 2)
+cd airflow && docker compose up -d
+```
+
+### 2. Run ETL Pipeline
+
+```bash
+# Via terminal
+docker compose exec airflow-scheduler airflow dags trigger etl_pipeline_final
+
+# Or via UI: http://localhost:8080 → etl_pipeline_final → Trigger
+```
+
+### 3. Setup Feature Store
+
+```bash
+# Apply Feast definitions
+cd feature_store/feature_repo
+feast apply
+feast materialize-incremental $(date -u +"%Y-%m-%dT%H:%M:%S")
+cd ../..
+
+# Or run the DAG
+docker compose exec airflow-scheduler airflow dags trigger feature_store_cre
+```
+
+### 4. Train Model
+
+```bash
+# Via Airflow
+docker compose exec airflow-scheduler airflow dags trigger ml_training_pipeline
+
+# Check MLflow for the new run: http://localhost:5000
+```
+
+### 5. Start Serving
+
+```bash
+# Start Flask API (Terminal 3)
+cd flask && python api.py
+
+# Start Dashboard (Terminal 4)
+cd dashboard && python server/server.py --port 8086
+```
+
+### 6. Make Predictions
+
+```bash
+# Via curl
+curl -X POST http://localhost:5005/predict \
+  -H "Content-Type: application/json" \
+  -d '{"Glucose": 148, "BMI": 33.6, "DiabetesPedigreeFunction": 0.627, "Insulin": 0, "SkinThickness": 35}'
+
+# Or via Dashboard: http://localhost:8086 → API panel
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+### MLflow Not Starting
+```bash
+# Check if port is in use
+lsof -i :5000
+
+# Kill existing process
+kill -9 <PID>
+```
+
+### Airflow Container Issues
+```bash
+# Reset everything
+cd airflow
+docker compose down -v
+docker compose up airflow-init
+docker compose up -d
+```
+
+### Flask API CORS Errors
+The API includes CORS headers. If issues persist:
+```bash
+# Restart the Flask API
+cd flask
+python api.py
+```
+
+### Feast Materialization Fails
+```bash
+# Ensure parquet files exist
+ls -la data/artifacts/
+
+# Re-run ETL pipeline first
+docker compose exec airflow-scheduler airflow dags trigger etl_pipeline_final
+```
+
+### Dashboard Not Loading
+```bash
+# Hard refresh browser
+Ctrl+Shift+R (or Cmd+Shift+R on Mac)
+
+# Restart server
+cd dashboard
+python server/server.py --port 8086
+```
 
 ---
 
@@ -895,22 +941,21 @@ python framework/manual_pred.py
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ---
 
 ## 👤 Author
 
-**Your Name**
+**Luis Veloso**
 
 - GitHub: [@velosoberti](https://github.com/velosoberti)
-- LinkedIn: [My LinkedIn](https://www.linkedin.com/in/velosoberti/)
+- LinkedIn: [velosoberti](https://www.linkedin.com/in/velosoberti/)
 
 ---
-
 
 ## 📈 Project Status
 
 🟢 **Active Development** - This project is actively maintained and updated regularly.
 
-**Last Updated:** November 28, 2025
+**Last Updated:** February 2026

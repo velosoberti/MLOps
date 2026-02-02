@@ -84,3 +84,5 @@ task_cleanup = PythonOperator(
 # ===================== DEFINIÇÃO DO FLUXO =====================
 
 task_setup >> task_find_patients >> task_fetch >> task_load >> task_predict >> task_save_pred >> task_cleanup
+
+#comments

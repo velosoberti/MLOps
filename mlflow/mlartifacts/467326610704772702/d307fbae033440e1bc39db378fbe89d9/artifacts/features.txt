@@ -1,0 +1,4 @@
+BMI
+DiabetesPedigreeFunction
+Insulin
+SkinThickness

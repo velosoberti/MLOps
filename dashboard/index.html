@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Project Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css?v=6">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div id="app">
+        <!-- Navigation sidebar -->
+        <nav id="navigation" class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">🤖 ML Dashboard</h1>
+            </div>
+            <ul class="nav-list" id="nav-list">
+                <!-- Navigation items will be rendered by JavaScript -->
+            </ul>
+        </nav>
+        
+        <!-- Main content area -->
+        <main id="main-content" class="main-content">
+            <header class="content-header">
+                <h2 id="panel-title">Home</h2>
+            </header>
+            
+            <div id="panel-container" class="panel-container">
+                <!-- Panel: Home -->
+                <section id="panel-home" class="panel" data-panel="home">
+                    <div class="panel-content">
+                        <!-- Home panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: API -->
+                <section id="panel-api" class="panel hidden" data-panel="api">
+                    <div class="panel-content">
+                        <!-- API panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: EDA -->
+                <section id="panel-eda" class="panel hidden" data-panel="eda">
+                    <div class="panel-content">
+                        <!-- EDA panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: MLflow -->
+                <section id="panel-mlflow" class="panel hidden" data-panel="mlflow">
+                    <div class="panel-content">
+                        <!-- MLflow panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: Database -->
+                <section id="panel-database" class="panel hidden" data-panel="database">
+                    <div class="panel-content">
+                        <!-- Database panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: Dataset -->
+                <section id="panel-dataset" class="panel hidden" data-panel="dataset">
+                    <div class="panel-content">
+                        <!-- Dataset panel content rendered by JS -->
+                    </div>
+                </section>
+                
+                <!-- Panel: Feature Store -->
+                <section id="panel-featurestore" class="panel hidden" data-panel="featurestore">
+                    <div class="panel-content">
+                        <!-- Feature Store panel content rendered by JS -->
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Utility scripts -->
+    <script src="js/utils/dataLoader.js"></script>
+    
+    <!-- Component scripts -->
+    <script src="js/components/ServiceCard.js"></script>
+    <script src="js/components/DataTable.js"></script>
+    
+    <!-- Panel scripts -->
+    <script src="js/panels/home.js"></script>
+    <script src="js/panels/api.js"></script>
+    <script src="js/panels/eda.js"></script>
+    <script src="js/panels/mlflow.js"></script>
+    <script src="js/panels/database.js"></script>
+    <script src="js/panels/dataset.js"></script>
+    <script src="js/panels/featurestore.js"></script>
+    <script src="js/panels/featuredata.js"></script>
+    
+    <!-- Core scripts -->
+    <script src="js/navigation.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+
+#source ../.venv/bin/activate && python server/server.py --port 8085

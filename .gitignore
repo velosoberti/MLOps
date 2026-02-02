@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+.kiro
+api.log
+.python-version
+tests/
+scr/
